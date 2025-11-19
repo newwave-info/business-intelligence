@@ -1,0 +1,584 @@
+{
+  "metadata": {
+    "company_name": "Fabbrica del Valore SRL",
+    "fiscal_code": "IT05070220289",
+    "ateco": "702209",
+    "city": "Padova",
+    "fiscal_years": [
+      "2022",
+      "2023",
+      "2024"
+    ],
+    "currency": "EUR",
+    "last_update": "2025-11-19"
+  },
+  "income_statement": {
+    "ricavi": [
+      303036,
+      476070,
+      535834
+    ],
+    "costi_servizi": [
+      163237,
+      305123,
+      341841
+    ],
+    "costi_personale": [
+      38860,
+      46821,
+      53532
+    ],
+    "altri_costi_operativi": [
+      36192,
+      44111,
+      34471
+    ],
+    "ebitda": [
+      64832,
+      80484,
+      105995
+    ],
+    "ammortamenti": [
+      11062,
+      11246,
+      22862
+    ],
+    "ebit": [
+      53770,
+      69238,
+      83133
+    ],
+    "oneri_finanziari": [
+      2932,
+      5478,
+      4483
+    ],
+    "imposte": [
+      18802,
+      23409,
+      26280
+    ],
+    "utile_netto": [
+      32036,
+      40351,
+      52370
+    ]
+  },
+  "balance_sheet": {
+    "attivo": {
+      "immobilizzazioni_immateriali": [
+        27593,
+        19393,
+        44668
+      ],
+      "immobilizzazioni_materiali": [
+        8616,
+        7681,
+        5804
+      ],
+      "immobilizzazioni_finanziarie": [
+        3389,
+        3389,
+        3389
+      ],
+      "crediti_commerciali": [
+        43324,
+        84440,
+        78771
+      ],
+      "attivita_finanziarie": [
+        0,
+        0,
+        0
+      ],
+      "disponibilita_liquide": [
+        190090,
+        189777,
+        220673
+      ],
+      "ratei_risconti_attivi": [
+        2568,
+        3470,
+        3841
+      ],
+      "totale_attivo": [
+        275580,
+        308150,
+        357146
+      ]
+    },
+    "passivo": {
+      "capitale_sociale": [
+        10000,
+        10000,
+        10000
+      ],
+      "riserva_legale": [
+        2000,
+        2000,
+        2000
+      ],
+      "altre_riserve": [
+        53853,
+        50888,
+        91239
+      ],
+      "utili_esercizi_precedenti": [
+        0,
+        0,
+        0
+      ],
+      "utile_esercizio": [
+        32036,
+        40351,
+        52370
+      ],
+      "totale_patrimonio_netto": [
+        97889,
+        103239,
+        155609
+      ],
+      "tfr": [
+        182,
+        776,
+        1610
+      ],
+      "debiti_breve_termine": [
+        65382,
+        110319,
+        125675
+      ],
+      "debiti_lungo_termine": [
+        90246,
+        70575,
+        50687
+      ],
+      "ratei_risconti_passivi": [
+        2668,
+        4028,
+        4352
+      ],
+      "totale_passivo": [
+        275580,
+        308150,
+        357146
+      ]
+    }
+  },
+  "cash_flow": {
+    "utile_netto": [
+      32036,
+      40351,
+      52370
+    ],
+    "ammortamenti": [
+      11062,
+      11246,
+      22862
+    ],
+    "variazione_tfr": [
+      0,
+      594,
+      834
+    ],
+    "variazione_crediti": [
+      0,
+      -41116,
+      5669
+    ],
+    "variazione_debiti": [
+      0,
+      44937,
+      15356
+    ],
+    "investimenti": [
+      0,
+      -1200,
+      -45398
+    ],
+    "variazione_cassa": [
+      0,
+      -313,
+      30896
+    ],
+    "cash_flow_operativo": [
+      43098,
+      51597,
+      76066
+    ]
+  },
+  "kpi": {
+    "redditivita": {
+      "roe": [
+        32.7,
+        39.1,
+        33.7
+      ],
+      "roa": [
+        11.6,
+        13.1,
+        14.7
+      ],
+      "ros": [
+        10.6,
+        8.5,
+        9.8
+      ],
+      "ebitda_margin": [
+        21.4,
+        16.9,
+        19.8
+      ]
+    },
+    "liquidita": {
+      "current_ratio": [
+        3.57,
+        2.49,
+        2.38
+      ],
+      "quick_ratio": [
+        3.57,
+        2.49,
+        2.38
+      ],
+      "cash_ratio": [
+        2.91,
+        1.72,
+        1.76
+      ],
+      "margine_tesoreria": [
+        168032,
+        163898,
+        173769
+      ]
+    },
+    "solidita": {
+      "debt_equity": [
+        1.59,
+        1.75,
+        1.13
+      ],
+      "leverage": [
+        2.82,
+        2.98,
+        2.3
+      ],
+      "icr": [
+        18.3,
+        12.6,
+        18.5
+      ],
+      "dscr": [
+        14.7,
+        9.42,
+        16.97
+      ]
+    },
+    "efficienza": {
+      "dso": [
+        52.0,
+        65.0,
+        54.0
+      ],
+      "dpo": [
+        146.0,
+        132.0,
+        134.0
+      ],
+      "ciclo_finanziario": [
+        -94.0,
+        -67.0,
+        -81.0
+      ],
+      "asset_turnover": [
+        1.5,
+        1.54,
+        1.5
+      ]
+    },
+    "rischio": {
+      "z_score": [
+        1.85,
+        1.42,
+        3.18
+      ],
+      "z_score_zone": [
+        "grey",
+        "grey",
+        "safe"
+      ]
+    }
+  },
+  "dupont_analysis": {
+    "margine_netto": [
+      10.6,
+      8.5,
+      9.8
+    ],
+    "rotazione_attivo": [
+      1.1,
+      1.54,
+      1.5
+    ],
+    "leva_finanziaria": [
+      2.82,
+      2.98,
+      2.3
+    ],
+    "roa": [
+      11.6,
+      13.1,
+      14.7
+    ]
+  },
+  "break_even": {
+    "costi_fissi": 76394,
+    "margine_contribuzione": 0.936,
+    "punto_pareggio": 81646,
+    "margine_sicurezza_pct": 84,
+    "margine_sicurezza_eur": 454187
+  },
+  "debt_structure": {
+    "breve_termine": [
+      65382,
+      110319,
+      125675
+    ],
+    "lungo_termine": [
+      90246,
+      70575,
+      50687
+    ],
+    "totale": [
+      155628,
+      180894,
+      176362
+    ],
+    "breve_pct": [
+      42,
+      60,
+      71
+    ],
+    "lungo_pct": [
+      57,
+      39,
+      28
+    ]
+  },
+  "produttivita": {
+    "dipendenti": [
+      1,
+      1,
+      1
+    ],
+    "ricavi_per_dipendente": [
+      303036,
+      476070,
+      535834.0
+    ],
+    "valore_aggiunto_per_dipendente": [
+      103692.0,
+      127305.0,
+      159527.0
+    ],
+    "ebitda_per_dipendente": [
+      64832,
+      80484,
+      105995.0
+    ]
+  },
+  "capex": {
+    "periodi": [
+      "2022-2023",
+      "2023-2024"
+    ],
+    "valori": [
+      1200,
+      45398
+    ]
+  },
+  "composizione_attivo": {
+    "labels": [
+      "Disponibilità Liquide",
+      "Crediti",
+      "Immob. Materiali",
+      "Immob. Immateriali",
+      "Immob. Finanziarie",
+      "Ratei"
+    ],
+    "valori_2024": [
+      220673,
+      78771,
+      5804,
+      44668,
+      3389,
+      3841
+    ]
+  },
+  "composizione_passivo": {
+    "labels": [
+      "Debiti Breve",
+      "Debiti Lungo",
+      "Patrimonio Netto",
+      "Utile Esercizio",
+      "TFR",
+      "Ratei"
+    ],
+    "valori_2024": [
+      125675,
+      50687,
+      103239,
+      52370,
+      1610,
+      4352
+    ]
+  },
+  "composizione_costi": {
+    "labels": [
+      "Servizi",
+      "Personale",
+      "Ammortamenti",
+      "Godimento Beni",
+      "Materie Prime",
+      "Oneri Diversi"
+    ],
+    "valori_2024": [
+      341841,
+      53532,
+      22862,
+      21678,
+      9148,
+      3645
+    ]
+  },
+  "executive_summary": {
+    "salute_generale": "Buona",
+    "aree": {
+      "redditivita": {
+        "stato": "Ottima",
+        "valore": "ROE 33.7%"
+      },
+      "crescita": {
+        "stato": "Forte",
+        "valore": "+13% Ricavi"
+      },
+      "solidita": {
+        "stato": "Buona",
+        "valore": "D/E 1.13x"
+      },
+      "liquidita": {
+        "stato": "Buona",
+        "valore": "Cash 1.76x"
+      },
+      "efficienza": {
+        "stato": "Ottima",
+        "valore": "DSO 54gg"
+      },
+      "rischio": {
+        "stato": "Basso",
+        "valore": "Z-Score 3.18"
+      }
+    }
+  },
+  "risk_priorities": [
+    {
+      "priority": "P1",
+      "criticita": "media",
+      "titolo": "Consolidare crescita",
+      "target": "Mantenere EBITDA margin >18%",
+      "azioni": "Diversificazione clienti, pricing power, efficienza costi"
+    },
+    {
+      "priority": "P2",
+      "criticita": "media",
+      "titolo": "Ottimizzare struttura debiti",
+      "target": "Aumentare debito lungo termine",
+      "azioni": "Finanziamenti a medio-lungo termine, ridurre debiti breve"
+    },
+    {
+      "priority": "P3",
+      "criticita": "bassa",
+      "titolo": "Investire in asset",
+      "target": "Ampliare capacity operativa",
+      "azioni": "CAPEX strategici, automazione, tecnologia"
+    }
+  ],
+  "risk_matrix": [
+    {
+      "categoria": "Rischio Operativo",
+      "livello": "Basso",
+      "indicatori": [
+        "EBITDA 19.8%",
+        "Break-even +84%",
+        "Leva operativa controllata"
+      ]
+    },
+    {
+      "categoria": "Rischio Finanziario",
+      "livello": "Basso",
+      "indicatori": [
+        "D/E 1.13x",
+        "ICR 18.5x",
+        "Struttura debiti equilibrata"
+      ]
+    },
+    {
+      "categoria": "Rischio Liquidità",
+      "livello": "Basso",
+      "indicatori": [
+        "Cash Ratio 1.76x",
+        "DSO 54gg",
+        "Current Ratio 2.38x"
+      ]
+    }
+  ],
+  "ui_config": {
+    "colors": {
+      "light": {
+        "primary": "#18181b",
+        "accent": "#32b8c6",
+        "positive": "#22c55e",
+        "negative": "#ef4444",
+        "warning": "#f59e0b",
+        "background": "#ffffff",
+        "card": "#ffffff",
+        "text_primary": "#18181b",
+        "text_secondary": "#64748b",
+        "border": "#e2e8f0",
+        "chart_grid": "rgba(0, 0, 0, 0.1)"
+      },
+      "dark": {
+        "primary": "#f1f5f9",
+        "accent": "#50bfc8",
+        "positive": "#4ade80",
+        "negative": "#f87171",
+        "warning": "#fbbf24",
+        "background": "#0f172a",
+        "card": "#1e293b",
+        "text_primary": "#f1f5f9",
+        "text_secondary": "#94a3b8",
+        "border": "#334155",
+        "chart_grid": "rgba(71, 85, 105, 0.4)"
+      }
+    },
+    "theme": {
+      "default": "light",
+      "storage_key": "theme",
+      "toggle_enabled": true
+    },
+    "responsive": {
+      "breakpoints": {
+        "sm": "640px",
+        "md": "768px",
+        "lg": "1024px"
+      },
+      "mobile_chart_height": "220px",
+      "desktop_chart_height": "280px"
+    },
+    "chart_patterns": true,
+    "animations": {
+      "duration": 800,
+      "easing": "easeOutQuart"
+    }
+  }
+}
