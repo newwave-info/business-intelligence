@@ -8,6 +8,25 @@ function toggleSidebar() {
     overlay.classList.toggle('hidden');
 }
 
+// Accordion Toggle
+function toggleAccordion(targetId) {
+    const content = document.getElementById(targetId);
+    if (!content) return;
+
+    content.classList.toggle('hidden');
+
+    const isOpen = !content.classList.contains('hidden');
+    const toggleButton = document.querySelector(`[data-accordion-toggle="${targetId}"]`);
+    const icon = toggleButton?.querySelector('.accordion-icon');
+    if (icon) {
+        icon.classList.toggle('rotate-180', isOpen);
+    }
+    if (toggleButton) {
+        toggleButton.style.backgroundColor = isOpen ? '#f3e8ff' : 'transparent';
+        toggleButton.style.borderRadius = isOpen ? '6px' : '0';
+    }
+}
+
 // Chart.js Defaults
 Chart.defaults.font.family = "'Roboto Mono', monospace";
 Chart.defaults.color = '#64748b';
@@ -88,11 +107,19 @@ Chart.register(htmlLegendPlugin);
 // View Navigation
 function showView(viewId) {
     document.querySelectorAll('.view').forEach(v => v.classList.add('hidden'));
+    document.getElementById(viewId)?.classList.remove('hidden');
+
     document.querySelectorAll('.nav-item').forEach(item => {
-        item.classList.remove('active', 'bg-purple-light', 'text-purple-dark', 'border-purple', 'font-semibold');
+        item.classList.remove('active', 'text-purple-600', 'font-semibold');
+        item.classList.add('text-gray-600');
     });
-    document.getElementById(viewId).classList.remove('hidden');
-    event.target.closest('.nav-item').classList.add('active', 'bg-purple-light', 'text-purple-dark', 'border-purple', 'font-semibold');
+
+    const evt = typeof event !== 'undefined' ? event : window.event;
+    const activeItem = evt?.target?.closest('.nav-item');
+    if (activeItem) {
+        activeItem.classList.remove('text-gray-600');
+        activeItem.classList.add('active', 'text-purple-600', 'font-semibold');
+    }
 
     // Scroll to top on view change
     document.querySelector('.flex-1.overflow-y-auto')?.scrollTo(0, 0);
