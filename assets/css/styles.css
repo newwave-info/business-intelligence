@@ -201,9 +201,9 @@ button:active {
 .widget-card {
     background: #ffffff;
     border-radius: 0;
-    border: 1px solid #9ca3af;
+    border: 1px solid #6b7280;
     transition: all 200ms ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
 .widget-card:hover {
@@ -213,33 +213,33 @@ button:active {
 
 /* Widget Gradient Backgrounds - Corporate */
 .widget-positive {
-    background: linear-gradient(135deg, rgba(5, 150, 105, 0.06) 0%, rgba(255, 255, 255, 0) 100%);
-    border-color: rgba(5, 150, 105, 0.25);
+    background: linear-gradient(135deg, rgba(5, 150, 105, 0.08) 0%, rgba(255, 255, 255, 0) 100%);
+    border-color: rgba(5, 150, 105, 0.35);
 }
 
 .widget-positive:hover {
     border-color: #059669;
-    box-shadow: 0 2px 8px rgba(5, 150, 105, 0.2);
+    box-shadow: 0 2px 8px rgba(5, 150, 105, 0.25);
 }
 
 .widget-negative {
-    background: linear-gradient(135deg, rgba(220, 38, 38, 0.06) 0%, rgba(255, 255, 255, 0) 100%);
-    border-color: rgba(220, 38, 38, 0.25);
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.08) 0%, rgba(255, 255, 255, 0) 100%);
+    border-color: rgba(220, 38, 38, 0.35);
 }
 
 .widget-negative:hover {
     border-color: #dc2626;
-    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.2);
+    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.25);
 }
 
 .widget-purple {
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
-    border-color: rgba(139, 92, 246, 0.18);
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.06) 0%, rgba(255, 255, 255, 0) 100%);
+    border-color: rgba(139, 92, 246, 0.25);
 }
 
 .widget-purple:hover {
     border-color: #8b5cf6;
-    box-shadow: 0 2px 8px rgba(139, 92, 246, 0.18);
+    box-shadow: 0 2px 8px rgba(139, 92, 246, 0.22);
 }
 
 /* AI Insight Widget - Corporate */
@@ -328,7 +328,7 @@ tbody tr:hover {
 /* Common Widget Typography */
 .widget-title {
     font-weight: 500;
-    color: #18181b;
+    color: #09090b;
     font-size: 13px;
     margin-bottom: 12px;
 }
@@ -336,7 +336,7 @@ tbody tr:hover {
 .widget-text {
     font-size: 12px;
     line-height: 1.6;
-    color: #3f3f46;
+    color: #27272a;
     font-weight: 400;
 }
 
@@ -360,7 +360,7 @@ tbody tr:hover {
 
 .widget-label {
     font-size: 10px;
-    color: #3f3f46;
+    color: #27272a;
     text-transform: uppercase;
     font-weight: 500;
     letter-spacing: 0.08em;
@@ -368,7 +368,7 @@ tbody tr:hover {
 
 .widget-label-medium {
     font-size: 11px;
-    color: #3f3f46;
+    color: #27272a;
     font-weight: 500;
 }
 
@@ -403,20 +403,20 @@ tbody tr:hover {
 /* Detail Widgets */
 .widget-detail-label {
     font-size: 12px;
-    color: #3f3f46;
+    color: #27272a;
     font-weight: 400;
 }
 
 .widget-detail-value {
     font-size: 12px;
-    color: #18181b;
+    color: #09090b;
     font-weight: 500;
 }
 
 .widget-detail-header {
     font-size: 11px;
     font-weight: 500;
-    color: #3f3f46;
+    color: #27272a;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     margin-bottom: 16px;
@@ -427,7 +427,7 @@ tbody tr:hover {
     justify-content: space-between;
     align-items: center;
     padding: 10px 0;
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid #d1d5db;
 }
 
 .widget-detail-row:last-child {
@@ -436,12 +436,12 @@ tbody tr:hover {
 
 .widget-detail-note {
     font-size: 11px;
-    color: #52525b;
+    color: #3f3f46;
     line-height: 1.6;
     margin-top: 16px;
     padding: 12px 16px;
-    background: rgba(139, 92, 246, 0.08);
-    border: 1px dashed rgba(139, 92, 246, 0.4);
+    background: rgba(139, 92, 246, 0.10);
+    border: 1px dashed rgba(139, 92, 246, 0.5);
     border-radius: 0;
     transition: all 200ms ease;
 }
@@ -455,10 +455,10 @@ tbody tr:hover {
 .ai-insight-box {
     margin-top: 16px;
     padding: 16px;
-    background: rgba(139, 92, 246, 0.1);
-    border: 1px dashed rgba(139, 92, 246, 0.4);
+    background: rgba(139, 92, 246, 0.12);
+    border: 1px dashed rgba(139, 92, 246, 0.5);
     font-size: 12px;
-    color: #18181b;
+    color: #09090b;
     transition: all 200ms ease;
 }
 
