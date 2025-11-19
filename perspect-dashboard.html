@@ -49,9 +49,12 @@
             <p class="text-[11px] text-gray-500">Business Intelligence Suite</p>
         </div>
         <div class="flex items-center gap-4">
-            <div class="text-[11px] text-gray-500">
+            <div class="text-[11px] text-gray-500 hidden sm:block">
                 Ultimo aggiornamento: <strong class="text-gray-700">18 nov 2025</strong>
             </div>
+            <button id="themeToggle" class="text-gray-500 hover:text-purple text-lg transition-colors" onclick="toggleTheme()" title="Cambia tema">
+                <i class="fa-solid fa-moon"></i>
+            </button>
             <button id="mobileMenuBtn" class="md:hidden text-primary text-xl" onclick="toggleSidebar()">
                 <i class="fa-solid fa-bars"></i>
             </button>
