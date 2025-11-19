@@ -544,3 +544,230 @@ tbody tr:hover {
 .debt-bar-long-2025 {
     width: 46%;
 }
+
+/* Dark Mode Theme */
+.dark-mode {
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-card: #1e293b;
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --border-color: #334155;
+}
+
+.dark-mode body,
+.dark-mode {
+    background: var(--bg-primary) !important;
+}
+
+.dark-mode .bg-white,
+.dark-mode .bg-gray-50 {
+    background: var(--bg-secondary) !important;
+}
+
+.dark-mode .widget-card {
+    background: var(--bg-card) !important;
+    border-color: var(--border-color) !important;
+}
+
+.dark-mode .widget-purple {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(30, 41, 59, 0) 100%) !important;
+    border-color: rgba(139, 92, 246, 0.4) !important;
+}
+
+.dark-mode .widget-positive {
+    background: linear-gradient(135deg, rgba(5, 150, 105, 0.15) 0%, rgba(30, 41, 59, 0) 100%) !important;
+    border-color: rgba(5, 150, 105, 0.4) !important;
+}
+
+.dark-mode .widget-negative {
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.15) 0%, rgba(30, 41, 59, 0) 100%) !important;
+    border-color: rgba(220, 38, 38, 0.4) !important;
+}
+
+.dark-mode .widget-ai-insight {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(30, 41, 59, 0) 100%) !important;
+    border-color: rgba(139, 92, 246, 0.5) !important;
+}
+
+.dark-mode .ai-insight-box {
+    background: rgba(139, 92, 246, 0.2) !important;
+    border-color: rgba(139, 92, 246, 0.5) !important;
+}
+
+.dark-mode .text-primary,
+.dark-mode .text-gray-800,
+.dark-mode .text-gray-700,
+.dark-mode .widget-title,
+.dark-mode .widget-metric-large,
+.dark-mode .widget-metric-medium,
+.dark-mode .widget-metric-small,
+.dark-mode .widget-detail-value,
+.dark-mode .widget-detail-header,
+.dark-mode td,
+.dark-mode th,
+.dark-mode p,
+.dark-mode span,
+.dark-mode div {
+    color: var(--text-primary);
+}
+
+.dark-mode .text-gray-600,
+.dark-mode .text-gray-500,
+.dark-mode .text-gray-400,
+.dark-mode .widget-text,
+.dark-mode .widget-label,
+.dark-mode .widget-label-medium,
+.dark-mode .widget-detail-label {
+    color: var(--text-secondary) !important;
+}
+
+/* Preserve colored text in dark mode */
+.dark-mode .text-purple,
+.dark-mode .text-positive,
+.dark-mode .text-negative,
+.dark-mode .text-danger,
+.dark-mode .text-success {
+    color: inherit;
+}
+
+.dark-mode .border-gray-200,
+.dark-mode .border-gray-100 {
+    border-color: var(--border-color) !important;
+}
+
+.dark-mode table thead {
+    background: var(--bg-primary) !important;
+}
+
+.dark-mode table tbody tr:hover {
+    background: rgba(139, 92, 246, 0.1) !important;
+}
+
+.dark-mode .tooltip-content {
+    background: #0f172a !important;
+}
+
+.dark-mode .tooltip-content::after {
+    border-color: #0f172a transparent transparent transparent !important;
+}
+
+.dark-mode #sidebar {
+    background: var(--bg-secondary) !important;
+    border-color: var(--border-color) !important;
+}
+
+.dark-mode .nav-item {
+    color: var(--text-secondary) !important;
+}
+
+.dark-mode .nav-item:hover,
+.dark-mode .nav-item.active {
+    color: #a78bfa !important;
+}
+
+.dark-mode h1,
+.dark-mode h2 {
+    color: var(--text-primary) !important;
+}
+
+.dark-mode .border-b {
+    border-color: var(--border-color) !important;
+}
+
+.dark-mode input,
+.dark-mode select {
+    background: var(--bg-primary) !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Header in dark mode */
+.dark-mode .h-\[60px\] {
+    background: var(--bg-secondary) !important;
+    border-color: var(--border-color) !important;
+}
+
+/* Fix specific text colors */
+.dark-mode .text-\[11px\],
+.dark-mode .text-\[10px\],
+.dark-mode .text-\[12px\],
+.dark-mode .text-\[13px\],
+.dark-mode .text-xs,
+.dark-mode .text-sm {
+    color: var(--text-secondary);
+}
+
+.dark-mode strong {
+    color: var(--text-primary) !important;
+}
+
+.dark-mode .font-semibold,
+.dark-mode .font-medium,
+.dark-mode .font-bold {
+    color: var(--text-primary);
+}
+
+/* Table specific */
+.dark-mode table {
+    color: var(--text-primary);
+}
+
+.dark-mode thead th {
+    color: var(--text-secondary) !important;
+}
+
+.dark-mode tbody td {
+    color: var(--text-primary);
+}
+
+/* Badges and status */
+.dark-mode .bg-gray-50 {
+    background: var(--bg-primary) !important;
+}
+
+.dark-mode .bg-gray-100 {
+    background: rgba(51, 65, 85, 0.5) !important;
+}
+
+/* Executive summary boxes */
+.dark-mode .p-4.bg-gray-50 {
+    background: var(--bg-primary) !important;
+    border-color: var(--border-color) !important;
+}
+
+/* Ensure accent colors work */
+.dark-mode .text-purple {
+    color: #a78bfa !important;
+}
+
+.dark-mode .bg-purple {
+    background: #8b5cf6 !important;
+}
+
+/* Canvas pattern adjustment for dark mode */
+.dark-mode canvas {
+    filter: saturate(1.1);
+}
+
+/* Dashed borders in dark mode */
+.dark-mode .border-dashed {
+    border-color: rgba(148, 163, 184, 0.3) !important;
+}
+
+.dark-mode .border-gray-300 {
+    border-color: rgba(148, 163, 184, 0.4) !important;
+}
+
+/* Status badges */
+.dark-mode .widget-status-badge {
+    color: inherit;
+}
+
+.dark-mode .bg-positive\/10 {
+    background: rgba(34, 197, 94, 0.2) !important;
+}
+
+.dark-mode .bg-negative\/10 {
+    background: rgba(239, 68, 68, 0.2) !important;
+}
