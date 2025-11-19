@@ -45,8 +45,8 @@
     <!-- Top Header - Full Width -->
     <div class="h-[60px] bg-white border-b border-gray-200 px-6 flex items-center justify-between z-50 shrink-0">
         <div>
-            <h2 class="text-[15px] font-medium text-primary">Business Intelligence Suite</h2>
-            <p class="text-[11px] text-gray-500">Perspect SRL</p>
+            <h2 class="text-[15px] font-medium text-primary">Perspect srl</h2>
+            <p class="text-[11px] text-gray-500">Business Intelligence Suite</p>
         </div>
         <div class="flex items-center gap-4">
             <div class="text-[11px] text-gray-500">
@@ -152,17 +152,17 @@
     <!-- Main Content -->
     <div id="mainContent" class="ml-0 md:ml-[242px] flex-1 flex flex-col overflow-hidden">
         <!-- Content -->
-        <div class="flex-1 overflow-y-auto px-4 md:px-6 py-10">
+        <div class="flex-1 overflow-y-auto px-4 md:px-6 py-6 sm:py-10">
             
             <!-- View: Dashboard -->
             <div id="dashboard" class="view">
-                <div class="mb-10">
-                    <h1 class="text-[20px] font-medium text-primary tracking-tight">Dashboard Esecutivo</h1>
+                <div class="mb-6 sm:mb-10">
+                    <h1 class="text-[18px] sm:text-[20px] font-medium text-primary tracking-tight">Dashboard Esecutivo</h1>
                 </div>
 
                 <!-- Radar + Growth -->
                 <div class="mb-5">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
                         <div class="widget-card widget-purple p-6 transition-all duration-300">
                             <div class="flex justify-between items-center mb-5 pb-4 border-b border-gray-200">
                                 <div class="flex items-center gap-2">
@@ -174,7 +174,7 @@
                                 </div>
                                 <div id="radarChart-legend" class="flex gap-4"></div>
                             </div>
-                            <div class="relative h-[320px] mb-5">
+                            <div class="relative h-[250px] sm:h-[320px] mb-5">
                                 <canvas id="radarChart"></canvas>
                             </div>
                         </div>
@@ -183,7 +183,7 @@
                             <div class="flex items-center gap-2 mb-5 pb-4 border-b border-gray-200">
                                 <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider">Executive Summary 2025</div>
                             </div>
-                            <div class="grid grid-cols-2 gap-4 mt-auto h-full">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mt-auto h-full">
                                 <div class="p-4 bg-gray-50 border border-gray-200 flex flex-col justify-between">
                                     <div>
                                         <div class="text-[10px] text-gray-500 uppercase mb-1">Redditività</div>
@@ -250,32 +250,32 @@
                 </div>
 
                 <!-- AI Insight -->
-                <div class="mb-20">
+                <div class="mb-12 sm:mb-20">
                     <div class="widget-ai-insight px-6 py-4 transition-all duration-300">
                         <div class="flex items-center gap-2.5 mb-3 pb-2.5 border-b border-blue-200/40">
                             <span class="badge-ai bg-purple text-white text-[9px] font-bold px-1.5 py-0.5 uppercase tracking-wide">AI Insight</span>
                             <span class="text-xs font-semibold text-primary uppercase tracking-wide">Riepilogo Esecutivo 2025</span>
                         </div>
-                        <div class="text-[13px] leading-relaxed text-gray-700 space-y-2">
-                            <div class="pl-4 relative"><span class="absolute left-0 text-danger font-bold">→</span> Cash Ratio 0.06x critico: liquidità immediata insufficiente per coprire i debiti a breve</div>
-                            <div class="pl-4 relative"><span class="absolute left-0 text-danger font-bold">→</span> DSO 157 giorni ancora sopra target (120gg): €75k di cassa bloccata nei crediti</div>
-                            <div class="pl-4 relative"><span class="absolute left-0 text-danger font-bold">→</span> Dipendenza da debiti a breve: €272k (54% del totale debiti) in scadenza entro 12 mesi</div>
-                            <div class="pl-4 relative"><span class="absolute left-0 text-purple font-bold">→</span> Margine struttura negativo -€144k: immobilizzazioni finanziate parzialmente con debito</div>
-                            <div class="pl-4 relative"><span class="absolute left-0 text-purple font-bold">→</span> Ricavi +49% (€825k): crescita organica trainata da nuovi clienti e upselling</div>
-                            <div class="pl-4 relative"><span class="absolute left-0 text-purple font-bold">→</span> EBITDA margin 24.9% (+12.2pp): efficienza operativa ai massimi storici</div>
-                            <div class="pl-4 relative"><span class="absolute left-0 text-purple font-bold">→</span> Utile netto €151k (+4039%): trasformazione da quasi break-even a forte profittabilità</div>
-                            <div class="pl-4 relative"><span class="absolute left-0 text-purple font-bold">→</span> Z-Score 3.18 (zona sicura): rischio insolvenza azzerato vs 1.42 nel 2024</div>
-                            <div class="pl-4 relative"><span class="absolute left-0 text-purple font-bold">→</span> ROE 45.3%: rendimento eccezionale del capitale proprio (+43.3pp)</div>
-                            <div class="pl-4 relative"><span class="absolute left-0 text-purple font-bold">→</span> ICR 8.2x: capacità di copertura interessi eccellente (+447% vs 2024)</div>
+                        <div class="text-[13px] leading-relaxed text-gray-700">
+                            <div class="pl-4 relative py-2 border-b border-dashed border-gray-300"><span class="absolute left-0 text-danger font-bold">→</span> Cash Ratio 0.06x critico: liquidità immediata insufficiente per coprire i debiti a breve</div>
+                            <div class="pl-4 relative py-2 border-b border-dashed border-gray-300"><span class="absolute left-0 text-danger font-bold">→</span> DSO 157 giorni ancora sopra target (120gg): €75k di cassa bloccata nei crediti</div>
+                            <div class="pl-4 relative py-2 border-b border-dashed border-gray-300"><span class="absolute left-0 text-danger font-bold">→</span> Dipendenza da debiti a breve: €272k (54% del totale debiti) in scadenza entro 12 mesi</div>
+                            <div class="pl-4 relative py-2 border-b border-dashed border-gray-300"><span class="absolute left-0 text-purple font-bold">→</span> Margine struttura negativo -€144k: immobilizzazioni finanziate parzialmente con debito</div>
+                            <div class="pl-4 relative py-2 border-b border-dashed border-gray-300"><span class="absolute left-0 text-purple font-bold">→</span> Ricavi +49% (€825k): crescita organica trainata da nuovi clienti e upselling</div>
+                            <div class="pl-4 relative py-2 border-b border-dashed border-gray-300"><span class="absolute left-0 text-purple font-bold">→</span> EBITDA margin 24.9% (+12.2pp): efficienza operativa ai massimi storici</div>
+                            <div class="pl-4 relative py-2 border-b border-dashed border-gray-300"><span class="absolute left-0 text-purple font-bold">→</span> Utile netto €151k (+4039%): trasformazione da quasi break-even a forte profittabilità</div>
+                            <div class="pl-4 relative py-2 border-b border-dashed border-gray-300"><span class="absolute left-0 text-purple font-bold">→</span> Z-Score 3.18 (zona sicura): rischio insolvenza azzerato vs 1.42 nel 2024</div>
+                            <div class="pl-4 relative py-2 border-b border-dashed border-gray-300"><span class="absolute left-0 text-purple font-bold">→</span> ROE 45.3%: rendimento eccezionale del capitale proprio (+43.3pp)</div>
+                            <div class="pl-4 relative py-2"><span class="absolute left-0 text-purple font-bold">→</span> ICR 8.2x: capacità di copertura interessi eccellente (+447% vs 2024)</div>
                         </div>
                     </div>
                 </div>
 
 
                 <!-- Strategic Insights -->
-                <div class="mb-20">
+                <div class="mb-12 sm:mb-20">
                     <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider mb-3">Insight Strategici</div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                         <div class="widget-card widget-purple p-6">
                             <div class="widget-title">ROE 45.3% (+43.3pp)</div>
                             <div class="widget-text">Rendimento eccezionale del capitale proprio. Utile netto €151k su patrimonio €334k.</div>
@@ -306,7 +306,7 @@
                 <!-- KPI Strategici Aggiunti -->
                 <div class="mb-5">
                     <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider mb-3">Grafici Storici</div>
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
                         <div class="widget-card widget-purple p-6">
                             <div class="flex justify-between items-center mb-5 pb-4 border-b border-gray-200">
                                 <div class="flex items-center gap-2">
@@ -318,7 +318,7 @@
                                 </div>
                                 <div id="debtROEChart-legend" class="flex gap-4"></div>
                             </div>
-                            <div class="relative h-[280px]"><canvas id="debtROEChart"></canvas></div>
+                            <div class="relative h-[220px] sm:h-[280px]"><canvas id="debtROEChart"></canvas></div>
                             <div class="ai-insight-box">
                                 <div class="flex items-center gap-2 mb-2 pb-2 border-b border-purple/20">
                                     <span class="badge-ai bg-purple text-white text-[9px] font-bold px-1.5 py-0.5 uppercase tracking-wide">AI Insight</span>
@@ -337,7 +337,7 @@
                                 </div>
                                 <div id="costDSOChart-legend" class="flex gap-4"></div>
                             </div>
-                            <div class="relative h-[280px]"><canvas id="costDSOChart"></canvas></div>
+                            <div class="relative h-[220px] sm:h-[280px]"><canvas id="costDSOChart"></canvas></div>
                             <div class="ai-insight-box">
                                 <div class="flex items-center gap-2 mb-2 pb-2 border-b border-purple/20">
                                     <span class="badge-ai bg-purple text-white text-[9px] font-bold px-1.5 py-0.5 uppercase tracking-wide">AI Insight</span>
@@ -349,8 +349,8 @@
                 </div>
 
                 <!-- Charts Row -->
-                <div class="mb-20">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="mb-12 sm:mb-20">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
                         <div class="widget-card widget-purple p-6">
                             <div class="flex justify-between items-center mb-5 pb-4 border-b border-gray-200">
                                 <div class="flex items-center gap-2">
@@ -362,7 +362,7 @@
                                 </div>
                                 <div id="revenueChart-legend" class="flex gap-4"></div>
                             </div>
-                            <div class="relative h-[280px]"><canvas id="revenueChart"></canvas></div>
+                            <div class="relative h-[220px] sm:h-[280px]"><canvas id="revenueChart"></canvas></div>
                             <div class="ai-insight-box">
                                 <div class="flex items-center gap-2 mb-2 pb-2 border-b border-purple/20">
                                     <span class="badge-ai bg-purple text-white text-[9px] font-bold px-1.5 py-0.5 uppercase tracking-wide">AI Insight</span>
@@ -382,7 +382,7 @@
                                 </div>
                                 <div id="profitChart-legend" class="flex gap-4"></div>
                             </div>
-                            <div class="relative h-[280px]"><canvas id="profitChart"></canvas></div>
+                            <div class="relative h-[220px] sm:h-[280px]"><canvas id="profitChart"></canvas></div>
                             <div class="ai-insight-box">
                                 <div class="flex items-center gap-2 mb-2 pb-2 border-b border-purple/20">
                                     <span class="badge-ai bg-purple text-white text-[9px] font-bold px-1.5 py-0.5 uppercase tracking-wide">AI Insight</span>
@@ -397,12 +397,12 @@
             </div>
 
             <div id="liquidity" class="view hidden">
-                <div class="mb-10">
-                    <h1 class="text-[20px] font-medium text-primary tracking-tight">Liquidità e Flussi di Cassa</h1>
+                <div class="mb-6 sm:mb-10">
+                    <h1 class="text-[18px] sm:text-[20px] font-medium text-primary tracking-tight">Liquidità e Flussi di Cassa</h1>
                 </div>
 
                 <!-- Working Capital Cycle -->
-                <div class="mb-20">
+                <div class="mb-12 sm:mb-20">
                     <div class="flex items-center gap-2 mb-4">
                         <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider">Ciclo del Capitale Circolante</div>
                         <div class="tooltip-container">
@@ -410,7 +410,7 @@
                             <div class="tooltip-content">DSO - DPO = giorni di finanziamento necessario. Minore è meglio.</div>
                         </div>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
                         <div class="widget-card widget-negative p-6 text-left">
                             <div class="widget-label mb-2">Giorni Incasso (DSO)</div>
                             <div class="widget-metric-large text-negative">-27%</div>
@@ -443,11 +443,11 @@
                 </div>
 
                 <!-- Liquidity Ratios -->
-                <div class="mb-20">
+                <div class="mb-12 sm:mb-20">
                     <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider mb-3">Indici di Liquidità - Andamento Storico</div>
-                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                         <!-- Current Ratio -->
-                        <div class="widget-card widget-purple p-6">
+                        <div class="widget-card widget-purple p-4 sm:p-6">
                             <div class="flex items-center gap-2 mb-4">
                                 <span class="text-[11px] font-medium text-gray-600 uppercase tracking-wider">Current Ratio</span>
                                 <div class="tooltip-container">
@@ -455,7 +455,7 @@
                                     <div class="tooltip-content">Attivo Circolante / Debiti a Breve. Misura la capacità di coprire i debiti a breve con attività correnti. Ottimale >1.5x.</div>
                                 </div>
                             </div>
-                            <div class="relative h-[240px] mb-3"><canvas id="currentRatioChart"></canvas></div>
+                            <div class="relative h-[180px] sm:h-[240px] mb-3"><canvas id="currentRatioChart"></canvas></div>
                             <div class="text-left">
                                 <div class="widget-metric-large">1.52x</div>
                                 <div class="flex items-center justify-center gap-2 mt-1">
@@ -466,7 +466,7 @@
                         </div>
 
                         <!-- Cash Ratio -->
-                        <div class="widget-card widget-negative p-6">
+                        <div class="widget-card widget-negative p-4 sm:p-6">
                             <div class="flex items-center gap-2 mb-4">
                                 <span class="text-[11px] font-medium text-gray-600 uppercase tracking-wider">Cash Ratio</span>
                                 <div class="tooltip-container">
@@ -474,7 +474,7 @@
                                     <div class="tooltip-content">Disponibilità Liquide / Debiti a Breve. Misura la copertura immediata con cassa. Ottimale >0.2x.</div>
                                 </div>
                             </div>
-                            <div class="relative h-[240px] mb-3"><canvas id="cashRatioChart"></canvas></div>
+                            <div class="relative h-[180px] sm:h-[240px] mb-3"><canvas id="cashRatioChart"></canvas></div>
                             <div class="text-left">
                                 <div class="widget-metric-large text-negative">0.06x</div>
                                 <div class="flex items-center justify-center gap-2 mt-1">
@@ -485,7 +485,7 @@
                         </div>
 
                         <!-- Treasury Margin -->
-                        <div class="widget-card widget-purple p-6">
+                        <div class="widget-card widget-purple p-4 sm:p-6">
                             <div class="flex items-center gap-2 mb-4">
                                 <span class="text-[11px] font-medium text-gray-600 uppercase tracking-wider">Margine di Tesoreria</span>
                                 <div class="tooltip-container">
@@ -493,7 +493,7 @@
                                     <div class="tooltip-content">(Liquidità + Crediti) - Debiti a Breve. Misura stringente della capacità di pagamento. Positivo = solvibile.</div>
                                 </div>
                             </div>
-                            <div class="relative h-[240px] mb-3"><canvas id="treasuryMarginChart"></canvas></div>
+                            <div class="relative h-[180px] sm:h-[240px] mb-3"><canvas id="treasuryMarginChart"></canvas></div>
                             <div class="text-left">
                                 <div class="widget-metric-large text-positive">€100k</div>
                                 <div class="flex items-center justify-center gap-2 mt-1">
@@ -512,7 +512,7 @@
                 </div>
 
                 <!-- Cash Flow Waterfall -->
-                <div class="mb-20">
+                <div class="mb-12 sm:mb-20">
                     <div class="flex items-center gap-2 mb-4">
                         <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider">Flusso di Cassa 2025</div>
                         <div class="tooltip-container">
@@ -521,7 +521,7 @@
                         </div>
                     </div>
                     <div class="widget-card widget-purple p-6">
-                        <div class="relative h-[350px]"><canvas id="cashFlowWaterfallChart"></canvas></div>
+                        <div class="relative h-[280px] sm:h-[350px]"><canvas id="cashFlowWaterfallChart"></canvas></div>
                         <div class="mt-4 pt-4 border-t border-gray-200">
                             <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-left">
                                 <div>
@@ -552,7 +552,7 @@
                 </div>
 
                 <!-- Cash Flow Trend -->
-                <div class="mb-20">
+                <div class="mb-12 sm:mb-20">
                     <div class="flex items-center justify-between mb-4">
                         <div class="flex items-center gap-2">
                             <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider">Andamento Flusso di Cassa</div>
@@ -564,7 +564,7 @@
                         <div id="cashFlowTrendChart-legend" class="flex gap-4"></div>
                     </div>
                     <div class="widget-card widget-purple p-6">
-                        <div class="relative h-[280px]"><canvas id="cashFlowTrendChart"></canvas></div>
+                        <div class="relative h-[220px] sm:h-[280px]"><canvas id="cashFlowTrendChart"></canvas></div>
                     </div>
                     <div class="ai-insight-box">
                         <div class="flex items-center gap-2 mb-2 pb-2 border-b border-purple/20">
@@ -575,7 +575,7 @@
                 </div>
 
                 <!-- Debt Structure -->
-                <div class="mb-20">
+                <div class="mb-12 sm:mb-20">
                     <div class="flex items-center justify-between mb-4">
                         <div class="flex items-center gap-2">
                             <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider">Struttura Debiti - Breve vs Lungo Termine</div>
@@ -586,11 +586,11 @@
                         </div>
                         <div id="debtStructureChart-legend" class="flex gap-4"></div>
                     </div>
-                    <div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
-                        <div class="widget-card widget-purple p-6 lg:col-span-2">
-                            <div class="relative h-[280px]"><canvas id="debtStructureChart"></canvas></div>
+                    <div class="grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-6">
+                        <div class="widget-card widget-purple p-4 sm:p-6 lg:col-span-2">
+                            <div class="relative h-[220px] sm:h-[280px]"><canvas id="debtStructureChart"></canvas></div>
                         </div>
-                        <div class="widget-card widget-purple p-6 lg:col-span-3">
+                        <div class="widget-card widget-purple p-4 sm:p-6 lg:col-span-3">
                             <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider mb-6">Dettaglio per Anno</div>
                             <div class="space-y-8">
                                 <div>
@@ -635,7 +635,7 @@
                 </div>
 
                 <!-- Interest Coverage -->
-                <div class="mb-20">
+                <div class="mb-12 sm:mb-20">
                     <div class="flex items-center gap-2 mb-4">
                         <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider">Copertura Oneri Finanziari (ICR)</div>
                         <div class="tooltip-container">
@@ -643,11 +643,11 @@
                             <div class="tooltip-content">EBIT / Oneri Finanziari. Misura quante volte l'utile operativo copre gli interessi. Ottimale >3x.</div>
                         </div>
                     </div>
-                    <div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
-                        <div class="widget-card widget-purple p-6 lg:col-span-2">
-                            <div class="relative h-[280px]"><canvas id="icrChart"></canvas></div>
+                    <div class="grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-6">
+                        <div class="widget-card widget-purple p-4 sm:p-6 lg:col-span-2">
+                            <div class="relative h-[220px] sm:h-[280px]"><canvas id="icrChart"></canvas></div>
                         </div>
-                        <div class="widget-card widget-purple p-6 lg:col-span-3">
+                        <div class="widget-card widget-purple p-4 sm:p-6 lg:col-span-3">
                             <div class="widget-detail-header">Analisi Sostenibilità Debito</div>
                             <div>
                                 <div class="widget-detail-row">
@@ -686,12 +686,12 @@
 
             <!-- View: Reports (Bilanci) -->
             <div id="reports" class="view hidden">
-                <div class="mb-10">
-                    <h1 class="text-[20px] font-medium text-primary tracking-tight">Bilanci e Conto Economico</h1>
+                <div class="mb-6 sm:mb-10">
+                    <h1 class="text-[18px] sm:text-[20px] font-medium text-primary tracking-tight">Bilanci e Conto Economico</h1>
                 </div>
 
                 <!-- Margine di Struttura -->
-                <div class="mb-20">
+                <div class="mb-12 sm:mb-20">
                     <div class="flex items-center gap-2 mb-4">
                         <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider">Margine di Struttura</div>
                         <div class="tooltip-container">
@@ -728,7 +728,7 @@
                 </div>
 
                 <!-- Conto Economico -->
-                <div class="mb-20">
+                <div class="mb-12 sm:mb-20">
                     <div class="flex items-center gap-2 mb-4">
                         <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider">Conto Economico Comparativo</div>
                         <div class="tooltip-container">
@@ -822,7 +822,7 @@
                         </table>
                     </div>
                     <div class="widget-card widget-purple p-6 mt-6">
-                        <div class="h-[280px]">
+                        <div class="h-[220px] sm:h-[280px]">
                             <canvas id="patrimonioLineChart"></canvas>
                         </div>
                         <div id="patrimonioLineChart-legend" class="flex flex-wrap justify-center gap-6 mt-4"></div>
@@ -836,7 +836,7 @@
                 </div>
 
                 <!-- Stato Patrimoniale -->
-                <div class="mb-20">
+                <div class="mb-12 sm:mb-20">
                     <div class="flex items-center gap-2 mb-4">
                         <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider">Stato Patrimoniale Sintetico</div>
                         <div class="tooltip-container">
@@ -844,8 +844,8 @@
                             <div class="tooltip-content">Situazione patrimoniale al termine di ciascun esercizio. Variazioni calcolate vs 2024.</div>
                         </div>
                     </div>
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                        <div class="widget-card widget-purple p-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+                        <div class="widget-card widget-purple p-4 sm:p-6">
                             <div class="widget-detail-header">Attivo</div>
                             <div>
                                 <div class="widget-detail-row">
@@ -960,12 +960,12 @@
 
             <!-- View: Analysis -->
             <div id="analysis" class="view hidden">
-                <div class="mb-10">
-                    <h1 class="text-[20px] font-medium text-primary tracking-tight">Analisi Avanzata</h1>
+                <div class="mb-6 sm:mb-10">
+                    <h1 class="text-[18px] sm:text-[20px] font-medium text-primary tracking-tight">Analisi Avanzata</h1>
                 </div>
 
                 <!-- Break-Even Analysis -->
-                <div class="mb-20">
+                <div class="mb-12 sm:mb-20">
                     <div class="flex items-center justify-between mb-4">
                         <div class="flex items-center gap-2">
                             <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider">Analisi Punto di Pareggio</div>
@@ -977,8 +977,8 @@
                         <div id="breakEvenChart-legend" class="flex gap-4"></div>
                     </div>
                     <div class="widget-card widget-purple p-6">
-                        <div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
-                            <div class="relative h-[280px] lg:col-span-3"><canvas id="breakEvenChart"></canvas></div>
+                        <div class="grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-6">
+                            <div class="relative h-[220px] sm:h-[280px] lg:col-span-3"><canvas id="breakEvenChart"></canvas></div>
                             <div class="lg:col-span-2">
                                 <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider mb-4">Struttura Costi e BEP</div>
                                 <div class="space-y-3">
@@ -1015,7 +1015,7 @@
                 </div>
 
                 <!-- Produttività Personale -->
-                <div class="mb-20">
+                <div class="mb-12 sm:mb-20">
                     <div class="flex items-center justify-between mb-4">
                         <div class="flex items-center gap-2">
                             <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider">Produttività del Personale</div>
@@ -1027,9 +1027,9 @@
                         <div id="productivityChart-legend" class="flex gap-4"></div>
                     </div>
                     <div class="widget-card widget-purple p-6">
-                        <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 mb-4">
+                        <div class="grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-6 mb-4">
                             <div class="lg:col-span-3">
-                                <div class="relative h-[280px]"><canvas id="productivityChart"></canvas></div>
+                                <div class="relative h-[220px] sm:h-[280px]"><canvas id="productivityChart"></canvas></div>
                             </div>
                             <div class="lg:col-span-2">
                                 <div class="widget-detail-header">Metriche di Efficienza</div>
@@ -1079,7 +1079,7 @@
                 </div>
 
                 <!-- CAPEX Analysis -->
-                <div class="mb-20">
+                <div class="mb-12 sm:mb-20">
                     <div class="flex items-center gap-2 mb-4">
                         <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider">Analisi Investimenti (CAPEX)</div>
                         <div class="tooltip-container">
@@ -1088,8 +1088,8 @@
                         </div>
                     </div>
                     <div class="widget-card widget-purple p-6">
-                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                            <div class="relative h-[280px]"><canvas id="capexChart"></canvas></div>
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+                            <div class="relative h-[220px] sm:h-[280px]"><canvas id="capexChart"></canvas></div>
                             <div>
                                 <div class="widget-label-medium mb-4">Dettaglio Investimenti</div>
                                 <div class="space-y-4">
@@ -1122,7 +1122,7 @@
                 </div>
 
                 <!-- DuPont Analysis -->
-                <div class="mb-20">
+                <div class="mb-12 sm:mb-20">
                     <div class="flex items-center gap-2 mb-4">
                         <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider">Scomposizione DuPont del ROE</div>
                         <div class="tooltip-container">
@@ -1202,11 +1202,11 @@
             <!-- View: Risk & Scoring -->
             <div id="risk" class="view hidden">
                 <div class="mb-10">
-                    <h1 class="text-[20px] font-medium text-primary tracking-tight">Analisi Rischio e Scoring</h1>
+                    <h1 class="text-[18px] sm:text-[20px] font-medium text-primary tracking-tight">Analisi Rischio e Scoring</h1>
                 </div>
 
                 <!-- Action Items -->
-                <div class="mb-20">
+                <div class="mb-12 sm:mb-20">
                     <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider mb-3">Azioni Prioritarie</div>
                     <div class="widget-card widget-purple p-6">
                         <div class="space-y-4">
@@ -1236,7 +1236,7 @@
                 </div>
 
                 <!-- Risk Matrix -->
-                <div class="mb-20">
+                <div class="mb-12 sm:mb-20">
                     <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider mb-3">Matrice dei Rischi</div>
                     <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
                         <div class="widget-card widget-purple p-6">
@@ -1295,7 +1295,7 @@
                 </div>
 
                 <!-- Z-Score Altman -->
-                <div class="mb-20">
+                <div class="mb-12 sm:mb-20">
                     <div class="flex items-center gap-2 mb-4">
                         <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider">Z-Score Altman (Rischio Insolvenza)</div>
                         <div class="tooltip-container">
@@ -1324,10 +1324,10 @@
                         </div>
 
                         <!-- Main Z-Score Section -->
-                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10">
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 mb-10">
                             <!-- Chart - larger -->
                             <div class="lg:col-span-2">
-                                <div class="relative h-[320px] bg-gray-50 p-6"><canvas id="zscoreChart"></canvas></div>
+                                <div class="relative h-[250px] sm:h-[320px] bg-gray-50 p-4 sm:p-6"><canvas id="zscoreChart"></canvas></div>
                             </div>
 
                             <!-- Z-Score Value - compact -->
@@ -1378,10 +1378,10 @@
             <!-- View: Documents -->
             <div id="documents" class="view hidden">
                 <div class="mb-10">
-                    <h1 class="text-[20px] font-medium text-primary tracking-tight">Archivio Documenti</h1>
+                    <h1 class="text-[18px] sm:text-[20px] font-medium text-primary tracking-tight">Archivio Documenti</h1>
                 </div>
 
-                <div class="mb-20">
+                <div class="mb-12 sm:mb-20">
                     <div class="flex items-center gap-2 mb-4">
                         <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider">Bilanci Utilizzati per l'Analisi</div>
                         <div class="tooltip-container">
@@ -1448,7 +1448,7 @@
                     </div>
                 </div>
 
-                <div class="mb-20">
+                <div class="mb-12 sm:mb-20">
                     <div class="bg-gradient-to-br from-gray-100 to-gray-50 border border-gray-300  p-6">
                         <div class="flex items-center gap-2.5 mb-3">
                             <i class="fa-solid fa-circle-info text-gray-500 text-lg"></i>
