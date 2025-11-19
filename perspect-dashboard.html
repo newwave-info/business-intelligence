@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BilanciAI Control - Perspect SRL</title>
+    <title>Business Intelligence - Perspect SRL</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -62,37 +62,59 @@
     <div id="sidebarOverlay" class="fixed inset-0 bg-black/50 z-30 hidden md:hidden" onclick="toggleSidebar()"></div>
 
     <!-- Sidebar -->
-    <div id="sidebar" class="w-[220px] bg-white border-r border-gray-200 fixed h-screen left-0 top-[60px] z-40 overflow-y-auto flex flex-col transform -translate-x-full md:translate-x-0 transition-transform duration-300">
-        <div class="px-2.5 py-6 flex-1">
-            <div class="nav-item active flex items-center gap-3 px-2.5 py-2.5  cursor-pointer text-[13px] text-gray-700 mb-1.5 border-2 border-transparent transition-all duration-300 hover:bg-gray-100 bg-purple-light text-purple-dark border-purple font-semibold" onclick="showView('dashboard'); toggleSidebar()">
-                <i class="fa-solid fa-gauge w-4 text-center"></i>
-                <span>Dashboard</span>
+    <div id="sidebar" class="w-[242px] bg-white border-r border-gray-200 fixed h-screen left-0 top-[60px] z-40 overflow-y-auto flex flex-col transform -translate-x-full md:translate-x-0 transition-transform duration-300">
+        <div class="px-4 py-6 flex-1">
+            <button class="w-full flex items-center text-[13px] font-semibold text-gray-800 px-2 py-2 group transition-colors duration-200" style="outline: none; -webkit-tap-highlight-color: transparent; background-color: #f3e8ff; border-radius: 6px;" data-accordion-toggle="cgMenu" onclick="toggleAccordion('cgMenu')">
+                <div class="flex items-center gap-1">
+                    <span class="inline-flex items-center justify-center w-6 h-6 rounded bg-purple-100 text-purple-600">
+                        <i class="fa-solid fa-chart-line text-[10px]"></i>
+                    </span>
+                    <span class="group-hover:text-purple-600 transition-colors duration-200 text-left">Controllo di Gestione</span>
+                </div>
+                <i class="accordion-icon fa-solid fa-chevron-down text-[10px] text-gray-400 transition-transform duration-200 rotate-180 ml-auto"></i>
+            </button>
+            <div id="cgMenu" class="accordion-content mt-2">
+                <div class="ml-3 border-l border-gray-200 space-y-1">
+                    <div class="nav-item active flex items-center gap-2.5 pl-4 py-1.5 cursor-pointer text-[13px] text-purple-600 font-medium transition-colors duration-200 hover:text-purple-600" onclick="showView('dashboard'); toggleSidebar()">
+                        <i class="fa-solid fa-gauge text-[11px] text-current"></i>
+                        <span>Dashboard</span>
+                    </div>
+                    <div class="nav-item flex items-center gap-2.5 pl-4 py-1.5 cursor-pointer text-[13px] text-gray-600 transition-colors duration-200 hover:text-purple-600" onclick="showView('liquidity'); toggleSidebar()">
+                        <i class="fa-solid fa-droplet text-[11px] text-current"></i>
+                        <span>Liquidità e Flussi</span>
+                    </div>
+                    <div class="nav-item flex items-center gap-2.5 pl-4 py-1.5 cursor-pointer text-[13px] text-gray-600 transition-colors duration-200 hover:text-purple-600" onclick="showView('reports'); toggleSidebar()">
+                        <i class="fa-solid fa-file text-[11px] text-current"></i>
+                        <span>Bilanci</span>
+                    </div>
+                    <div class="nav-item flex items-center gap-2.5 pl-4 py-1.5 cursor-pointer text-[13px] text-gray-600 transition-colors duration-200 hover:text-purple-600" onclick="showView('analysis'); toggleSidebar()">
+                        <i class="fa-solid fa-magnifying-glass text-[11px] text-current"></i>
+                        <span>Analisi Avanzata</span>
+                    </div>
+                    <div class="nav-item flex items-center gap-2.5 pl-4 py-1.5 cursor-pointer text-[13px] text-gray-600 transition-colors duration-200 hover:text-purple-600" onclick="showView('risk'); toggleSidebar()">
+                        <i class="fa-solid fa-shield text-[11px] text-current"></i>
+                        <span>Rischio e Scoring</span>
+                    </div>
+                    <div class="nav-item flex items-center gap-2.5 pl-4 py-1.5 cursor-pointer text-[13px] text-gray-600 transition-colors duration-200 hover:text-purple-600" onclick="showView('documents'); toggleSidebar()">
+                        <i class="fa-solid fa-folder text-[11px] text-current"></i>
+                        <span>Archivio Documenti</span>
+                    </div>
+                </div>
             </div>
-            <div class="nav-item flex items-center gap-3 px-2.5 py-2.5  cursor-pointer text-[13px] text-gray-700 mb-1.5 border-2 border-transparent transition-all duration-300 hover:bg-gray-100" onclick="showView('liquidity'); toggleSidebar()">
-                <i class="fa-solid fa-droplet w-4 text-center"></i>
-                <span>Liquidità e Flussi</span>
-            </div>
-            <div class="nav-item flex items-center gap-3 px-2.5 py-2.5  cursor-pointer text-[13px] text-gray-700 mb-1.5 border-2 border-transparent transition-all duration-300 hover:bg-gray-100" onclick="showView('reports'); toggleSidebar()">
-                <i class="fa-solid fa-file w-4 text-center"></i>
-                <span>Bilanci</span>
-            </div>
-            <div class="nav-item flex items-center gap-3 px-2.5 py-2.5  cursor-pointer text-[13px] text-gray-700 mb-1.5 border-2 border-transparent transition-all duration-300 hover:bg-gray-100" onclick="showView('analysis'); toggleSidebar()">
-                <i class="fa-solid fa-magnifying-glass w-4 text-center"></i>
-                <span>Analisi Avanzata</span>
-            </div>
-            <div class="nav-item flex items-center gap-3 px-2.5 py-2.5  cursor-pointer text-[13px] text-gray-700 mb-1.5 border-2 border-transparent transition-all duration-300 hover:bg-gray-100" onclick="showView('risk'); toggleSidebar()">
-                <i class="fa-solid fa-shield w-4 text-center"></i>
-                <span>Rischio e Scoring</span>
-            </div>
-            <div class="nav-item flex items-center gap-3 px-2.5 py-2.5  cursor-pointer text-[13px] text-gray-700 mb-1.5 border-2 border-transparent transition-all duration-300 hover:bg-gray-100" onclick="showView('documents'); toggleSidebar()">
-                <i class="fa-solid fa-folder w-4 text-center"></i>
-                <span>Archivio Documenti</span>
-            </div>
+            <button class="w-full flex items-center text-[13px] font-semibold px-2 py-2 mt-5 group transition-colors duration-200 cursor-not-allowed" style="outline: none; -webkit-tap-highlight-color: transparent; color: #94a3b8; opacity: 0.7; border-radius: 6px;">
+                <div class="flex items-center gap-1">
+                    <span class="inline-flex items-center justify-center w-6 h-6 rounded" style="background-color: #cbd5e1;">
+                        <i class="fa-solid fa-chart-pie text-[10px]"></i>
+                    </span>
+                    <span class="text-left">Analisi Disponibili</span>
+                </div>
+                <i class="fa-solid fa-chevron-down text-[10px] ml-auto" style="color: #94a3b8;"></i>
+            </button>
         </div>
     </div>
 
     <!-- Main Content -->
-    <div id="mainContent" class="ml-0 md:ml-[220px] flex-1 flex flex-col overflow-hidden">
+    <div id="mainContent" class="ml-0 md:ml-[242px] flex-1 flex flex-col overflow-hidden">
         <!-- Content -->
         <div class="flex-1 overflow-y-auto px-6 md:px-10 py-10">
             
