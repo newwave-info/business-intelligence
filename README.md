@@ -333,6 +333,26 @@ Formato: Una frase con icona emoji iniziale
 
 ---
 
+## Funzionalità UI
+
+### Tema Scuro
+La dashboard supporta un tema chiaro e scuro con toggle nell'header:
+- Icona luna/sole per switch tema
+- Preferenza salvata in localStorage
+- Colori grafici Chart.js adattati automaticamente
+- Griglie, testi e bordi ottimizzati per entrambi i temi
+
+### Design Responsive
+Layout completamente responsive per dispositivi mobile e tablet:
+- Breakpoint: sm (640px), md (768px), lg (1024px)
+- Grid adattivi: 1 → 2 → 3/4 colonne
+- Altezze grafici ridotte su mobile
+- Padding e margin ottimizzati
+- Tabelle con scroll orizzontale
+- Sidebar con toggle mobile
+
+---
+
 ## Estensioni Future
 
 1. **Import automatico** - Parser PDF → JSON
