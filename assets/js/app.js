@@ -1,5 +1,92 @@
 // Perspect Dashboard - Main JavaScript
 
+// Theme Toggle
+function toggleTheme() {
+    const html = document.documentElement;
+    const themeBtn = document.getElementById('themeToggle');
+    const icon = themeBtn?.querySelector('i');
+
+    if (html.classList.contains('dark-mode')) {
+        html.classList.remove('dark-mode');
+        localStorage.setItem('theme', 'light');
+        if (icon) {
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+        }
+        updateChartColors('light');
+    } else {
+        html.classList.add('dark-mode');
+        localStorage.setItem('theme', 'dark');
+        if (icon) {
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        }
+        updateChartColors('dark');
+    }
+}
+
+// Update Chart.js colors for theme
+function updateChartColors(theme) {
+    const textColor = theme === 'dark' ? '#94a3b8' : '#64748b';
+    const gridColor = theme === 'dark' ? 'rgba(71, 85, 105, 0.4)' : 'rgba(0, 0, 0, 0.1)';
+    const borderColor = theme === 'dark' ? '#334155' : '#e2e8f0';
+
+    Chart.defaults.color = textColor;
+    Chart.defaults.borderColor = borderColor;
+
+    // Update all existing charts
+    Object.values(Chart.instances).forEach(chart => {
+        // Update x and y scales
+        if (chart.options.scales) {
+            ['x', 'y', 'r'].forEach(axis => {
+                if (chart.options.scales[axis]) {
+                    // Ensure grid object exists
+                    chart.options.scales[axis].grid = chart.options.scales[axis].grid || {};
+                    chart.options.scales[axis].grid.color = gridColor;
+                    chart.options.scales[axis].grid.borderColor = borderColor;
+
+                    // Ensure ticks object exists
+                    chart.options.scales[axis].ticks = chart.options.scales[axis].ticks || {};
+                    chart.options.scales[axis].ticks.color = textColor;
+
+                    // For radar charts
+                    if (axis === 'r') {
+                        chart.options.scales[axis].angleLines = chart.options.scales[axis].angleLines || {};
+                        chart.options.scales[axis].angleLines.color = gridColor;
+                        chart.options.scales[axis].pointLabels = chart.options.scales[axis].pointLabels || {};
+                        chart.options.scales[axis].pointLabels.color = textColor;
+                    }
+                }
+            });
+        }
+
+        chart.update();
+    });
+}
+
+// Get pattern color based on theme
+function getPatternColor() {
+    const isDark = document.documentElement.classList.contains('dark-mode');
+    return isDark ? 'rgba(30, 41, 59, 0.7)' : 'rgba(255, 255, 255, 0.7)';
+}
+
+// Initialize theme on page load
+function initTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    const themeBtn = document.getElementById('themeToggle');
+    const icon = themeBtn?.querySelector('i');
+
+    if (savedTheme === 'dark') {
+        document.documentElement.classList.add('dark-mode');
+        if (icon) {
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        }
+        // Apply chart colors after a delay to ensure charts are loaded
+        setTimeout(() => updateChartColors('dark'), 500);
+    }
+}
+
 // Sidebar Toggle
 function toggleSidebar() {
     const sidebar = document.getElementById('sidebar');
@@ -51,11 +138,34 @@ function toggleAccordion(targetId) {
     }
 }
 
-// Chart.js Defaults
+// Chart.js Defaults - check for dark mode from localStorage
+const savedThemeForDefaults = localStorage.getItem('theme');
+const isDarkOnLoad = savedThemeForDefaults === 'dark';
+
 Chart.defaults.font.family = "'Roboto Mono', monospace";
-Chart.defaults.color = '#64748b';
-Chart.defaults.borderColor = '#e2e8f0';
+Chart.defaults.color = isDarkOnLoad ? '#94a3b8' : '#64748b';
+Chart.defaults.borderColor = isDarkOnLoad ? '#334155' : '#e2e8f0';
 Chart.defaults.font.size = 11;
+
+// Set default scale options with grid colors
+Chart.defaults.scales = Chart.defaults.scales || {};
+Chart.defaults.scales.linear = Chart.defaults.scales.linear || {};
+Chart.defaults.scales.linear.grid = {
+    color: isDarkOnLoad ? 'rgba(71, 85, 105, 0.4)' : 'rgba(0, 0, 0, 0.1)',
+    borderColor: isDarkOnLoad ? '#334155' : '#e2e8f0'
+};
+Chart.defaults.scales.category = Chart.defaults.scales.category || {};
+Chart.defaults.scales.category.grid = {
+    color: isDarkOnLoad ? 'rgba(71, 85, 105, 0.4)' : 'rgba(0, 0, 0, 0.1)',
+    borderColor: isDarkOnLoad ? '#334155' : '#e2e8f0'
+};
+Chart.defaults.scales.radialLinear = Chart.defaults.scales.radialLinear || {};
+Chart.defaults.scales.radialLinear.grid = {
+    color: isDarkOnLoad ? 'rgba(71, 85, 105, 0.4)' : 'rgba(0, 0, 0, 0.1)'
+};
+Chart.defaults.scales.radialLinear.angleLines = {
+    color: isDarkOnLoad ? 'rgba(71, 85, 105, 0.4)' : 'rgba(0, 0, 0, 0.1)'
+};
 
 // Use square points instead of circles
 Chart.defaults.elements.point.pointStyle = 'rect';
@@ -192,6 +302,9 @@ const animationObserver = new IntersectionObserver((entries) => {
 
 // Initialize sortable tables
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize theme
+    initTheme();
+
     if (typeof Tablesort !== 'undefined') {
         document.querySelectorAll('.sortable-table').forEach(table => {
             new Tablesort(table);
