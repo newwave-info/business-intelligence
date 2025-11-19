@@ -207,6 +207,35 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.widget-card, .widget-metric-large, .widget-metric-medium, .ai-insight-box').forEach(el => {
         animationObserver.observe(el);
     });
+
+    // Initialize sidebar state - Controllo di Gestione open, Dashboard active
+    const cgMenu = document.getElementById('cgMenu');
+    const cgButton = document.querySelector('[data-accordion-toggle="cgMenu"]');
+    if (cgMenu && cgButton) {
+        // Ensure accordion is open
+        cgMenu.classList.remove('hidden');
+
+        // Ensure button state is active (purple)
+        cgButton.classList.add('text-purple-600');
+        cgButton.classList.remove('text-gray-600', 'text-gray-800');
+
+        const cgIcons = cgButton.querySelectorAll('i');
+        cgIcons.forEach(i => {
+            i.classList.add('text-purple-600');
+            i.classList.remove('text-gray-400', 'text-gray-600');
+        });
+
+        const cgLabel = cgButton.querySelector('span');
+        if (cgLabel) {
+            cgLabel.classList.add('text-purple-600');
+        }
+
+        // Ensure chevron is rotated (open state)
+        const chevron = cgButton.querySelector('.accordion-icon');
+        if (chevron) {
+            chevron.classList.add('rotate-180');
+        }
+    }
 });
 
 // Initialize individual chart by ID
