@@ -203,7 +203,7 @@ button:active {
     border-radius: 0;
     border: 1px solid #6b7280;
     transition: all 200ms ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    box-shadow: none;
 }
 
 .widget-card:hover {
@@ -240,6 +240,19 @@ button:active {
 .widget-purple:hover {
     border-color: #8b5cf6;
     box-shadow: 0 2px 8px rgba(139, 92, 246, 0.22);
+}
+
+/* Sub-widget styles for Executive Summary */
+.subwidget-neutral {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.06) 0%, rgba(255, 255, 255, 0) 100%);
+    border: 1px solid rgba(139, 92, 246, 0.25);
+    border-radius: 0;
+}
+
+.subwidget-negative {
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.08) 0%, rgba(255, 255, 255, 0) 100%);
+    border: 1px solid rgba(220, 38, 38, 0.35);
+    border-radius: 0;
 }
 
 /* AI Insight Widget - Corporate */
@@ -520,7 +533,7 @@ tbody tr:hover {
     }
 }
 
-/* Inline style replacements */
+/* Debt Bar Widths - Data-driven from JSON */
 .debt-bar-short {
     width: 53%;
 }
@@ -543,6 +556,24 @@ tbody tr:hover {
 
 .debt-bar-long-2025 {
     width: 46%;
+}
+
+/* Dynamic width class for debt bars from JSON */
+.debt-bar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.debt-bar.short {
+    background: #8b5cf6;
+}
+
+.debt-bar.long {
+    background: #71717a;
 }
 
 /* Dark Mode Theme */
@@ -581,6 +612,16 @@ tbody tr:hover {
 }
 
 .dark-mode .widget-negative {
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.15) 0%, rgba(30, 41, 59, 0) 100%) !important;
+    border-color: rgba(220, 38, 38, 0.4) !important;
+}
+
+.dark-mode .subwidget-neutral {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(30, 41, 59, 0) 100%) !important;
+    border-color: rgba(139, 92, 246, 0.4) !important;
+}
+
+.dark-mode .subwidget-negative {
     background: linear-gradient(135deg, rgba(220, 38, 38, 0.15) 0%, rgba(30, 41, 59, 0) 100%) !important;
     border-color: rgba(220, 38, 38, 0.4) !important;
 }
@@ -770,4 +811,23 @@ tbody tr:hover {
 
 .dark-mode .bg-negative\/10 {
     background: rgba(239, 68, 68, 0.2) !important;
+}
+
+/* Button Reset Styles */
+.btn-reset {
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    border-radius: 6px;
+    border: none;
+}
+
+/* Disabled Items */
+.item-disabled {
+    color: #cbd5e1;
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.item-disabled i {
+    color: #cbd5e1;
 }
