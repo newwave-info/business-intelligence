@@ -21,9 +21,33 @@ function toggleAccordion(targetId) {
     if (icon) {
         icon.classList.toggle('rotate-180', isOpen);
     }
+
+    // Gestione stato active/current
     if (toggleButton) {
-        toggleButton.style.backgroundColor = isOpen ? '#f3e8ff' : 'transparent';
-        toggleButton.style.borderRadius = isOpen ? '6px' : '0';
+        const allIcons = toggleButton.querySelectorAll('i');
+        const label = toggleButton.querySelector('span');
+
+        if (isOpen) {
+            toggleButton.classList.add('text-purple-600');
+            toggleButton.classList.remove('text-gray-600', 'text-gray-800');
+            allIcons.forEach(i => {
+                i.classList.add('text-purple-600');
+                i.classList.remove('text-gray-400', 'text-gray-600');
+            });
+            if (label) {
+                label.classList.add('text-purple-600');
+            }
+        } else {
+            toggleButton.classList.remove('text-purple-600');
+            toggleButton.classList.add('text-gray-600');
+            allIcons.forEach(i => {
+                i.classList.remove('text-purple-600');
+                i.classList.add('text-gray-400');
+            });
+            if (label) {
+                label.classList.remove('text-purple-600');
+            }
+        }
     }
 }
 
