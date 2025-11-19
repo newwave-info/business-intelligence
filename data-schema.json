@@ -205,11 +205,46 @@
   },
   "ui_config": {
     "colors": {
-      "primary": "#18181b",
-      "accent": "#8b5cf6",
-      "positive": "#22c55e",
-      "negative": "#ef4444",
-      "warning": "#f59e0b"
+      "light": {
+        "primary": "#18181b",
+        "accent": "#8b5cf6",
+        "positive": "#22c55e",
+        "negative": "#ef4444",
+        "warning": "#f59e0b",
+        "background": "#ffffff",
+        "card": "#ffffff",
+        "text_primary": "#18181b",
+        "text_secondary": "#64748b",
+        "border": "#e2e8f0",
+        "chart_grid": "rgba(0, 0, 0, 0.1)"
+      },
+      "dark": {
+        "primary": "#f1f5f9",
+        "accent": "#a78bfa",
+        "positive": "#4ade80",
+        "negative": "#f87171",
+        "warning": "#fbbf24",
+        "background": "#0f172a",
+        "card": "#1e293b",
+        "text_primary": "#f1f5f9",
+        "text_secondary": "#94a3b8",
+        "border": "#334155",
+        "chart_grid": "rgba(71, 85, 105, 0.4)"
+      }
+    },
+    "theme": {
+      "default": "light",
+      "storage_key": "theme",
+      "toggle_enabled": true
+    },
+    "responsive": {
+      "breakpoints": {
+        "sm": "640px",
+        "md": "768px",
+        "lg": "1024px"
+      },
+      "mobile_chart_height": "220px",
+      "desktop_chart_height": "280px"
     },
     "chart_patterns": true,
     "animations": {
