@@ -3,7 +3,8 @@
     "company_name": "Perspect srl",
     "fiscal_years": ["2023", "2024", "2025"],
     "currency": "EUR",
-    "last_update": "18 nov 2025"
+    "last_update": "18 nov 2025",
+    "notes": "Nel 2023 la società era denominata \"Tessari Associati SRL\", successivamente rinominata in \"Perspect S.R.L.\""
   },
   "income_statement": {
     "ricavi": [526061, 553475, 824708],
@@ -163,11 +164,11 @@
   "executive_summary": {
     "salute_generale": "Buona",
     "aree": {
+      "liquidita": {"stato": "Attenzione", "valore": "Cash 0.06x", "css_class": "subwidget-negative"},
+      "efficienza": {"stato": "Migliorabile", "valore": "DSO 157gg", "css_class": "subwidget-negative"},
       "redditivita": {"stato": "Ottima", "valore": "ROE 45.3%", "css_class": "subwidget-neutral"},
       "crescita": {"stato": "Forte", "valore": "+49% Ricavi", "css_class": "subwidget-neutral"},
       "solidita": {"stato": "Buona", "valore": "D/E 1.52x", "css_class": "subwidget-neutral"},
-      "liquidita": {"stato": "Attenzione", "valore": "Cash 0.06x", "css_class": "subwidget-negative"},
-      "efficienza": {"stato": "Migliorabile", "valore": "DSO 157gg", "css_class": "subwidget-negative"},
       "rischio": {"stato": "Basso", "valore": "Z-Score 3.18", "css_class": "subwidget-neutral"}
     }
   },

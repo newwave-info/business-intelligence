@@ -31,6 +31,16 @@
     $capex = $data['capex'] ?? [];
     $documents = $data['documents'] ?? [];
     $ai_insights = $data['ai_insights'] ?? [];
+
+    // Variabili dinamiche per anni e indici
+    $fiscal_years = $metadata['fiscal_years'] ?? [];
+    $num_years = count($fiscal_years);
+    $last_idx = $num_years - 1;
+    $prev_idx = $num_years > 1 ? $num_years - 2 : 0;
+    $first_idx = 0;
+    $last_year = $fiscal_years[$last_idx] ?? '';
+    $prev_year = $fiscal_years[$prev_idx] ?? '';
+    $first_year = $fiscal_years[$first_idx] ?? '';
 ?>
 <html lang="it">
 <head>
@@ -205,7 +215,7 @@
                                     <span class="text-[11px] font-medium text-gray-600 uppercase tracking-wider">Indicatori Chiave</span>
                                     <div class="tooltip-container">
                                         <i class="fa-solid fa-circle-info text-gray-400 text-xs cursor-help"></i>
-                                        <div class="tooltip-content">Confronto tra performance effettiva 2025 e target ottimali. Valori normalizzati 0-100.</div>
+                                        <div class="tooltip-content">Confronto tra performance effettiva <?php echo $last_year; ?> e target ottimali. Valori normalizzati 0-100.</div>
                                     </div>
                                 </div>
                                 <div id="radarChart-legend" class="flex gap-4"></div>
@@ -217,7 +227,7 @@
 
                         <div class="widget-card widget-purple p-6 h-full flex flex-col">
                             <div class="flex items-center gap-2 mb-5 pb-4 border-b border-gray-200">
-                                <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider">Executive Summary 2025</div>
+                                <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider">Executive Summary <?php echo $last_year; ?></div>
                             </div>
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mt-auto h-full">
                                 <?php
@@ -260,7 +270,7 @@
                     <div class="widget-ai-insight px-6 py-4 transition-all duration-300">
                         <div class="flex items-center gap-2.5 mb-3 pb-2.5 border-b border-blue-200/40">
                             <span class="badge-ai bg-purple text-white text-[9px] font-bold px-1.5 py-0.5 uppercase tracking-wide">AI Insight</span>
-                            <span class="text-xs font-semibold text-primary uppercase tracking-wide">Riepilogo Esecutivo 2025</span>
+                            <span class="text-xs font-semibold text-primary uppercase tracking-wide">Riepilogo Esecutivo <?php echo $last_year; ?></span>
                         </div>
                         <div class="text-[13px] leading-relaxed text-gray-700">
                             <?php
@@ -297,20 +307,20 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                         <?php
                             // ROE calculation
-                            $roe_2025 = $kpi['redditivita']['roe'][2] ?? 0;
-                            $roe_2024 = $kpi['redditivita']['roe'][1] ?? 0;
-                            $roe_diff = $roe_2025 - $roe_2024;
-                            $utile_netto = $income['utile_netto'][2] ?? 0;
-                            $patrimonio = $balance['passivo']['totale_patrimonio_netto'][2] ?? 0;
+                            $roe_last = $kpi['redditivita']['roe'][$last_idx] ?? 0;
+                            $roe_prev = $kpi['redditivita']['roe'][$prev_idx] ?? 0;
+                            $roe_diff = $roe_last - $roe_prev;
+                            $utile_netto = $income['utile_netto'][$last_idx] ?? 0;
+                            $patrimonio = $balance['passivo']['totale_patrimonio_netto'][$last_idx] ?? 0;
 
                             // Z-Score calculation
-                            $zscore_2025 = $kpi['rischio']['z_score'][2] ?? 0;
-                            $zscore_2024 = $kpi['rischio']['z_score'][1] ?? 0;
-                            $zscore_var = $zscore_2024 > 0 ? (($zscore_2025 - $zscore_2024) / $zscore_2024) * 100 : 0;
+                            $zscore_last = $kpi['rischio']['z_score'][$last_idx] ?? 0;
+                            $zscore_prev = $kpi['rischio']['z_score'][$prev_idx] ?? 0;
+                            $zscore_var = $zscore_prev > 0 ? (($zscore_last - $zscore_prev) / $zscore_prev) * 100 : 0;
 
                             // Leva Operativa (EBIT growth / Revenue growth)
-                            $ebit_growth = $income['ebit'][1] > 0 ? (($income['ebit'][2] - $income['ebit'][1]) / $income['ebit'][1]) * 100 : 0;
-                            $rev_growth = $income['ricavi'][1] > 0 ? (($income['ricavi'][2] - $income['ricavi'][1]) / $income['ricavi'][1]) * 100 : 0;
+                            $ebit_growth = $income['ebit'][$prev_idx] > 0 ? (($income['ebit'][$last_idx] - $income['ebit'][$prev_idx]) / $income['ebit'][$prev_idx]) * 100 : 0;
+                            $rev_growth = $income['ricavi'][$prev_idx] > 0 ? (($income['ricavi'][$last_idx] - $income['ricavi'][$prev_idx]) / $income['ricavi'][$prev_idx]) * 100 : 0;
                             $leva_op = $rev_growth > 0 ? $ebit_growth / $rev_growth : 0;
 
                             // Break-even
@@ -319,42 +329,42 @@
                             $be_margine_eur = $break_even['margine_sicurezza_eur'] ?? 0;
 
                             // Produttività
-                            $costo_pers_2024 = $income['costi_personale'][1] ?? 0;
-                            $costo_pers_2025 = $income['costi_personale'][2] ?? 0;
-                            $prod_var = $costo_pers_2024 > 0 ? (($costo_pers_2025 - $costo_pers_2024) / $costo_pers_2024) * 100 : 0;
-                            $ebitda_2025 = $income['ebitda'][2] ?? 0;
-                            $ebitda_2024 = $income['ebitda'][1] ?? 0;
-                            $ebitda_var = $ebitda_2024 > 0 ? (($ebitda_2025 - $ebitda_2024) / $ebitda_2024) * 100 : 0;
+                            $costo_pers_prev = $income['costi_personale'][$prev_idx] ?? 0;
+                            $costo_pers_last = $income['costi_personale'][$last_idx] ?? 0;
+                            $prod_var = $costo_pers_prev > 0 ? (($costo_pers_last - $costo_pers_prev) / $costo_pers_prev) * 100 : 0;
+                            $ebitda_last = $income['ebitda'][$last_idx] ?? 0;
+                            $ebitda_prev = $income['ebitda'][$prev_idx] ?? 0;
+                            $ebitda_var = $ebitda_prev > 0 ? (($ebitda_last - $ebitda_prev) / $ebitda_prev) * 100 : 0;
 
                             // DSO
-                            $dso_2025 = $kpi['efficienza']['dso'][2] ?? 0;
-                            $dso_2024 = $kpi['efficienza']['dso'][1] ?? 0;
-                            $dso_diff = $dso_2025 - $dso_2024;
+                            $dso_last = $kpi['efficienza']['dso'][$last_idx] ?? 0;
+                            $dso_prev = $kpi['efficienza']['dso'][$prev_idx] ?? 0;
+                            $dso_diff = $dso_last - $dso_prev;
                             $cassa_lib = $risks[0]['cassa_liberabile'] ?? 0;
                         ?>
                         <div class="widget-card widget-purple p-6">
-                            <div class="widget-title">ROE <?php echo number_format($roe_2025, 1, '.', ''); ?>% (<?php echo ($roe_diff >= 0 ? '+' : ''); ?><?php echo number_format($roe_diff, 1, '.', ''); ?>pp)</div>
+                            <div class="widget-title">ROE <?php echo number_format($roe_last, 1, '.', ''); ?>% (<?php echo ($roe_diff >= 0 ? '+' : ''); ?><?php echo number_format($roe_diff, 1, '.', ''); ?>pp)</div>
                             <div class="widget-text">Rendimento eccezionale del capitale proprio. Utile netto €<?php echo number_format($utile_netto / 1000, 0, '.', ''); ?>k su patrimonio €<?php echo number_format($patrimonio / 1000, 0, '.', ''); ?>k.</div>
                         </div>
                         <div class="widget-card widget-purple p-6">
-                            <div class="widget-title">Z-Score <?php echo number_format($zscore_2025, 2, '.', ''); ?> (<?php echo ($zscore_var >= 0 ? '+' : ''); ?><?php echo number_format($zscore_var, 0, '.', ''); ?>%)</div>
-                            <div class="widget-text">Zona sicura raggiunta (>2.9). Rischio insolvenza azzerato vs <?php echo number_format($zscore_2024, 2, '.', ''); ?> nel 2024.</div>
+                            <div class="widget-title">Z-Score <?php echo number_format($zscore_last, 2, '.', ''); ?> (<?php echo ($zscore_var >= 0 ? '+' : ''); ?><?php echo number_format($zscore_var, 0, '.', ''); ?>%)</div>
+                            <div class="widget-text">Zona sicura raggiunta (>2.9). Rischio insolvenza azzerato vs <?php echo number_format($zscore_prev, 2, '.', ''); ?> nel <?php echo $prev_year; ?>.</div>
                         </div>
                         <div class="widget-card widget-purple p-6">
                             <div class="widget-title">Leva Operativa <?php echo number_format($leva_op, 1, '.', ''); ?>x</div>
-                            <div class="widget-text">EBIT cresce <?php echo number_format($leva_op, 1, '.', ''); ?>x più veloce dei ricavi vs 2024. Modello ad alta sensibilità al volume.</div>
+                            <div class="widget-text">EBIT cresce <?php echo number_format($leva_op, 1, '.', ''); ?>x più veloce dei ricavi vs <?php echo $prev_year; ?>. Modello ad alta sensibilità al volume.</div>
                         </div>
                         <div class="widget-card widget-purple p-6">
                             <div class="widget-title">Break-Even €<?php echo number_format($be_punto / 1000, 0, '.', ''); ?>k</div>
-                            <div class="widget-text">Margine di sicurezza <?php echo $be_margine_pct; ?>% vs 2024. Ricavi possono scendere di €<?php echo number_format($be_margine_eur / 1000, 0, '.', ''); ?>k prima di perdite.</div>
+                            <div class="widget-text">Margine di sicurezza <?php echo $be_margine_pct; ?>% vs <?php echo $prev_year; ?>. Ricavi possono scendere di €<?php echo number_format($be_margine_eur / 1000, 0, '.', ''); ?>k prima di perdite.</div>
                         </div>
                         <div class="widget-card widget-purple p-6">
                             <div class="widget-title">Produttività +<?php echo number_format($prod_var, 0, '.', ''); ?>%</div>
-                            <div class="widget-text">EBITDA €<?php echo number_format($ebitda_2025 / 1000, 0, '.', ''); ?>k (+<?php echo number_format($ebitda_var, 0, '.', ''); ?>%). Per dipendente +€26k vs 2024. Team scalabile.</div>
+                            <div class="widget-text">EBITDA €<?php echo number_format($ebitda_last / 1000, 0, '.', ''); ?>k (+<?php echo number_format($ebitda_var, 0, '.', ''); ?>%) vs <?php echo $prev_year; ?>. Team scalabile.</div>
                         </div>
                         <div class="widget-card widget-negative p-6">
-                            <div class="widget-title"><i class="fa-solid fa-triangle-exclamation text-negative"></i> DSO <?php echo $dso_2025; ?>gg</div>
-                            <div class="widget-text"><?php echo $dso_diff; ?>gg vs 2024 ma target 120gg. Riduzione libera €<?php echo number_format($cassa_lib / 1000, 0, '.', ''); ?>k cassa.</div>
+                            <div class="widget-title"><i class="fa-solid fa-triangle-exclamation text-negative"></i> DSO <?php echo $dso_last; ?>gg</div>
+                            <div class="widget-text"><?php echo $dso_diff; ?>gg vs <?php echo $prev_year; ?> ma target 120gg. Riduzione libera €<?php echo number_format($cassa_lib / 1000, 0, '.', ''); ?>k cassa.</div>
                         </div>
                     </div>
                 </div>
@@ -469,36 +479,36 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
                         <?php
                             // DSO data
-                            $dso_2025 = $kpi['efficienza']['dso'][2] ?? 0;
-                            $dso_2024 = $kpi['efficienza']['dso'][1] ?? 0;
-                            $dso_var = $dso_2024 > 0 ? (($dso_2025 - $dso_2024) / $dso_2024) * 100 : 0;
+                            $dso_last = $kpi['efficienza']['dso'][$last_idx] ?? 0;
+                            $dso_prev = $kpi['efficienza']['dso'][$prev_idx] ?? 0;
+                            $dso_var = $dso_prev > 0 ? (($dso_last - $dso_prev) / $dso_prev) * 100 : 0;
 
                             // DPO data
-                            $dpo_2025 = $kpi['efficienza']['dpo'][2] ?? 0;
-                            $dpo_2024 = $kpi['efficienza']['dpo'][1] ?? 0;
-                            $dpo_var = $dpo_2024 > 0 ? (($dpo_2025 - $dpo_2024) / $dpo_2024) * 100 : 0;
+                            $dpo_last = $kpi['efficienza']['dpo'][$last_idx] ?? 0;
+                            $dpo_prev = $kpi['efficienza']['dpo'][$prev_idx] ?? 0;
+                            $dpo_var = $dpo_prev > 0 ? (($dpo_last - $dpo_prev) / $dpo_prev) * 100 : 0;
 
                             // Ciclo Finanziario data
-                            $ciclo_2025 = $kpi['efficienza']['ciclo_finanziario'][2] ?? 0;
-                            $ciclo_2024 = $kpi['efficienza']['ciclo_finanziario'][1] ?? 0;
-                            $ciclo_var = $ciclo_2024 > 0 ? (($ciclo_2025 - $ciclo_2024) / $ciclo_2024) * 100 : 0;
+                            $ciclo_last = $kpi['efficienza']['ciclo_finanziario'][$last_idx] ?? 0;
+                            $ciclo_prev = $kpi['efficienza']['ciclo_finanziario'][$prev_idx] ?? 0;
+                            $ciclo_var = $ciclo_prev > 0 ? (($ciclo_last - $ciclo_prev) / $ciclo_prev) * 100 : 0;
                         ?>
                         <div class="widget-card widget-negative p-6 text-left">
                             <div class="widget-label mb-2">Giorni Incasso (DSO)</div>
                             <div class="widget-metric-large text-negative"><?php echo number_format($dso_var, 0, '.', ''); ?>%</div>
-                            <div class="text-sm text-gray-500"><?php echo $dso_2025; ?> giorni</div>
+                            <div class="text-sm text-gray-500"><?php echo $dso_last; ?> giorni</div>
                             <div class="text-xs text-gray-400 mt-1">Target: 120 giorni</div>
                             <div class="widget-status-badge mt-2 bg-red-100 text-red-700 text-[9px]"><i class="fa-solid fa-triangle-exclamation"></i> Sopra target</div>
                         </div>
                         <div class="widget-card widget-purple p-6 text-left">
                             <div class="widget-label mb-2">Giorni Pagamento (DPO)</div>
                             <div class="widget-metric-large text-gray-500"><?php echo number_format($dpo_var, 0, '.', ''); ?>%</div>
-                            <div class="text-sm text-gray-500"><?php echo $dpo_2025; ?> giorni</div>
+                            <div class="text-sm text-gray-500"><?php echo $dpo_last; ?> giorni</div>
                         </div>
                         <div class="widget-card widget-purple p-6 text-left">
                             <div class="widget-label mb-2">Ciclo Finanziario</div>
                             <div class="widget-metric-large text-positive"><?php echo number_format($ciclo_var, 0, '.', ''); ?>%</div>
-                            <div class="text-sm text-gray-500"><?php echo $ciclo_2025; ?> giorni</div>
+                            <div class="text-sm text-gray-500"><?php echo $ciclo_last; ?> giorni</div>
                         </div>
                         <div class="widget-card widget-purple p-6 text-left">
                             <div class="widget-label mb-2">Cassa Liberabile</div>
@@ -534,13 +544,13 @@
                             <div class="relative h-[180px] sm:h-[240px] mb-3"><canvas id="currentRatioChart"></canvas></div>
                             <div class="text-left">
                                 <?php
-                                    $cr_2025 = $kpi['liquidita']['current_ratio'][2] ?? 0;
-                                    $cr_2024 = $kpi['liquidita']['current_ratio'][1] ?? 0;
-                                    $cr_var = $cr_2024 > 0 ? (($cr_2025 - $cr_2024) / $cr_2024) * 100 : 0;
+                                    $cr_last = $kpi['liquidita']['current_ratio'][$last_idx] ?? 0;
+                                    $cr_prev = $kpi['liquidita']['current_ratio'][$prev_idx] ?? 0;
+                                    $cr_var = $cr_prev > 0 ? (($cr_last - $cr_prev) / $cr_prev) * 100 : 0;
                                 ?>
-                                <div class="widget-metric-large"><?php echo number_format($cr_2025, 2, '.', ''); ?>x</div>
+                                <div class="widget-metric-large"><?php echo number_format($cr_last, 2, '.', ''); ?>x</div>
                                 <div class="flex items-center justify-center gap-2 mt-1">
-                                    <span class="widget-change-positive"><?php echo ($cr_var >= 0 ? '+' : ''); ?><?php echo number_format($cr_var, 0, '.', ''); ?>% vs 2024</span>
+                                    <span class="widget-change-positive"><?php echo ($cr_var >= 0 ? '+' : ''); ?><?php echo number_format($cr_var, 0, '.', ''); ?>% vs <?php echo $prev_year; ?></span>
                                     <span class="widget-status-badge bg-positive/10 text-positive"><i class="fa-solid fa-check"></i> Accettabile</span>
                                 </div>
                             </div>
@@ -558,13 +568,13 @@
                             <div class="relative h-[180px] sm:h-[240px] mb-3"><canvas id="cashRatioChart"></canvas></div>
                             <div class="text-left">
                                 <?php
-                                    $cash_r_2025 = $kpi['liquidita']['cash_ratio'][2] ?? 0;
-                                    $cash_r_2024 = $kpi['liquidita']['cash_ratio'][1] ?? 0;
-                                    $cash_r_var = $cash_r_2024 > 0 ? (($cash_r_2025 - $cash_r_2024) / $cash_r_2024) * 100 : 0;
+                                    $cash_r_last = $kpi['liquidita']['cash_ratio'][$last_idx] ?? 0;
+                                    $cash_r_prev = $kpi['liquidita']['cash_ratio'][$prev_idx] ?? 0;
+                                    $cash_r_var = $cash_r_prev > 0 ? (($cash_r_last - $cash_r_prev) / $cash_r_prev) * 100 : 0;
                                 ?>
-                                <div class="widget-metric-large text-negative"><?php echo number_format($cash_r_2025, 2, '.', ''); ?>x</div>
+                                <div class="widget-metric-large text-negative"><?php echo number_format($cash_r_last, 2, '.', ''); ?>x</div>
                                 <div class="flex items-center justify-center gap-2 mt-1">
-                                    <span class="widget-change-positive"><?php echo ($cash_r_var >= 0 ? '+' : ''); ?><?php echo number_format($cash_r_var, 0, '.', ''); ?>% vs 2024</span>
+                                    <span class="widget-change-positive"><?php echo ($cash_r_var >= 0 ? '+' : ''); ?><?php echo number_format($cash_r_var, 0, '.', ''); ?>% vs <?php echo $prev_year; ?></span>
                                     <span class="widget-status-badge bg-negative/10 text-negative"><i class="fa-solid fa-triangle-exclamation"></i> Critico</span>
                                 </div>
                             </div>
@@ -583,16 +593,16 @@
                             <div class="text-left">
                                 <?php
                                     $tm = $kpi['liquidita']['margine_tesoreria'] ?? [];
-                                    $tm_2025 = $tm[2] ?? 0;
-                                    $tm_2024 = $tm[1] ?? 0;
-                                    $tm_status = $tm_2025 >= 0 ? 'Positivo' : 'Negativo';
-                                    $tm_color = $tm_2025 >= 0 ? 'text-positive' : 'text-negative';
-                                    $tm_badge_color = $tm_2025 >= 0 ? 'bg-positive/10 text-positive' : 'bg-negative/10 text-negative';
-                                    $tm_icon = $tm_2025 >= 0 ? 'fa-check' : 'fa-triangle-exclamation';
+                                    $tm_last = $tm[$last_idx] ?? 0;
+                                    $tm_prev = $tm[$prev_idx] ?? 0;
+                                    $tm_status = $tm_last >= 0 ? 'Positivo' : 'Negativo';
+                                    $tm_color = $tm_last >= 0 ? 'text-positive' : 'text-negative';
+                                    $tm_badge_color = $tm_last >= 0 ? 'bg-positive/10 text-positive' : 'bg-negative/10 text-negative';
+                                    $tm_icon = $tm_last >= 0 ? 'fa-check' : 'fa-triangle-exclamation';
                                 ?>
-                                <div class="widget-metric-large <?php echo $tm_color; ?>"><?php echo ($tm_2025 >= 0 ? '' : '-'); ?>€<?php echo number_format(abs($tm_2025) / 1000, 0, '.', ''); ?>k</div>
+                                <div class="widget-metric-large <?php echo $tm_color; ?>"><?php echo ($tm_last >= 0 ? '' : '-'); ?>€<?php echo number_format(abs($tm_last) / 1000, 0, '.', ''); ?>k</div>
                                 <div class="flex items-center justify-center gap-2 mt-1">
-                                    <span class="widget-change-positive">da <?php echo ($tm_2024 >= 0 ? '+' : ''); ?>€<?php echo number_format(abs($tm_2024) / 1000, 0, '.', ''); ?>k</span>
+                                    <span class="widget-change-positive">da <?php echo ($tm_prev >= 0 ? '+' : ''); ?>€<?php echo number_format(abs($tm_prev) / 1000, 0, '.', ''); ?>k</span>
                                     <span class="widget-status-badge <?php echo $tm_badge_color; ?>"><i class="fa-solid <?php echo $tm_icon; ?>"></i> <?php echo $tm_status; ?></span>
                                 </div>
                             </div>
@@ -609,7 +619,7 @@
                 <!-- Cash Flow Waterfall -->
                 <div class="mb-12 sm:mb-20">
                     <div class="flex items-center gap-2 mb-4">
-                        <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider">Flusso di Cassa 2025</div>
+                        <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider">Flusso di Cassa <?php echo $last_year; ?></div>
                         <div class="tooltip-container">
                             <i class="fa-solid fa-circle-info text-gray-400 text-xs cursor-help"></i>
                             <div class="tooltip-content">Scomposizione del flusso di cassa: da utile netto a variazione liquidità attraverso gestione operativa, investimenti e finanziamenti.</div>
@@ -628,7 +638,7 @@
                                         ['label' => 'Δ Debiti Finanziari', 'key' => 'delta_debiti_finanziari', 'color' => 'text-negative'],
                                     ];
                                     foreach ($items as $item):
-                                        $val = $cf_data[$item['key']][2] ?? 0;
+                                        $val = $cf_data[$item['key']][$last_idx] ?? 0;
                                         $formatted = number_format(abs($val) / 1000, 1, '.', '');
                                         $prefix = ($val >= 0 ? '+' : '-');
                                 ?>
@@ -691,23 +701,28 @@
                             <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider mb-6">Dettaglio per Anno</div>
                             <div class="space-y-8">
                                 <?php
-                                    $fiscal_years = ['2023', '2024', '2025'];
                                     $breve = $debt['breve_termine'] ?? [];
                                     $lungo = $debt['lungo_termine'] ?? [];
                                     $breve_pct = $debt['breve_pct'] ?? [];
                                     $lungo_pct = $debt['lungo_pct'] ?? [];
 
-                                    foreach ([0, 1, 2] as $idx):
-                                        $year = $fiscal_years[$idx];
+                                    foreach ($fiscal_years as $idx => $year):
                                         $b_val = $breve[$idx] ?? 0;
                                         $l_val = $lungo[$idx] ?? 0;
                                         $total = $b_val + $l_val;
                                         $b_pct = $breve_pct[$idx] ?? 0;
                                         $l_pct = $lungo_pct[$idx] ?? 0;
                                         $icon = '';
-                                        if ($idx === 1) $icon = '<i class="fa-solid fa-triangle-exclamation mr-1 text-[8px]"></i>';
-                                        if ($idx === 2) $icon = '<i class="fa-solid fa-check mr-1 text-[8px]"></i>';
-                                        $variazione = ($idx === 2) ? ' (-12%)' : '';
+                                        // Show check for last year if breve_pct improved
+                                        if ($idx === $last_idx && $num_years > 1) {
+                                            $prev_b_pct = $breve_pct[$prev_idx] ?? 0;
+                                            $icon = ($b_pct < $prev_b_pct) ? '<i class="fa-solid fa-check mr-1 text-[8px]"></i>' : '<i class="fa-solid fa-triangle-exclamation mr-1 text-[8px]"></i>';
+                                            $prev_total = ($breve[$prev_idx] ?? 0) + ($lungo[$prev_idx] ?? 0);
+                                            $var_pct = $prev_total > 0 ? round((($total - $prev_total) / $prev_total) * 100) : 0;
+                                            $variazione = ' (' . ($var_pct >= 0 ? '+' : '') . $var_pct . '%)';
+                                        } else {
+                                            $variazione = '';
+                                        }
                                 ?>
                                 <div>
                                     <div class="flex justify-between mb-1.5">
@@ -748,28 +763,28 @@
                             <div class="widget-detail-header">Analisi Sostenibilità Debito</div>
                             <div>
                                 <?php
-                                    $ebit_2025 = $interest_coverage['ebit'][2] ?? 0;
-                                    $oneri_2025 = $interest_coverage['oneri_finanziari'][2] ?? 0;
-                                    $oneri_2024 = $interest_coverage['oneri_finanziari'][1] ?? 0;
-                                    $icr_2025 = $interest_coverage['icr'][2] ?? 0;
-                                    $icr_2024 = $interest_coverage['icr'][1] ?? 0;
+                                    $ebit_last = $interest_coverage['ebit'][$last_idx] ?? 0;
+                                    $oneri_last = $interest_coverage['oneri_finanziari'][$last_idx] ?? 0;
+                                    $oneri_prev = $interest_coverage['oneri_finanziari'][$prev_idx] ?? 0;
+                                    $icr_last = $interest_coverage['icr'][$last_idx] ?? 0;
+                                    $icr_prev = $interest_coverage['icr'][$prev_idx] ?? 0;
                                     $costo_debito = $interest_coverage['costo_medio_debito'] ?? 0;
-                                    $dscr = $kpi['redditivita']['dscr'][2] ?? 0;
+                                    $dscr = $kpi['redditivita']['dscr'][$last_idx] ?? 0;
 
-                                    $oneri_var = $oneri_2024 > 0 ? (($oneri_2025 - $oneri_2024) / $oneri_2024) * 100 : 0;
-                                    $icr_var = $icr_2024 > 0 ? (($icr_2025 - $icr_2024) / $icr_2024) * 100 : 0;
+                                    $oneri_var = $oneri_prev > 0 ? (($oneri_last - $oneri_prev) / $oneri_prev) * 100 : 0;
+                                    $icr_var = $icr_prev > 0 ? (($icr_last - $icr_prev) / $icr_prev) * 100 : 0;
                                 ?>
                                 <div class="widget-detail-row">
-                                    <span class="widget-detail-label">EBIT 2025</span>
-                                    <span class="widget-detail-value">€<?php echo number_format($ebit_2025 / 1000, 1, '.', ''); ?>k</span>
+                                    <span class="widget-detail-label">EBIT <?php echo $last_year; ?></span>
+                                    <span class="widget-detail-value">€<?php echo number_format($ebit_last / 1000, 1, '.', ''); ?>k</span>
                                 </div>
                                 <div class="widget-detail-row">
-                                    <span class="widget-detail-label">Oneri Finanziari 2025</span>
-                                    <span class="widget-detail-value">€<?php echo number_format($oneri_2025 / 1000, 1, '.', ''); ?>k (<?php echo number_format($oneri_var, 0, '.', ''); ?>% vs 2024)</span>
+                                    <span class="widget-detail-label">Oneri Finanziari <?php echo $last_year; ?></span>
+                                    <span class="widget-detail-value">€<?php echo number_format($oneri_last / 1000, 1, '.', ''); ?>k (<?php echo number_format($oneri_var, 0, '.', ''); ?>% vs <?php echo $prev_year; ?>)</span>
                                 </div>
                                 <div class="widget-detail-row">
                                     <span class="widget-detail-label">Interest Coverage Ratio</span>
-                                    <span class="widget-detail-value"><?php echo number_format($icr_2025, 1, '.', ''); ?>x (<?php echo number_format($icr_var, 0, '.', ''); ?>% vs 2024)</span>
+                                    <span class="widget-detail-value"><?php echo number_format($icr_last, 1, '.', ''); ?>x (<?php echo number_format($icr_var, 0, '.', ''); ?>% vs <?php echo $prev_year; ?>)</span>
                                 </div>
                                 <div class="widget-detail-row">
                                     <span class="widget-detail-label">Costo Medio Debito</span>
@@ -808,17 +823,21 @@
                             <div class="tooltip-content">Patrimonio Netto - Immobilizzazioni. Se positivo, le immobilizzazioni sono coperte da mezzi propri. Se negativo, sono finanziate anche con debiti.</div>
                         </div>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <?php
-                            $sm = $data['structure_margin'] ?? [];
-                            $pn = $sm['patrimonio_netto'] ?? [];
-                            $immob = $sm['immobilizzazioni'] ?? [];
-                            $margine_vals = $sm['margine'] ?? [];
-                            $stati = $sm['stato'] ?? [];
-                            $fiscal_years = [2023, 2024, 2025];
+                    <?php
+                        $sm = $data['structure_margin'] ?? [];
+                        $pn = $sm['patrimonio_netto'] ?? [];
+                        $immob = $sm['immobilizzazioni'] ?? [];
+                        $margine_vals = $sm['margine'] ?? [];
+                        $stati = $sm['stato'] ?? [];
 
-                            foreach ([0, 1, 2] as $idx):
-                                $year = $fiscal_years[$idx];
+                        // Dynamic grid classes based on number of years
+                        $grid_cols = 'md:grid-cols-' . min($num_years, 4);
+                        $container_class = $num_years > 4 ? 'flex overflow-x-auto gap-6 pb-4' : 'grid grid-cols-1 ' . $grid_cols . ' gap-6';
+                        $item_class = $num_years > 4 ? 'min-w-[280px] flex-shrink-0' : '';
+                    ?>
+                    <div class="<?php echo $container_class; ?>">
+                        <?php
+                            foreach ($fiscal_years as $idx => $year):
                                 $pn_val = $pn[$idx] ?? 0;
                                 $immob_val = $immob[$idx] ?? 0;
                                 $margine_val = $margine_vals[$idx] ?? 0;
@@ -827,15 +846,15 @@
                                 $badge_color = ($margine_val >= 0) ? 'bg-positive/10 text-positive' : 'bg-negative/10 text-negative';
                                 $badge_icon = ($margine_val >= 0) ? 'fa-check' : 'fa-triangle-exclamation';
                                 $variation = '';
-                                if ($idx === 2) {
-                                    $prev_margine = $margine_vals[1] ?? 0;
+                                if ($idx === $last_idx && $num_years > 1) {
+                                    $prev_margine = $margine_vals[$prev_idx] ?? 0;
                                     if ($prev_margine != 0) {
                                         $pct_change = (($margine_val - $prev_margine) / abs($prev_margine)) * 100;
-                                        $variation = '<div class="widget-change-positive mt-1">' . ($pct_change >= 0 ? '+' : '') . number_format($pct_change, 0, '.', '') . '% vs 2024</div>';
+                                        $variation = '<div class="widget-change-positive mt-1">' . ($pct_change >= 0 ? '+' : '') . number_format($pct_change, 0, '.', '') . '% vs ' . $prev_year . '</div>';
                                     }
                                 }
                         ?>
-                        <div class="widget-card widget-purple p-6 text-left">
+                        <div class="widget-card widget-purple p-6 text-left <?php echo $item_class; ?>">
                             <div class="widget-label mb-2"><?php echo $year; ?></div>
                             <div class="widget-metric-large"><?php echo ($margine_val >= 0 ? '+' : ''); ?>€<?php echo number_format(abs($margine_val) / 1000, 0, '.', ''); ?>k</div>
                             <div class="text-xs text-gray-500 mt-1">PN €<?php echo number_format($pn_val / 1000, 0, '.', ''); ?>k <?php echo $comparison; ?> Immob. €<?php echo number_format($immob_val / 1000, 0, '.', ''); ?>k</div>
@@ -858,7 +877,7 @@
                         <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider">Conto Economico Comparativo</div>
                         <div class="tooltip-container">
                             <i class="fa-solid fa-circle-info text-gray-400 text-xs cursor-help"></i>
-                            <div class="tooltip-content">Clicca sulle intestazioni delle colonne per ordinare la tabella. La variazione % è calcolata rispetto all'esercizio 2024.</div>
+                            <div class="tooltip-content">Clicca sulle intestazioni delle colonne per ordinare la tabella. La variazione % è calcolata rispetto all'esercizio <?php echo $prev_year; ?>.</div>
                         </div>
                     </div>
                     <div class="widget-card p-6 overflow-x-auto">
@@ -866,10 +885,10 @@
                             <thead class="bg-gray-50 border-b border-gray-200">
                                 <tr>
                                     <th class="px-4 py-3 text-left font-semibold text-gray-700 text-[11px] uppercase tracking-wide" data-sort="string">Voce</th>
-                                    <th class="px-4 py-3 text-right font-semibold text-gray-700 text-[11px] uppercase tracking-wide" data-sort="number">2023</th>
-                                    <th class="px-4 py-3 text-right font-semibold text-gray-700 text-[11px] uppercase tracking-wide" data-sort="number">2024</th>
-                                    <th class="px-4 py-3 text-right font-semibold text-gray-700 text-[11px] uppercase tracking-wide" data-sort="number">2025</th>
-                                    <th class="px-4 py-3 text-right font-semibold text-gray-700 text-[11px] uppercase tracking-wide" data-sort="number">Var % vs 2024</th>
+                                    <?php foreach ($fiscal_years as $year): ?>
+                                    <th class="px-4 py-3 text-right font-semibold text-gray-700 text-[11px] uppercase tracking-wide" data-sort="number"><?php echo $year; ?></th>
+                                    <?php endforeach; ?>
+                                    <th class="px-4 py-3 text-right font-semibold text-gray-700 text-[11px] uppercase tracking-wide" data-sort="number">Var % vs <?php echo $prev_year; ?></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -889,15 +908,18 @@
                                     ];
 
                                     foreach ($table_rows as $row):
-                                        $val_2023 = $income[$row['key']][0] ?? 0;
-                                        $val_2024 = $income[$row['key']][1] ?? 0;
-                                        $val_2025 = $income[$row['key']][2] ?? 0;
-                                        $variation = $val_2024 != 0 ? (($val_2025 - $val_2024) / $val_2024) * 100 : 0;
+                                        // Get values for all years
+                                        $values = [];
+                                        foreach ($fiscal_years as $idx => $year) {
+                                            $values[$idx] = $income[$row['key']][$idx] ?? 0;
+                                        }
+                                        $val_last = $values[$last_idx] ?? 0;
+                                        $val_prev = $values[$prev_idx] ?? 0;
+                                        $variation = $val_prev != 0 ? (($val_last - $val_prev) / abs($val_prev)) * 100 : 0;
 
                                         $is_main = $row['is_main'] ? 'font-semibold' : '';
                                         $bg_class = $row['is_main'] ? 'bg-purple/5 border-b border-gray-200' : 'border-b border-gray-200 hover:bg-purple-50';
                                         $pl_class = $row['is_main'] ? '' : 'pl-6';
-                                        $var_color = $variation < 0 && !$row['is_negative'] ? 'text-positive' : (($variation < 0 || $row['is_negative']) && $variation > 0 ? 'text-negative' : 'text-positive');
 
                                         if ($row['is_negative']) {
                                             $var_color = $variation > 0 ? 'text-negative' : 'text-positive';
@@ -909,9 +931,11 @@
                                 ?>
                                 <tr class="<?php echo $is_main . ' ' . $bg_class; ?>">
                                     <td class="px-4 py-3 <?php echo $pl_class; ?>"><?php echo $row['label']; ?></td>
-                                    <td class="px-4 py-3 text-right" data-sort-value="<?php echo $val_2023 * ($row['is_negative'] ? -1 : 1); ?>"><?php echo $row['is_negative'] ? '(' : ''; ?>€<?php echo number_format($val_2023, 0, '.', '.'); ?><?php echo $row['is_negative'] ? ')' : ''; ?></td>
-                                    <td class="px-4 py-3 text-right" data-sort-value="<?php echo $val_2024 * ($row['is_negative'] ? -1 : 1); ?>"><?php echo $row['is_negative'] ? '(' : ''; ?>€<?php echo number_format($val_2024, 0, '.', '.'); ?><?php echo $row['is_negative'] ? ')' : ''; ?></td>
-                                    <td class="px-4 py-3 text-right" data-sort-value="<?php echo $val_2025 * ($row['is_negative'] ? -1 : 1); ?>"><?php echo $row['is_negative'] ? '(' : ''; ?>€<?php echo number_format($val_2025, 0, '.', '.'); ?><?php echo $row['is_negative'] ? ')' : ''; ?></td>
+                                    <?php foreach ($fiscal_years as $idx => $year):
+                                        $val = $values[$idx];
+                                    ?>
+                                    <td class="px-4 py-3 text-right" data-sort-value="<?php echo $val * ($row['is_negative'] ? -1 : 1); ?>"><?php echo $row['is_negative'] ? '(' : ''; ?>€<?php echo number_format($val, 0, '.', '.'); ?><?php echo $row['is_negative'] ? ')' : ''; ?></td>
+                                    <?php endforeach; ?>
                                     <td class="px-4 py-3 text-right <?php echo $var_color . ' ' . $var_bold; ?>" data-sort-value="<?php echo round($variation, 1); ?>"><?php echo ($variation >= 0 ? '+' : '') . number_format($variation, 1, '.', ''); ?>%</td>
                                 </tr>
                                 <?php endforeach; ?>
@@ -938,7 +962,7 @@
                         <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider">Stato Patrimoniale Sintetico</div>
                         <div class="tooltip-container">
                             <i class="fa-solid fa-circle-info text-gray-400 text-xs cursor-help"></i>
-                            <div class="tooltip-content">Situazione patrimoniale al termine di ciascun esercizio. Variazioni calcolate vs 2024.</div>
+                            <div class="tooltip-content">Situazione patrimoniale al termine di ciascun esercizio. Variazioni calcolate vs <?php echo $prev_year; ?>.</div>
                         </div>
                     </div>
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
@@ -956,17 +980,17 @@
 
                                     foreach ($assets_items as $item):
                                         $attivo_data = $balance['attivo'] ?? [];
-                                        $val_2024 = $attivo_data[$item['key']][1] ?? 0;
-                                        $val_2025 = $attivo_data[$item['key']][2] ?? 0;
-                                        $variation = $val_2024 > 0 ? (($val_2025 - $val_2024) / $val_2024) * 100 : 0;
+                                        $val_prev = $attivo_data[$item['key']][$prev_idx] ?? 0;
+                                        $val_last = $attivo_data[$item['key']][$last_idx] ?? 0;
+                                        $variation = $val_prev > 0 ? (($val_last - $val_prev) / $val_prev) * 100 : 0;
                                         $var_color = $variation >= 0 ? 'text-positive' : 'text-negative';
                                         $var_text = ($variation >= 0 ? '+' : '') . number_format($variation, 0, '.', '') . '%';
                                 ?>
                                 <div class="widget-detail-row">
                                     <span class="widget-detail-label"><?php echo $item['label']; ?></span>
                                     <div class="text-right">
-                                        <span class="widget-detail-value">€<?php echo number_format($val_2025 / 1000, 1, '.', ''); ?>k</span>
-                                        <span class="ml-2 widget-text <?php echo $var_color; ?>"><?php echo $var_text; ?> vs 2024</span>
+                                        <span class="widget-detail-value">€<?php echo number_format($val_last / 1000, 1, '.', ''); ?>k</span>
+                                        <span class="ml-2 widget-text <?php echo $var_color; ?>"><?php echo $var_text; ?> vs <?php echo $prev_year; ?></span>
                                     </div>
                                 </div>
                                 <?php endforeach; ?>
@@ -975,14 +999,14 @@
                                     <div class="text-right">
                                         <?php
                                             $attivo_data = $balance['attivo'] ?? [];
-                                            $total_2024 = $attivo_data['totale_attivo'][1] ?? 0;
-                                            $total_2025 = $attivo_data['totale_attivo'][2] ?? 0;
-                                            $total_var = $total_2024 > 0 ? (($total_2025 - $total_2024) / $total_2024) * 100 : 0;
+                                            $total_prev = $attivo_data['totale_attivo'][$prev_idx] ?? 0;
+                                            $total_last = $attivo_data['totale_attivo'][$last_idx] ?? 0;
+                                            $total_var = $total_prev > 0 ? (($total_last - $total_prev) / $total_prev) * 100 : 0;
                                             $total_var_color = $total_var >= 0 ? 'text-positive' : 'text-negative';
                                             $total_var_text = ($total_var >= 0 ? '+' : '') . number_format($total_var, 0, '.', '') . '%';
                                         ?>
-                                        <span class="widget-detail-value">€<?php echo number_format($total_2025 / 1000, 1, '.', ''); ?>k</span>
-                                        <span class="ml-2 widget-text <?php echo $total_var_color; ?>"><?php echo $total_var_text; ?> vs 2024</span>
+                                        <span class="widget-detail-value">€<?php echo number_format($total_last / 1000, 1, '.', ''); ?>k</span>
+                                        <span class="ml-2 widget-text <?php echo $total_var_color; ?>"><?php echo $total_var_text; ?> vs <?php echo $prev_year; ?></span>
                                     </div>
                                 </div>
                             </div>
@@ -1001,17 +1025,17 @@
 
                                     foreach ($liabilities_items as $item):
                                         $passivo_data = $balance['passivo'] ?? [];
-                                        $val_2024 = $passivo_data[$item['key']][1] ?? 0;
-                                        $val_2025 = $passivo_data[$item['key']][2] ?? 0;
-                                        $variation = $val_2024 > 0 ? (($val_2025 - $val_2024) / $val_2024) * 100 : 0;
+                                        $val_prev = $passivo_data[$item['key']][$prev_idx] ?? 0;
+                                        $val_last = $passivo_data[$item['key']][$last_idx] ?? 0;
+                                        $variation = $val_prev > 0 ? (($val_last - $val_prev) / $val_prev) * 100 : 0;
                                         $var_color = $variation >= 0 ? 'text-positive' : 'text-negative';
                                         $var_text = ($variation >= 0 ? '+' : '') . number_format($variation, 0, '.', '') . '%';
                                 ?>
                                 <div class="widget-detail-row">
                                     <span class="widget-detail-label"><?php echo $item['label']; ?></span>
                                     <div class="text-right">
-                                        <span class="widget-detail-value">€<?php echo number_format($val_2025 / 1000, 1, '.', ''); ?>k</span>
-                                        <span class="ml-2 widget-text <?php echo $var_color; ?>"><?php echo $var_text; ?> vs 2024</span>
+                                        <span class="widget-detail-value">€<?php echo number_format($val_last / 1000, 1, '.', ''); ?>k</span>
+                                        <span class="ml-2 widget-text <?php echo $var_color; ?>"><?php echo $var_text; ?> vs <?php echo $prev_year; ?></span>
                                     </div>
                                 </div>
                                 <?php endforeach; ?>
@@ -1020,14 +1044,14 @@
                                     <div class="text-right">
                                         <?php
                                             $passivo_data = $balance['passivo'] ?? [];
-                                            $total_2024 = $passivo_data['totale_passivo'][1] ?? 0;
-                                            $total_2025 = $passivo_data['totale_passivo'][2] ?? 0;
-                                            $total_var = $total_2024 > 0 ? (($total_2025 - $total_2024) / $total_2024) * 100 : 0;
+                                            $total_prev = $passivo_data['totale_passivo'][$prev_idx] ?? 0;
+                                            $total_last = $passivo_data['totale_passivo'][$last_idx] ?? 0;
+                                            $total_var = $total_prev > 0 ? (($total_last - $total_prev) / $total_prev) * 100 : 0;
                                             $total_var_color = $total_var >= 0 ? 'text-positive' : 'text-negative';
                                             $total_var_text = ($total_var >= 0 ? '+' : '') . number_format($total_var, 0, '.', '') . '%';
                                         ?>
-                                        <span class="widget-detail-value">€<?php echo number_format($total_2025 / 1000, 1, '.', ''); ?>k</span>
-                                        <span class="ml-2 widget-text <?php echo $total_var_color; ?>"><?php echo $total_var_text; ?> vs 2024</span>
+                                        <span class="widget-detail-value">€<?php echo number_format($total_last / 1000, 1, '.', ''); ?>k</span>
+                                        <span class="ml-2 widget-text <?php echo $total_var_color; ?>"><?php echo $total_var_text; ?> vs <?php echo $prev_year; ?></span>
                                     </div>
                                 </div>
                             </div>
@@ -1150,28 +1174,43 @@
                                 <div class="widget-detail-header">Metriche di Efficienza</div>
                                 <div class="space-y-3">
                                     <?php
+                                        $ricavi_per_dip_last = $productivity['ricavi_per_dipendente'][$last_idx] ?? 0;
+                                        $ricavi_per_dip_prev = $productivity['ricavi_per_dipendente'][$prev_idx] ?? 0;
+                                        $va_per_dip_last = $productivity['valore_aggiunto_per_dipendente_euro'][$last_idx] ?? 0;
+                                        $va_per_dip_prev = $productivity['valore_aggiunto_per_dipendente_euro'][$prev_idx] ?? 0;
+                                        $dip_last = $productivity['dipendenti'][$last_idx] ?? 1;
+                                        $dip_prev = $productivity['dipendenti'][$prev_idx] ?? 1;
+                                        $ebitda_per_dip_last = ($kpi['redditivita']['ebitda_margin'][$last_idx] ?? 0) * ($income['ricavi'][$last_idx] ?? 0) / $dip_last / 1000;
+                                        $ebitda_per_dip_prev = ($kpi['redditivita']['ebitda_margin'][$prev_idx] ?? 0) * ($income['ricavi'][$prev_idx] ?? 0) / $dip_prev / 1000;
+
                                         $metrics = [
-                                            ['label' => 'Ricavi / Costo Personale', 'val_2025' => $productivity['ricavi_per_dipendente'][2] ?? 0, 'unit' => 'x', 'var' => 7],
-                                            ['label' => 'Valore Aggiunto / Personale', 'val_2025' => $productivity['valore_aggiunto_per_dipendente_euro'][2] ?? 0, 'unit' => '€', 'var' => 64],
-                                            ['label' => 'EBITDA / Personale', 'val_2025' => ($kpi['redditivita']['ebitda_margin'][2] ?? 0) * ($income['ricavi'][2] ?? 0) / ($productivity['dipendenti'][2] ?? 1) / 1000, 'unit' => '€', 'var' => 127],
+                                            ['label' => 'Ricavi / Costo Personale', 'val_last' => $ricavi_per_dip_last, 'val_prev' => $ricavi_per_dip_prev, 'unit' => 'x'],
+                                            ['label' => 'Valore Aggiunto / Personale', 'val_last' => $va_per_dip_last, 'val_prev' => $va_per_dip_prev, 'unit' => '€'],
+                                            ['label' => 'EBITDA / Personale', 'val_last' => $ebitda_per_dip_last, 'val_prev' => $ebitda_per_dip_prev, 'unit' => '€'],
                                         ];
                                         foreach ($metrics as $m):
                                             $unit = ($m['unit'] === 'x') ? 'x' : 'k';
-                                            $formatted = ($m['unit'] === 'x') ? number_format($m['val_2025'], 2, '.', '') : round($m['val_2025']);
+                                            $formatted = ($m['unit'] === 'x') ? number_format($m['val_last'], 2, '.', '') : round($m['val_last']);
+                                            $var = $m['val_prev'] > 0 ? (($m['val_last'] - $m['val_prev']) / $m['val_prev']) * 100 : 0;
                                     ?>
                                     <div class="widget-detail-row">
                                         <span class="widget-detail-label"><?php echo $m['label']; ?></span>
                                         <div class="text-right">
                                             <span class="widget-detail-value"><?php echo ($m['unit'] === '€' ? '€' : ''); ?><?php echo $formatted; ?><?php echo $unit; ?></span>
-                                            <span class="ml-2 widget-text text-positive">+<?php echo $m['var']; ?><?php echo ($m['unit'] === 'x' ? '%' : '%'); ?> vs 2024</span>
+                                            <span class="ml-2 widget-text text-positive"><?php echo ($var >= 0 ? '+' : ''); ?><?php echo number_format($var, 0, '.', ''); ?>% vs <?php echo $prev_year; ?></span>
                                         </div>
                                     </div>
                                     <?php endforeach; ?>
+                                    <?php
+                                        $costo_medio_dip_last = ($income['costi_personale'][$last_idx] ?? 0) / $dip_last / 1000;
+                                        $costo_medio_dip_prev = ($income['costi_personale'][$prev_idx] ?? 0) / $dip_prev / 1000;
+                                        $costo_var = $costo_medio_dip_prev > 0 ? (($costo_medio_dip_last - $costo_medio_dip_prev) / $costo_medio_dip_prev) * 100 : 0;
+                                    ?>
                                     <div class="widget-detail-row">
                                         <span class="widget-detail-label">Costo Medio Dipendente</span>
                                         <div class="text-right">
-                                            <span class="widget-detail-value">€<?php echo round(($income['costi_personale'][2] ?? 0) / ($productivity['dipendenti'][2] ?? 1) / 1000); ?>k</span>
-                                            <span class="ml-2 widget-text text-gray-600">+39% vs 2024</span>
+                                            <span class="widget-detail-value">€<?php echo round($costo_medio_dip_last); ?>k</span>
+                                            <span class="ml-2 widget-text text-gray-600"><?php echo ($costo_var >= 0 ? '+' : ''); ?><?php echo number_format($costo_var, 0, '.', ''); ?>% vs <?php echo $prev_year; ?></span>
                                         </div>
                                     </div>
                                     <div class="flex justify-between items-center">
@@ -1258,10 +1297,10 @@
                                 ];
 
                                 foreach ($dupont_data as $item):
-                                    $val_2025 = $dupont[$item['key']][2] ?? 0;
-                                    $val_2024 = $dupont[$item['key']][1] ?? 0;
-                                    $variazione = $val_2024 > 0 ? (($val_2025 - $val_2024) / abs($val_2024)) * 100 : 0;
-                                    $formatted = ($item['unit'] === '%') ? number_format($val_2025, 1, '.', '') . '%' : number_format($val_2025, 2, '.', '') . 'x';
+                                    $val_last = $dupont[$item['key']][$last_idx] ?? 0;
+                                    $val_prev = $dupont[$item['key']][$prev_idx] ?? 0;
+                                    $variazione = $val_prev > 0 ? (($val_last - $val_prev) / abs($val_prev)) * 100 : 0;
+                                    $formatted = ($item['unit'] === '%') ? number_format($val_last, 1, '.', '') . '%' : number_format($val_last, 2, '.', '') . 'x';
                                     $var_text = $variazione > 0 ? '+' . number_format($variazione, 1, '.', '') : number_format($variazione, 1, '.', '');
                                     $var_unit = ($item['unit'] === '%') ? 'pp' : '%';
                             ?>
@@ -1276,7 +1315,7 @@
                                 <div class="relative h-[200px]"><canvas id="<?php echo $item['chart']; ?>"></canvas></div>
                                 <div class="text-left mt-2">
                                     <div class="text-xl font-semibold text-primary"><?php echo $formatted; ?></div>
-                                    <div class="text-xs text-positive"><?php echo $var_text . $var_unit; ?> vs 2024</div>
+                                    <div class="text-xs text-positive"><?php echo $var_text . $var_unit; ?> vs <?php echo $prev_year; ?></div>
                                 </div>
                             </div>
                             <?php endforeach; ?>
@@ -1398,17 +1437,17 @@
                             <!-- Z-Score Value - compact -->
                             <div>
                                 <?php
-                                    $zscore_2025 = $z_score['punteggio'][2] ?? 0;
-                                    $zscore_2024 = $z_score['punteggio'][1] ?? 0;
-                                    $zscore_variazione = $zscore_2024 > 0 ? round((($zscore_2025 - $zscore_2024) / $zscore_2024) * 100) : 0;
-                                    $zone_2025 = $z_score['zone'][2] ?? 'grey';
-                                    $zone_label = $zone_2025 === 'safe' ? 'ZONA SICURA' : ($zone_2025 === 'grey' ? 'ZONA GRIGIA' : 'ZONA RISCHIO');
-                                    $components = $z_score['components_2025'] ?? [];
+                                    $zscore_last = $z_score['punteggio'][$last_idx] ?? 0;
+                                    $zscore_prev = $z_score['punteggio'][$prev_idx] ?? 0;
+                                    $zscore_variazione = $zscore_prev > 0 ? round((($zscore_last - $zscore_prev) / $zscore_prev) * 100) : 0;
+                                    $zone_last = $z_score['zone'][$last_idx] ?? 'grey';
+                                    $zone_label = $zone_last === 'safe' ? 'ZONA SICURA' : ($zone_last === 'grey' ? 'ZONA GRIGIA' : 'ZONA RISCHIO');
+                                    $components = $z_score['components_' . $last_year] ?? $z_score['components_2025'] ?? [];
                                 ?>
                                 <div class="border border-gray-200 p-5 mb-3">
-                                    <div class="text-xs text-gray-500 uppercase tracking-wide mb-2">Z-Score 2025</div>
-                                    <div class="text-2xl font-semibold text-primary mb-1"><?php echo number_format($zscore_2025, 2, '.', ''); ?></div>
-                                    <div class="text-xs text-positive font-semibold mb-3">+<?php echo $zscore_variazione; ?>% vs 2024</div>
+                                    <div class="text-xs text-gray-500 uppercase tracking-wide mb-2">Z-Score <?php echo $last_year; ?></div>
+                                    <div class="text-2xl font-semibold text-primary mb-1"><?php echo number_format($zscore_last, 2, '.', ''); ?></div>
+                                    <div class="text-xs text-positive font-semibold mb-3"><?php echo ($zscore_variazione >= 0 ? '+' : ''); ?><?php echo $zscore_variazione; ?>% vs <?php echo $prev_year; ?></div>
                                     <div class="inline-block px-2 py-1 bg-positive/10 text-positive font-semibold text-[10px] border border-positive/30"><?php echo $zone_label; ?></div>
                                 </div>
 
@@ -1501,9 +1540,11 @@
                         </div>
                         <div class="text-sm leading-relaxed text-gray-700">
                             <p class="mb-2">I bilanci sono estratti dal sistema informativo aziendale e rappresentano le dichiarazioni finanziarie ufficiali depositate.</p>
-                            <p><strong>Periodo di Copertura:</strong> Esercizi chiusi al 31 maggio 2023, 2024, 2025</p>
+                            <p><strong>Periodo di Copertura:</strong> Esercizi <?php echo implode(', ', $fiscal_years); ?></p>
                             <p><strong>Formato:</strong> PDF conformi alla tassonomia XBRL itcc-ci-2018-11-04</p>
-                            <p><strong>Note:</strong> Nel 2023 la società era denominata "Tessari Associati SRL", successivamente rinominata in "Perspect S.R.L."</p>
+                            <?php if (!empty($metadata['notes'])): ?>
+                            <p><strong>Note:</strong> <?php echo htmlspecialchars($metadata['notes']); ?></p>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
