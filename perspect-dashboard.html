@@ -45,8 +45,8 @@
     <!-- Top Header - Full Width -->
     <div class="h-[60px] bg-white border-b border-gray-200 px-6 flex items-center justify-between z-50 shrink-0">
         <div>
-            <h2 class="text-[15px] font-medium text-primary">Controllo di Gestione</h2>
-            <p class="text-[11px] text-gray-500">Perspect SRL (ex Tessari Associati)</p>
+            <h2 class="text-[15px] font-medium text-primary">Business Intelligence Suite</h2>
+            <p class="text-[11px] text-gray-500">Perspect SRL</p>
         </div>
         <div class="flex items-center gap-4">
             <div class="text-[11px] text-gray-500">
@@ -64,14 +64,18 @@
     <!-- Sidebar -->
     <div id="sidebar" class="w-[242px] bg-white border-r border-gray-200 fixed h-screen left-0 top-[60px] z-40 overflow-y-auto flex flex-col transform -translate-x-full md:translate-x-0 transition-transform duration-300">
         <div class="px-4 py-6 flex-1">
-            <button class="w-full flex items-center text-[13px] font-semibold text-gray-800 px-2 py-2 group transition-colors duration-200" style="outline: none; -webkit-tap-highlight-color: transparent; background-color: #f3e8ff; border-radius: 6px;" data-accordion-toggle="cgMenu" onclick="toggleAccordion('cgMenu')">
-                <div class="flex items-center gap-1">
-                    <span class="inline-flex items-center justify-center w-6 h-6 rounded bg-purple-100 text-purple-600">
-                        <i class="fa-solid fa-chart-line text-[10px]"></i>
-                    </span>
-                    <span class="group-hover:text-purple-600 transition-colors duration-200 text-left">Controllo di Gestione</span>
+            <button class="w-full flex items-center text-[13px] font-semibold text-gray-400 px-2 py-2 pb-4 cursor-not-allowed transition-colors duration-200 border-b border-gray-200" style="outline: none; -webkit-tap-highlight-color: transparent; border-radius: 6px;" disabled>
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-building text-[12px]"></i>
+                    <span class="text-left">Company Overview</span>
                 </div>
-                <i class="accordion-icon fa-solid fa-chevron-down text-[10px] text-gray-400 transition-transform duration-200 rotate-180 ml-auto"></i>
+            </button>
+            <button class="w-full flex items-center text-[13px] font-semibold text-purple-600 px-2 py-2 pt-4 group transition-colors duration-200" style="outline: none; -webkit-tap-highlight-color: transparent; border-radius: 6px;" data-accordion-toggle="cgMenu" onclick="toggleAccordion('cgMenu')">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-chart-line text-[12px] text-purple-600 transition-colors duration-200"></i>
+                    <span class="text-purple-600 transition-colors duration-200 text-left">Controllo di Gestione</span>
+                </div>
+                <i class="accordion-icon fa-solid fa-chevron-down text-[10px] text-purple-600 transition-transform duration-200 rotate-180 ml-auto"></i>
             </button>
             <div id="cgMenu" class="accordion-content mt-2">
                 <div class="ml-3 border-l border-gray-200 space-y-1">
@@ -101,87 +105,145 @@
                     </div>
                 </div>
             </div>
-            <button class="w-full flex items-center text-[13px] font-semibold px-2 py-2 mt-5 group transition-colors duration-200 cursor-not-allowed" style="outline: none; -webkit-tap-highlight-color: transparent; color: #94a3b8; opacity: 0.7; border-radius: 6px;">
-                <div class="flex items-center gap-1">
-                    <span class="inline-flex items-center justify-center w-6 h-6 rounded" style="background-color: #cbd5e1;">
-                        <i class="fa-solid fa-chart-pie text-[10px]"></i>
-                    </span>
-                    <span class="text-left">Analisi Disponibili</span>
+            <div class="border-t border-gray-200 mt-4 pt-4">
+                <button class="w-full flex items-center text-[13px] font-semibold text-gray-600 px-2 py-2 group transition-colors duration-200" style="outline: none; -webkit-tap-highlight-color: transparent; border-radius: 6px;" data-accordion-toggle="availableMenu" onclick="toggleAccordion('availableMenu')">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-layer-group text-[12px] text-gray-400 transition-colors duration-200"></i>
+                        <span class="transition-colors duration-200 text-left">Analisi Disponibili</span>
+                    </div>
+                    <i class="accordion-icon fa-solid fa-chevron-down text-[10px] text-gray-400 transition-transform duration-200 ml-auto"></i>
+                </button>
+                <div id="availableMenu" class="accordion-content hidden mt-2">
+                <div class="ml-3 border-l border-gray-200 space-y-1">
+                    <div class="flex items-center gap-2 pl-4 py-1 text-[12px] cursor-not-allowed" style="color: #cbd5e1; opacity: 0.6;">
+                        <i class="fa-solid fa-circle text-[6px]" style="color: #cbd5e1;"></i>
+                        <span>Brand</span>
+                    </div>
+                    <div class="flex items-center gap-2 pl-4 py-1 text-[12px] cursor-not-allowed" style="color: #cbd5e1; opacity: 0.6;">
+                        <i class="fa-solid fa-circle text-[6px]" style="color: #cbd5e1;"></i>
+                        <span>Digital</span>
+                    </div>
+                    <div class="flex items-center gap-2 pl-4 py-1 text-[12px] cursor-not-allowed" style="color: #cbd5e1; opacity: 0.6;">
+                        <i class="fa-solid fa-circle text-[6px]" style="color: #cbd5e1;"></i>
+                        <span>Social</span>
+                    </div>
+                    <div class="flex items-center gap-2 pl-4 py-1 text-[12px] cursor-not-allowed" style="color: #cbd5e1; opacity: 0.6;">
+                        <i class="fa-solid fa-circle text-[6px]" style="color: #cbd5e1;"></i>
+                        <span>Web</span>
+                    </div>
+                    <div class="flex items-center gap-2 pl-4 py-1 text-[12px] cursor-not-allowed" style="color: #cbd5e1; opacity: 0.6;">
+                        <i class="fa-solid fa-circle text-[6px]" style="color: #cbd5e1;"></i>
+                        <span>ESG</span>
+                    </div>
+                    <div class="flex items-center gap-2 pl-4 py-1 text-[12px] cursor-not-allowed" style="color: #cbd5e1; opacity: 0.6;">
+                        <i class="fa-solid fa-circle text-[6px]" style="color: #cbd5e1;"></i>
+                        <span>EAA</span>
+                    </div>
+                    <div class="flex items-center gap-2 pl-4 py-1 text-[12px] cursor-not-allowed" style="color: #cbd5e1; opacity: 0.6;">
+                        <i class="fa-solid fa-circle text-[6px]" style="color: #cbd5e1;"></i>
+                        <span>Innovation</span>
+                    </div>
                 </div>
-                <i class="fa-solid fa-chevron-down text-[10px] ml-auto" style="color: #94a3b8;"></i>
-            </button>
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- Main Content -->
     <div id="mainContent" class="ml-0 md:ml-[242px] flex-1 flex flex-col overflow-hidden">
         <!-- Content -->
-        <div class="flex-1 overflow-y-auto px-6 md:px-10 py-10">
+        <div class="flex-1 overflow-y-auto px-4 md:px-6 py-10">
             
             <!-- View: Dashboard -->
             <div id="dashboard" class="view">
-                <div class="mb-20">
+                <div class="mb-10">
                     <h1 class="text-[20px] font-medium text-primary tracking-tight">Dashboard Esecutivo</h1>
                 </div>
 
-                <!-- Executive Summary -->
-                <div class="mb-20">
-                    <div class="widget-card widget-purple p-6">
-                        <div class="flex items-center gap-2 mb-4 pb-4 border-b border-gray-200">
-                            <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider">Executive Summary 2025</div>
-                            <div class="ml-auto flex items-center gap-2">
-                                <span class="inline-block w-3 h-3 rounded-full bg-positive"></span>
-                                <span class="text-xs font-semibold text-positive uppercase">Salute Finanziaria: Buona</span>
+                <!-- Radar + Growth -->
+                <div class="mb-5">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div class="widget-card widget-purple p-6 transition-all duration-300">
+                            <div class="flex justify-between items-center mb-5 pb-4 border-b border-gray-200">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-[11px] font-medium text-gray-600 uppercase tracking-wider">Indicatori Chiave</span>
+                                    <div class="tooltip-container">
+                                        <i class="fa-solid fa-circle-info text-gray-400 text-xs cursor-help"></i>
+                                        <div class="tooltip-content">Confronto tra performance effettiva 2025 e target ottimali. Valori normalizzati 0-100.</div>
+                                    </div>
+                                </div>
+                                <div id="radarChart-legend" class="flex gap-4"></div>
+                            </div>
+                            <div class="relative h-[320px] mb-5">
+                                <canvas id="radarChart"></canvas>
                             </div>
                         </div>
-                        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                            <div class="text-center p-3 bg-gray-50 border border-gray-200">
-                                <div class="text-[10px] text-gray-500 uppercase mb-1">Redditività</div>
-                                <div class="flex items-center justify-center gap-1">
-                                    <span class="w-2 h-2 rounded-full bg-positive"></span>
-                                    <span class="text-sm font-semibold">Ottima</span>
-                                </div>
-                                <div class="text-[10px] text-gray-400 mt-1">ROE 45.3%</div>
+
+                        <div class="widget-card widget-purple p-6 h-full flex flex-col">
+                            <div class="flex items-center gap-2 mb-5 pb-4 border-b border-gray-200">
+                                <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider">Executive Summary 2025</div>
                             </div>
-                            <div class="text-center p-3 bg-gray-50 border border-gray-200">
-                                <div class="text-[10px] text-gray-500 uppercase mb-1">Crescita</div>
-                                <div class="flex items-center justify-center gap-1">
-                                    <span class="w-2 h-2 rounded-full bg-positive"></span>
-                                    <span class="text-sm font-semibold">Forte</span>
+                            <div class="grid grid-cols-2 gap-4 mt-auto h-full">
+                                <div class="p-4 bg-gray-50 border border-gray-200 flex flex-col justify-between">
+                                    <div>
+                                        <div class="text-[10px] text-gray-500 uppercase mb-1">Redditività</div>
+                                        <div class="flex items-center gap-1 text-sm font-semibold text-gray-800">
+                                            <i class="fa-solid fa-check text-purple"></i>
+                                            Ottima
+                                        </div>
+                                    </div>
+                                    <div class="text-[11px] text-gray-500 mt-2">ROE 45.3%</div>
                                 </div>
-                                <div class="text-[10px] text-gray-400 mt-1">+49% Ricavi</div>
-                            </div>
-                            <div class="text-center p-3 bg-gray-50 border border-gray-200">
-                                <div class="text-[10px] text-gray-500 uppercase mb-1">Solidità</div>
-                                <div class="flex items-center justify-center gap-1">
-                                    <span class="w-2 h-2 rounded-full bg-positive"></span>
-                                    <span class="text-sm font-semibold">Buona</span>
+                                <div class="p-4 bg-gray-50 border border-gray-200 flex flex-col justify-between">
+                                    <div>
+                                        <div class="text-[10px] text-gray-500 uppercase mb-1">Crescita</div>
+                                        <div class="flex items-center gap-1 text-sm font-semibold text-gray-800">
+                                            <i class="fa-solid fa-check text-purple"></i>
+                                            Forte
+                                        </div>
+                                    </div>
+                                    <div class="text-[11px] text-gray-500 mt-2">+49% Ricavi</div>
                                 </div>
-                                <div class="text-[10px] text-gray-400 mt-1">D/E 1.52x</div>
-                            </div>
-                            <div class="text-center p-3 bg-gray-50 border border-gray-200">
-                                <div class="text-[10px] text-gray-500 uppercase mb-1">Liquidità</div>
-                                <div class="flex items-center justify-center gap-1">
-                                    <span class="w-2 h-2 rounded-full bg-amber-500"></span>
-                                    <span class="text-sm font-semibold">Attenzione</span>
+                                <div class="p-4 bg-gray-50 border border-gray-200 flex flex-col justify-between">
+                                    <div>
+                                        <div class="text-[10px] text-gray-500 uppercase mb-1">Solidità</div>
+                                        <div class="flex items-center gap-1 text-sm font-semibold text-gray-800">
+                                            <i class="fa-solid fa-check text-purple"></i>
+                                            Buona
+                                        </div>
+                                    </div>
+                                    <div class="text-[11px] text-gray-500 mt-2">D/E 1.52x</div>
                                 </div>
-                                <div class="text-[10px] text-gray-400 mt-1">Cash 0.06x</div>
-                            </div>
-                            <div class="text-center p-3 bg-gray-50 border border-gray-200">
-                                <div class="text-[10px] text-gray-500 uppercase mb-1">Efficienza</div>
-                                <div class="flex items-center justify-center gap-1">
-                                    <span class="w-2 h-2 rounded-full bg-amber-500"></span>
-                                    <span class="text-sm font-semibold">Migliorabile</span>
+                                <div class="p-4 border flex flex-col justify-between" style="background: linear-gradient(135deg, rgba(220, 38, 38, 0.06) 0%, rgba(255, 255, 255, 0) 100%); border-color: rgba(220, 38, 38, 0.25);">
+                                    <div>
+                                        <div class="text-[10px] text-gray-500 uppercase mb-1">Liquidità</div>
+                                        <div class="flex items-center gap-1 text-sm font-semibold text-gray-800">
+                                            <i class="fa-solid fa-triangle-exclamation text-danger"></i>
+                                            Attenzione
+                                        </div>
+                                    </div>
+                                    <div class="text-[11px] text-gray-500 mt-2">Cash 0.06x</div>
                                 </div>
-                                <div class="text-[10px] text-gray-400 mt-1">DSO 157gg</div>
-                            </div>
-                            <div class="text-center p-3 bg-gray-50 border border-gray-200">
-                                <div class="text-[10px] text-gray-500 uppercase mb-1">Rischio</div>
-                                <div class="flex items-center justify-center gap-1">
-                                    <span class="w-2 h-2 rounded-full bg-positive"></span>
-                                    <span class="text-sm font-semibold">Basso</span>
+                                <div class="p-4 border flex flex-col justify-between" style="background: linear-gradient(135deg, rgba(220, 38, 38, 0.06) 0%, rgba(255, 255, 255, 0) 100%); border-color: rgba(220, 38, 38, 0.25);">
+                                    <div>
+                                        <div class="text-[10px] text-gray-500 uppercase mb-1">Efficienza</div>
+                                        <div class="flex items-center gap-1 text-sm font-semibold text-gray-800">
+                                            <i class="fa-solid fa-triangle-exclamation text-danger"></i>
+                                            Migliorabile
+                                        </div>
+                                    </div>
+                                    <div class="text-[11px] text-gray-500 mt-2">DSO 157gg</div>
                                 </div>
-                                <div class="text-[10px] text-gray-400 mt-1">Z-Score 3.18</div>
+                                <div class="p-4 bg-gray-50 border border-gray-200 flex flex-col justify-between">
+                                    <div>
+                                        <div class="text-[10px] text-gray-500 uppercase mb-1">Rischio</div>
+                                        <div class="flex items-center gap-1 text-sm font-semibold text-gray-800">
+                                            <i class="fa-solid fa-check text-purple"></i>
+                                            Basso
+                                        </div>
+                                    </div>
+                                    <div class="text-[11px] text-gray-500 mt-2">Z-Score 3.18</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -189,7 +251,7 @@
 
                 <!-- AI Insight -->
                 <div class="mb-20">
-                    <div class="widget-ai-insight p-6 transition-all duration-300">
+                    <div class="widget-ai-insight px-6 py-4 transition-all duration-300">
                         <div class="flex items-center gap-2.5 mb-3 pb-2.5 border-b border-blue-200/40">
                             <span class="badge-ai bg-purple text-white text-[9px] font-bold px-1.5 py-0.5 uppercase tracking-wide">AI Insight</span>
                             <span class="text-xs font-semibold text-primary uppercase tracking-wide">Riepilogo Esecutivo 2025</span>
@@ -213,7 +275,15 @@
                 <!-- Strategic Insights -->
                 <div class="mb-20">
                     <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider mb-3">Insight Strategici</div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="widget-card widget-purple p-6">
+                            <div class="widget-title">ROE 45.3% (+43.3pp)</div>
+                            <div class="widget-text">Rendimento eccezionale del capitale proprio. Utile netto €151k su patrimonio €334k.</div>
+                        </div>
+                        <div class="widget-card widget-purple p-6">
+                            <div class="widget-title">Z-Score 3.18 (+124%)</div>
+                            <div class="widget-text">Zona sicura raggiunta (>2.9). Rischio insolvenza azzerato vs 1.42 nel 2024.</div>
+                        </div>
                         <div class="widget-card widget-purple p-6">
                             <div class="widget-title">Leva Operativa 8.9x</div>
                             <div class="widget-text">EBIT cresce 8.9x più veloce dei ricavi vs 2024. Modello ad alta sensibilità al volume.</div>
@@ -224,7 +294,7 @@
                         </div>
                         <div class="widget-card widget-purple p-6">
                             <div class="widget-title">Produttività +39%</div>
-                            <div class="widget-text">EBITDA per dipendente +€26k vs 2024. Team scalabile con alta efficienza.</div>
+                            <div class="widget-text">EBITDA €205k (+216%). Per dipendente +€26k vs 2024. Team scalabile.</div>
                         </div>
                         <div class="widget-card widget-negative p-6">
                             <div class="widget-title"><i class="fa-solid fa-triangle-exclamation text-negative"></i> DSO 157gg</div>
@@ -233,63 +303,8 @@
                     </div>
                 </div>
 
-                <!-- Radar + Growth -->
-                <div class="mb-20">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                        <div class="widget-card widget-purple p-6 transition-all duration-300">
-                            <div class="flex justify-between items-center mb-5 pb-4 border-b border-gray-200">
-                                <div class="flex items-center gap-2">
-                                    <span class="text-[11px] font-medium text-gray-600 uppercase tracking-wider">Indicatori Chiave</span>
-                                    <div class="tooltip-container">
-                                        <i class="fa-solid fa-circle-info text-gray-400 text-xs cursor-help"></i>
-                                        <div class="tooltip-content">Confronto tra performance effettiva 2025 e target ottimali. Valori normalizzati 0-100.</div>
-                                    </div>
-                                </div>
-                                <div id="radarChart-legend" class="flex gap-4"></div>
-                            </div>
-                            <div class="relative h-[320px] mb-5">
-                                <canvas id="radarChart"></canvas>
-                            </div>
-                        </div>
-
-                        <div class="widget-card widget-purple  p-6 h-full flex flex-col justify-center">
-                            <div class="flex justify-start items-center mb-5 pb-4 border-b border-accent/10">
-                                <div class="flex items-center gap-2">
-                                    <div class="text-sm font-bold uppercase tracking-wider text-gray-700">Variazioni vs 2024</div>
-                                    <div class="tooltip-container">
-                                        <i class="fa-solid fa-circle-info text-gray-400 text-xs cursor-help"></i>
-                                        <div class="tooltip-content">Confronto diretto tra l'esercizio 2025 e l'esercizio precedente 2024.</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="grid grid-cols-2 gap-6.5 flex-1">
-                                <div class="widget-card widget-purple p-4.5 text-center flex flex-col justify-center items-center transition-all duration-300">
-                                    <div class="text-xl font-semibold text-positive mb-1">+49.0%</div>
-                                    <div class="text-[11px] text-gray-500 uppercase mb-1.5">Ricavi</div>
-                                    <div class="text-[11px] text-gray-500 leading-tight">€553k → €825k</div>
-                                </div>
-                                <div class="widget-card widget-purple p-4.5 text-center flex flex-col justify-center items-center transition-all duration-300">
-                                    <div class="text-xl font-semibold text-positive mb-1">+452%</div>
-                                    <div class="text-[11px] text-gray-500 uppercase mb-1.5">EBIT</div>
-                                    <div class="text-[11px] text-gray-500 leading-tight">€33k → €180k</div>
-                                </div>
-                                <div class="widget-card widget-purple p-4.5 text-center flex flex-col justify-center items-center transition-all duration-300">
-                                    <div class="text-xl font-semibold text-positive mb-1">+4039%</div>
-                                    <div class="text-[11px] text-gray-500 uppercase mb-1.5">Utile Netto</div>
-                                    <div class="text-[11px] text-gray-500 leading-tight">€3.6k → €150.7k</div>
-                                </div>
-                                <div class="widget-card widget-purple p-4.5 text-center flex flex-col justify-center items-center transition-all duration-300">
-                                    <div class="text-xl font-semibold text-positive mb-1">+82.8%</div>
-                                    <div class="text-[11px] text-gray-500 uppercase mb-1.5">Patrimonio Netto</div>
-                                    <div class="text-[11px] text-gray-500 leading-tight">€182k → €333k</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- KPI Strategici Aggiunti -->
-                <div class="mb-20">
+                <div class="mb-5">
                     <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider mb-3">Grafici Storici</div>
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                         <div class="widget-card widget-purple p-6">
@@ -333,79 +348,6 @@
                     </div>
                 </div>
 
-                <!-- Key Metrics Row -->
-                <div class="mb-20">
-                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-                        <div class="widget-card widget-purple p-6 text-center transition-all duration-300">
-                            <div class="flex items-center justify-center gap-1 mb-1">
-                                <div class="widget-label">EBIT</div>
-                                <div class="tooltip-container">
-                                    <i class="fa-solid fa-circle-info text-gray-400 text-[10px] cursor-help"></i>
-                                    <div class="tooltip-content">Utile operativo prima di interessi e imposte. Misura la redditività della gestione caratteristica.</div>
-                                </div>
-                            </div>
-                            <div class="widget-metric-large text-positive">+452%</div>
-                            <div class="text-sm text-gray-500">€180k</div>
-                        </div>
-                        <div class="widget-card widget-purple p-6 text-center transition-all duration-300">
-                            <div class="flex items-center justify-center gap-1 mb-1">
-                                <div class="widget-label">EBITDA</div>
-                                <div class="tooltip-container">
-                                    <i class="fa-solid fa-circle-info text-gray-400 text-[10px] cursor-help"></i>
-                                    <div class="tooltip-content">Utile prima di interessi, tasse, ammortamenti. Misura la redditività operativa.</div>
-                                </div>
-                            </div>
-                            <div class="widget-metric-large text-positive">+216%</div>
-                            <div class="text-sm text-gray-500">€205k</div>
-                        </div>
-                        <div class="widget-card widget-purple p-6 text-center transition-all duration-300">
-                            <div class="flex items-center justify-center gap-1 mb-1">
-                                <div class="widget-label">D/E Ratio</div>
-                                <div class="tooltip-container">
-                                    <i class="fa-solid fa-circle-info text-gray-400 text-[10px] cursor-help"></i>
-                                    <div class="tooltip-content">Debiti / Patrimonio Netto. Misura la leva finanziaria. Ottimale &lt;2x per PMI.</div>
-                                </div>
-                            </div>
-                            <div class="widget-metric-large text-positive">-52%</div>
-                            <div class="text-sm text-gray-500">1.52x</div>
-                        </div>
-                        <div class="widget-card widget-purple p-6 text-center transition-all duration-300">
-                            <div class="flex items-center justify-center gap-1 mb-1">
-                                <div class="widget-label">ROE</div>
-                                <div class="tooltip-container">
-                                    <i class="fa-solid fa-circle-info text-gray-400 text-[10px] cursor-help"></i>
-                                    <div class="tooltip-content">Return on Equity. Utile netto / Patrimonio netto. Misura il rendimento del capitale proprio.</div>
-                                </div>
-                            </div>
-                            <div class="widget-metric-large text-positive">+43.3pp</div>
-                            <div class="text-sm text-gray-500">45.3%</div>
-                        </div>
-                        <div class="widget-card widget-purple p-6 text-center transition-all duration-300">
-                            <div class="flex items-center justify-center gap-1 mb-1">
-                                <div class="widget-label">Current Ratio</div>
-                                <div class="tooltip-container">
-                                    <i class="fa-solid fa-circle-info text-gray-400 text-[10px] cursor-help"></i>
-                                    <div class="tooltip-content">Attivo circolante / Debiti a breve. Misura la capacità di pagare i debiti a breve. Ottimale >1.5x.</div>
-                                </div>
-                            </div>
-                            <div class="widget-metric-large text-positive">+65%</div>
-                            <div class="text-sm text-gray-500">1.52x</div>
-                        </div>
-                        <div class="widget-card widget-purple p-6 text-center transition-all duration-300">
-                            <div class="flex items-center justify-center gap-1 mb-1">
-                                <div class="widget-label">Z-Score</div>
-                                <div class="tooltip-container">
-                                    <i class="fa-solid fa-circle-info text-gray-400 text-[10px] cursor-help"></i>
-                                    <div class="tooltip-content">Indice Altman. Misura il rischio di insolvenza. >2.9 sicuro, 1.23-2.9 grigio, <1.23 rischio.</div>
-                                </div>
-                            </div>
-                            <div class="widget-metric-large text-positive">+124%</div>
-                            <div class="text-sm text-gray-500">3.18</div>
-                        </div>
-                    </div>
-                </div>
-
-
                 <!-- Charts Row -->
                 <div class="mb-20">
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -421,6 +363,12 @@
                                 <div id="revenueChart-legend" class="flex gap-4"></div>
                             </div>
                             <div class="relative h-[280px]"><canvas id="revenueChart"></canvas></div>
+                            <div class="ai-insight-box">
+                                <div class="flex items-center gap-2 mb-2 pb-2 border-b border-purple/20">
+                                    <span class="badge-ai bg-purple text-white text-[9px] font-bold px-1.5 py-0.5 uppercase tracking-wide">AI Insight</span>
+                                </div>
+                                <strong><i class="fa-solid fa-chart-line text-purple"></i> Crescita Accelerata:</strong> Ricavi +49% (€825k) con EBITDA +216% (€205k). Il margine EBITDA è passato dal 12.7% al 24.9% (+12.2pp), segnalando forte leva operativa. La crescita è organica, trainata da nuovi clienti e upselling.
+                            </div>
                         </div>
 
                         <div class="widget-card widget-purple p-6">
@@ -435,6 +383,12 @@
                                 <div id="profitChart-legend" class="flex gap-4"></div>
                             </div>
                             <div class="relative h-[280px]"><canvas id="profitChart"></canvas></div>
+                            <div class="ai-insight-box">
+                                <div class="flex items-center gap-2 mb-2 pb-2 border-b border-purple/20">
+                                    <span class="badge-ai bg-purple text-white text-[9px] font-bold px-1.5 py-0.5 uppercase tracking-wide">AI Insight</span>
+                                </div>
+                                <strong><i class="fa-solid fa-coins text-purple"></i> Profittabilità Esplosa:</strong> EBIT +452% (€180k) e Utile Netto +4039% (€151k). Il margine netto è salito dallo 0.7% al 18.3%. La trasformazione da quasi break-even a forte profittabilità riflette il controllo dei costi e la scalabilità del modello.
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -443,7 +397,7 @@
             </div>
 
             <div id="liquidity" class="view hidden">
-                <div class="mb-20">
+                <div class="mb-10">
                     <h1 class="text-[20px] font-medium text-primary tracking-tight">Liquidità e Flussi di Cassa</h1>
                 </div>
 
@@ -457,24 +411,24 @@
                         </div>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                        <div class="widget-card widget-purple p-6 text-center">
+                        <div class="widget-card widget-negative p-6 text-left">
                             <div class="widget-label mb-2">Giorni Incasso (DSO)</div>
-                            <div class="widget-metric-large text-positive">-27%</div>
+                            <div class="widget-metric-large text-negative">-27%</div>
                             <div class="text-sm text-gray-500">157 giorni</div>
                             <div class="text-xs text-gray-400 mt-1">Target: 120 giorni</div>
-                            <div class="widget-status-badge mt-2 bg-amber-100 text-amber-700 text-[9px]"><i class="fa-solid fa-triangle-exclamation"></i> Sopra target</div>
+                            <div class="widget-status-badge mt-2 bg-red-100 text-red-700 text-[9px]"><i class="fa-solid fa-triangle-exclamation"></i> Sopra target</div>
                         </div>
-                        <div class="widget-card widget-purple p-6 text-center">
+                        <div class="widget-card widget-purple p-6 text-left">
                             <div class="widget-label mb-2">Giorni Pagamento (DPO)</div>
                             <div class="widget-metric-large text-gray-500">0%</div>
                             <div class="text-sm text-gray-500">56 giorni</div>
                         </div>
-                        <div class="widget-card widget-purple p-6 text-center">
+                        <div class="widget-card widget-purple p-6 text-left">
                             <div class="widget-label mb-2">Ciclo Finanziario</div>
                             <div class="widget-metric-large text-positive">-29%</div>
                             <div class="text-sm text-gray-500">101 giorni</div>
                         </div>
-                        <div class="widget-card widget-purple p-6 text-center">
+                        <div class="widget-card widget-purple p-6 text-left">
                             <div class="widget-label mb-2">Cassa Liberabile</div>
                             <div class="widget-metric-large">€75k</div>
                             <div class="text-xs text-gray-500 mt-1">Con DSO a 120gg</div>
@@ -502,7 +456,7 @@
                                 </div>
                             </div>
                             <div class="relative h-[240px] mb-3"><canvas id="currentRatioChart"></canvas></div>
-                            <div class="text-center">
+                            <div class="text-left">
                                 <div class="widget-metric-large">1.52x</div>
                                 <div class="flex items-center justify-center gap-2 mt-1">
                                     <span class="widget-change-positive">+65% vs 2024</span>
@@ -521,7 +475,7 @@
                                 </div>
                             </div>
                             <div class="relative h-[240px] mb-3"><canvas id="cashRatioChart"></canvas></div>
-                            <div class="text-center">
+                            <div class="text-left">
                                 <div class="widget-metric-large text-negative">0.06x</div>
                                 <div class="flex items-center justify-center gap-2 mt-1">
                                     <span class="widget-change-positive">+200% vs 2024</span>
@@ -540,7 +494,7 @@
                                 </div>
                             </div>
                             <div class="relative h-[240px] mb-3"><canvas id="treasuryMarginChart"></canvas></div>
-                            <div class="text-center">
+                            <div class="text-left">
                                 <div class="widget-metric-large text-positive">€100k</div>
                                 <div class="flex items-center justify-center gap-2 mt-1">
                                     <span class="widget-change-positive">da -€63k</span>
@@ -569,7 +523,7 @@
                     <div class="widget-card widget-purple p-6">
                         <div class="relative h-[350px]"><canvas id="cashFlowWaterfallChart"></canvas></div>
                         <div class="mt-4 pt-4 border-t border-gray-200">
-                            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-left">
                                 <div>
                                     <div class="widget-label">Autofinanziamento</div>
                                     <div class="widget-metric-medium text-positive">€188.9k</div>
@@ -637,36 +591,36 @@
                             <div class="relative h-[280px]"><canvas id="debtStructureChart"></canvas></div>
                         </div>
                         <div class="widget-card widget-purple p-6 lg:col-span-3">
-                            <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider mb-4">Dettaglio per Anno</div>
-                            <div class="space-y-6">
+                            <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider mb-6">Dettaglio per Anno</div>
+                            <div class="space-y-8">
                                 <div>
-                                    <div class="flex justify-between mb-2">
-                                        <span class="text-xs font-medium text-gray-700">2023</span>
-                                        <span class="text-xs text-gray-500">€430k totali</span>
+                                    <div class="flex justify-between mb-1.5">
+                                        <span class="text-[10px] font-medium text-gray-700">2023</span>
+                                        <span class="text-[10px] text-gray-500">€430k totali</span>
                                     </div>
-                                    <div class="flex h-10 overflow-hidden">
-                                        <div class="bg-purple flex items-center justify-center text-white text-sm font-semibold" style="width: 53%">53% Breve</div>
-                                        <div class="bg-zinc-600 flex items-center justify-center text-white text-sm font-semibold" style="width: 47%">47% Lungo</div>
+                                    <div class="flex h-6 overflow-hidden rounded">
+                                        <div class="bg-purple flex items-center justify-center text-white text-[10px] font-medium" style="width: 53%">53% Breve</div>
+                                        <div class="bg-zinc-500 flex items-center justify-center text-white text-[10px] font-medium" style="width: 47%">47% Lungo</div>
                                     </div>
                                 </div>
                                 <div>
-                                    <div class="flex justify-between mb-2">
-                                        <span class="text-xs font-medium text-gray-700">2024</span>
-                                        <span class="text-xs text-gray-500">€575k totali</span>
+                                    <div class="flex justify-between mb-1.5">
+                                        <span class="text-[10px] font-medium text-gray-700">2024</span>
+                                        <span class="text-[10px] text-gray-500">€575k totali</span>
                                     </div>
-                                    <div class="flex h-10 overflow-hidden">
-                                        <div class="bg-purple flex items-center justify-center text-white text-sm font-semibold" style="width: 68%"><i class="fa-solid fa-triangle-exclamation mr-1"></i> 68% Breve</div>
-                                        <div class="bg-zinc-600 flex items-center justify-center text-white text-sm font-semibold" style="width: 32%">32% Lungo</div>
+                                    <div class="flex h-6 overflow-hidden rounded">
+                                        <div class="bg-purple flex items-center justify-center text-white text-[10px] font-medium" style="width: 68%"><i class="fa-solid fa-triangle-exclamation mr-1 text-[8px]"></i> 68% Breve</div>
+                                        <div class="bg-zinc-500 flex items-center justify-center text-white text-[10px] font-medium" style="width: 32%">32% Lungo</div>
                                     </div>
                                 </div>
                                 <div>
-                                    <div class="flex justify-between mb-2">
-                                        <span class="text-xs font-medium text-gray-700">2025</span>
-                                        <span class="text-xs text-gray-500">€506k totali (-12% vs 2024)</span>
+                                    <div class="flex justify-between mb-1.5">
+                                        <span class="text-[10px] font-medium text-gray-700">2025</span>
+                                        <span class="text-[10px] text-gray-500">€506k totali (-12%)</span>
                                     </div>
-                                    <div class="flex h-10 overflow-hidden">
-                                        <div class="bg-purple flex items-center justify-center text-white text-sm font-semibold" style="width: 54%">54% Breve</div>
-                                        <div class="bg-zinc-600 flex items-center justify-center text-white text-sm font-semibold" style="width: 46%"><i class="fa-solid fa-check mr-1"></i> 46% Lungo</div>
+                                    <div class="flex h-6 overflow-hidden rounded">
+                                        <div class="bg-purple flex items-center justify-center text-white text-[10px] font-medium" style="width: 54%">54% Breve</div>
+                                        <div class="bg-zinc-500 flex items-center justify-center text-white text-[10px] font-medium" style="width: 46%"><i class="fa-solid fa-check mr-1 text-[8px]"></i> 46% Lungo</div>
                                     </div>
                                 </div>
                             </div>
@@ -690,10 +644,10 @@
                         </div>
                     </div>
                     <div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
-                        <div class="widget-card widget-purple p-6 lg:col-span-3">
+                        <div class="widget-card widget-purple p-6 lg:col-span-2">
                             <div class="relative h-[280px]"><canvas id="icrChart"></canvas></div>
                         </div>
-                        <div class="widget-card widget-purple p-6 lg:col-span-2">
+                        <div class="widget-card widget-purple p-6 lg:col-span-3">
                             <div class="widget-detail-header">Analisi Sostenibilità Debito</div>
                             <div>
                                 <div class="widget-detail-row">
@@ -732,7 +686,7 @@
 
             <!-- View: Reports (Bilanci) -->
             <div id="reports" class="view hidden">
-                <div class="mb-20">
+                <div class="mb-10">
                     <h1 class="text-[20px] font-medium text-primary tracking-tight">Bilanci e Conto Economico</h1>
                 </div>
 
@@ -746,19 +700,19 @@
                         </div>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div class="widget-card widget-purple p-6 text-center">
+                        <div class="widget-card widget-purple p-6 text-left">
                             <div class="widget-label mb-2">2023</div>
                             <div class="widget-metric-large">+€16k</div>
                             <div class="text-xs text-gray-500 mt-1">PN €162k > Immob. €146k</div>
                             <div class="widget-status-badge mt-2 bg-positive/10 text-positive"><i class="fa-solid fa-check"></i> Equilibrato</div>
                         </div>
-                        <div class="widget-card widget-purple p-6 text-center">
+                        <div class="widget-card widget-purple p-6 text-left">
                             <div class="widget-label mb-2">2024</div>
                             <div class="widget-metric-large">-€254k</div>
                             <div class="text-xs text-gray-500 mt-1">PN €182k < Immob. €436k</div>
                             <div class="widget-status-badge mt-2 bg-negative/10 text-negative"><i class="fa-solid fa-triangle-exclamation"></i> Investimenti</div>
                         </div>
-                        <div class="widget-card widget-purple p-6 text-center">
+                        <div class="widget-card widget-purple p-6 text-left">
                             <div class="widget-label mb-2">2025</div>
                             <div class="widget-metric-large">-€144k</div>
                             <div class="text-xs text-gray-500 mt-1">PN €333k < Immob. €477k</div>
@@ -974,25 +928,25 @@
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
                         <div class="widget-card widget-purple p-6">
-                            <div class="widget-detail-header text-center">Attivo</div>
+                            <div class="widget-detail-header text-left">Attivo</div>
                             <div class="h-[200px]">
                                 <canvas id="attivoDonutChart"></canvas>
                             </div>
-                            <div id="attivoDonutChart-legend" class="flex flex-wrap justify-center gap-4 mt-4"></div>
+                            <div id="attivoDonutChart-legend" class="flex flex-wrap justify-center gap-3 mt-4"></div>
                         </div>
                         <div class="widget-card widget-purple p-6">
-                            <div class="widget-detail-header text-center">Passivo</div>
+                            <div class="widget-detail-header text-left">Passivo</div>
                             <div class="h-[200px]">
                                 <canvas id="passivoDonutChart"></canvas>
                             </div>
-                            <div id="passivoDonutChart-legend" class="flex flex-wrap justify-center gap-4 mt-4"></div>
+                            <div id="passivoDonutChart-legend" class="flex flex-wrap justify-center gap-3 mt-4"></div>
                         </div>
                         <div class="widget-card widget-purple p-6">
-                            <div class="widget-detail-header text-center">Costi di Produzione</div>
+                            <div class="widget-detail-header text-left">Costi di Produzione</div>
                             <div class="h-[200px]">
                                 <canvas id="costiDonutChart"></canvas>
                             </div>
-                            <div id="costiDonutChart-legend" class="flex flex-wrap justify-center gap-4 mt-4"></div>
+                            <div id="costiDonutChart-legend" class="flex flex-wrap justify-center gap-3 mt-4"></div>
                         </div>
                     </div>
                     <div class="ai-insight-box">
@@ -1006,7 +960,7 @@
 
             <!-- View: Analysis -->
             <div id="analysis" class="view hidden">
-                <div class="mb-20">
+                <div class="mb-10">
                     <h1 class="text-[20px] font-medium text-primary tracking-tight">Analisi Avanzata</h1>
                 </div>
 
@@ -1187,7 +1141,7 @@
                                     </div>
                                 </div>
                                 <div class="relative h-[200px]"><canvas id="dupontMarginChart"></canvas></div>
-                                <div class="text-center mt-2">
+                                <div class="text-left mt-2">
                                     <div class="text-xl font-semibold text-primary">18.3%</div>
                                     <div class="text-xs text-positive">+17.6pp vs 2024</div>
                                 </div>
@@ -1201,7 +1155,7 @@
                                     </div>
                                 </div>
                                 <div class="relative h-[200px]"><canvas id="dupontTurnoverChart"></canvas></div>
-                                <div class="text-center mt-2">
+                                <div class="text-left mt-2">
                                     <div class="text-xl font-semibold text-primary">0.92x</div>
                                     <div class="text-xs text-positive">+33% vs 2024</div>
                                 </div>
@@ -1215,7 +1169,7 @@
                                     </div>
                                 </div>
                                 <div class="relative h-[200px]"><canvas id="dupontLeverageChart"></canvas></div>
-                                <div class="text-center mt-2">
+                                <div class="text-left mt-2">
                                     <div class="text-xl font-semibold text-primary">2.69x</div>
                                     <div class="text-xs text-positive">-39% vs 2024</div>
                                 </div>
@@ -1229,7 +1183,7 @@
                                     </div>
                                 </div>
                                 <div class="relative h-[200px]"><canvas id="roaChart"></canvas></div>
-                                <div class="text-center mt-2">
+                                <div class="text-left mt-2">
                                     <div class="text-xl font-semibold text-primary">16.8%</div>
                                     <div class="text-xs text-positive">+16.4pp vs 2024</div>
                                 </div>
@@ -1247,7 +1201,7 @@
 
             <!-- View: Risk & Scoring -->
             <div id="risk" class="view hidden">
-                <div class="mb-20">
+                <div class="mb-10">
                     <h1 class="text-[20px] font-medium text-primary tracking-tight">Analisi Rischio e Scoring</h1>
                 </div>
 
@@ -1423,7 +1377,7 @@
 
             <!-- View: Documents -->
             <div id="documents" class="view hidden">
-                <div class="mb-20">
+                <div class="mb-10">
                     <h1 class="text-[20px] font-medium text-primary tracking-tight">Archivio Documenti</h1>
                 </div>
 
