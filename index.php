@@ -1,9 +1,42 @@
 <!DOCTYPE html>
+<?php
+    // Carica il data schema JSON
+    $json_file = __DIR__ . '/data-schema.json';
+
+    if (!file_exists($json_file)) {
+        die('Errore: data-schema.json non trovato');
+    }
+
+    $json_content = file_get_contents($json_file);
+    $data = json_decode($json_content, true);
+
+    if ($data === null) {
+        die('Errore: JSON non valido');
+    }
+
+    // Estrai le sezioni principali
+    $metadata = $data['metadata'] ?? [];
+    $income = $data['income_statement'] ?? [];
+    $balance = $data['balance_sheet'] ?? [];
+    $kpi = $data['kpi'] ?? [];
+    $executive = $data['executive_summary'] ?? [];
+    $risks = $data['risk_priorities'] ?? [];
+    $risk_matrix = $data['risk_matrix'] ?? [];
+    $z_score = $data['z_score_altman'] ?? [];
+    $dupont = $data['dupont_analysis'] ?? [];
+    $break_even = $data['break_even'] ?? [];
+    $debt = $data['debt_structure'] ?? [];
+    $interest_coverage = $data['interest_coverage'] ?? [];
+    $productivity = $data['produttivita'] ?? [];
+    $capex = $data['capex'] ?? [];
+    $documents = $data['documents'] ?? [];
+    $ai_insights = $data['ai_insights'] ?? [];
+?>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Business Intelligence - Perspect SRL</title>
+    <title><?php echo htmlspecialchars($metadata['company_name'] ?? 'Business Intelligence'); ?> - Dashboard</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -45,12 +78,12 @@
     <!-- Top Header - Full Width -->
     <div class="h-[60px] bg-white border-b border-gray-200 px-6 flex items-center justify-between z-50 shrink-0">
         <div>
-            <h2 class="text-[15px] font-medium text-primary">Perspect srl</h2>
+            <h2 class="text-[15px] font-medium text-primary"><?php echo htmlspecialchars($metadata['company_name'] ?? 'Azienda'); ?></h2>
             <p class="text-[11px] text-gray-500">Business Intelligence Suite</p>
         </div>
         <div class="flex items-center gap-4">
             <div class="text-[11px] text-gray-500 hidden sm:block">
-                Ultimo aggiornamento: <strong class="text-gray-700">18 nov 2025</strong>
+                Ultimo aggiornamento: <strong class="text-gray-700"><?php echo htmlspecialchars($metadata['last_update'] ?? ''); ?></strong>
             </div>
             <button id="themeToggle" class="text-gray-500 hover:text-purple text-lg transition-colors" onclick="toggleTheme()" title="Cambia tema">
                 <i class="fa-solid fa-moon"></i>
@@ -67,13 +100,13 @@
     <!-- Sidebar -->
     <div id="sidebar" class="w-[242px] bg-white border-r border-gray-200 fixed h-screen left-0 top-[60px] z-40 overflow-y-auto flex flex-col transform -translate-x-full md:translate-x-0 transition-transform duration-300">
         <div class="px-4 py-6 flex-1">
-            <button class="w-full flex items-center text-[13px] font-semibold text-gray-400 px-2 py-2 pb-4 cursor-not-allowed transition-colors duration-200 border-b border-gray-200" style="outline: none; -webkit-tap-highlight-color: transparent; border-radius: 6px;" disabled>
+            <button class="w-full flex items-center text-[13px] font-semibold text-gray-400 px-2 py-2 pb-4 cursor-not-allowed transition-colors duration-200 border-b border-gray-200 btn-reset" disabled>
                 <div class="flex items-center gap-2">
                     <i class="fa-solid fa-building text-[12px]"></i>
                     <span class="text-left">Company Overview</span>
                 </div>
             </button>
-            <button class="w-full flex items-center text-[13px] font-semibold text-purple-600 px-2 py-2 pt-4 group transition-colors duration-200" style="outline: none; -webkit-tap-highlight-color: transparent; border-radius: 6px;" data-accordion-toggle="cgMenu" onclick="toggleAccordion('cgMenu')">
+            <button class="w-full flex items-center text-[13px] font-semibold text-purple-600 px-2 py-2 pt-4 group transition-colors duration-200 btn-reset" data-accordion-toggle="cgMenu" onclick="toggleAccordion('cgMenu')">
                 <div class="flex items-center gap-2">
                     <i class="fa-solid fa-chart-line text-[12px] text-purple-600 transition-colors duration-200"></i>
                     <span class="text-purple-600 transition-colors duration-200 text-left">Controllo di Gestione</span>
@@ -109,7 +142,7 @@
                 </div>
             </div>
             <div class="border-t border-gray-200 mt-4 pt-4">
-                <button class="w-full flex items-center text-[13px] font-semibold text-gray-600 px-2 py-2 group transition-colors duration-200" style="outline: none; -webkit-tap-highlight-color: transparent; border-radius: 6px;" data-accordion-toggle="availableMenu" onclick="toggleAccordion('availableMenu')">
+                <button class="w-full flex items-center text-[13px] font-semibold text-gray-600 px-2 py-2 group transition-colors duration-200 btn-reset" data-accordion-toggle="availableMenu" onclick="toggleAccordion('availableMenu')">
                     <div class="flex items-center gap-2">
                         <i class="fa-solid fa-layer-group text-[12px] text-gray-400 transition-colors duration-200"></i>
                         <span class="transition-colors duration-200 text-left">Analisi Disponibili</span>
@@ -118,32 +151,32 @@
                 </button>
                 <div id="availableMenu" class="accordion-content hidden mt-2">
                 <div class="ml-3 border-l border-gray-200 space-y-1">
-                    <div class="flex items-center gap-2 pl-4 py-1 text-[12px] cursor-not-allowed" style="color: #cbd5e1; opacity: 0.6;">
-                        <i class="fa-solid fa-circle text-[6px]" style="color: #cbd5e1;"></i>
+                    <div class="flex items-center gap-2 pl-4 py-1 text-[12px] item-disabled">
+                        <i class="fa-solid fa-circle text-[6px]"></i>
                         <span>Brand</span>
                     </div>
-                    <div class="flex items-center gap-2 pl-4 py-1 text-[12px] cursor-not-allowed" style="color: #cbd5e1; opacity: 0.6;">
-                        <i class="fa-solid fa-circle text-[6px]" style="color: #cbd5e1;"></i>
+                    <div class="flex items-center gap-2 pl-4 py-1 text-[12px] item-disabled">
+                        <i class="fa-solid fa-circle text-[6px]"></i>
                         <span>Digital</span>
                     </div>
-                    <div class="flex items-center gap-2 pl-4 py-1 text-[12px] cursor-not-allowed" style="color: #cbd5e1; opacity: 0.6;">
-                        <i class="fa-solid fa-circle text-[6px]" style="color: #cbd5e1;"></i>
+                    <div class="flex items-center gap-2 pl-4 py-1 text-[12px] item-disabled">
+                        <i class="fa-solid fa-circle text-[6px]"></i>
                         <span>Social</span>
                     </div>
-                    <div class="flex items-center gap-2 pl-4 py-1 text-[12px] cursor-not-allowed" style="color: #cbd5e1; opacity: 0.6;">
-                        <i class="fa-solid fa-circle text-[6px]" style="color: #cbd5e1;"></i>
+                    <div class="flex items-center gap-2 pl-4 py-1 text-[12px] item-disabled">
+                        <i class="fa-solid fa-circle text-[6px]"></i>
                         <span>Web</span>
                     </div>
-                    <div class="flex items-center gap-2 pl-4 py-1 text-[12px] cursor-not-allowed" style="color: #cbd5e1; opacity: 0.6;">
-                        <i class="fa-solid fa-circle text-[6px]" style="color: #cbd5e1;"></i>
+                    <div class="flex items-center gap-2 pl-4 py-1 text-[12px] item-disabled">
+                        <i class="fa-solid fa-circle text-[6px]"></i>
                         <span>ESG</span>
                     </div>
-                    <div class="flex items-center gap-2 pl-4 py-1 text-[12px] cursor-not-allowed" style="color: #cbd5e1; opacity: 0.6;">
-                        <i class="fa-solid fa-circle text-[6px]" style="color: #cbd5e1;"></i>
+                    <div class="flex items-center gap-2 pl-4 py-1 text-[12px] item-disabled">
+                        <i class="fa-solid fa-circle text-[6px]"></i>
                         <span>EAA</span>
                     </div>
-                    <div class="flex items-center gap-2 pl-4 py-1 text-[12px] cursor-not-allowed" style="color: #cbd5e1; opacity: 0.6;">
-                        <i class="fa-solid fa-circle text-[6px]" style="color: #cbd5e1;"></i>
+                    <div class="flex items-center gap-2 pl-4 py-1 text-[12px] item-disabled">
+                        <i class="fa-solid fa-circle text-[6px]"></i>
                         <span>Innovation</span>
                     </div>
                 </div>
@@ -187,66 +220,36 @@
                                 <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider">Executive Summary 2025</div>
                             </div>
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mt-auto h-full">
-                                <div class="p-4 bg-gray-50 border border-gray-200 flex flex-col justify-between">
+                                <?php
+                                    $aree = $executive['aree'] ?? [];
+                                    $icone_stati = [
+                                        'Ottima' => 'check',
+                                        'Forte' => 'check',
+                                        'Buona' => 'check',
+                                        'Basso' => 'check',
+                                        'Attenzione' => 'triangle-exclamation',
+                                        'Migliorabile' => 'triangle-exclamation'
+                                    ];
+
+                                    foreach ($aree as $key => $area):
+                                        $stato = $area['stato'] ?? '';
+                                        $valore = $area['valore'] ?? '';
+                                        $css_class = $area['css_class'] ?? 'bg-gray-50 border border-gray-200';
+                                        $icona = $icone_stati[$stato] ?? 'info';
+                                        $color_icon = ($icona === 'triangle-exclamation') ? 'text-danger' : 'text-purple';
+                                        $label = ucfirst(str_replace('_', ' ', $key));
+                                ?>
+                                <div class="p-4 flex flex-col justify-between <?php echo $css_class; ?>">
                                     <div>
-                                        <div class="text-[10px] text-gray-500 uppercase mb-1">Redditività</div>
+                                        <div class="text-[10px] text-gray-500 uppercase mb-1"><?php echo $label; ?></div>
                                         <div class="flex items-center gap-1 text-sm font-semibold text-gray-800">
-                                            <i class="fa-solid fa-check text-purple"></i>
-                                            Ottima
+                                            <i class="fa-solid fa-<?php echo $icona; ?> <?php echo $color_icon; ?>"></i>
+                                            <?php echo htmlspecialchars($stato); ?>
                                         </div>
                                     </div>
-                                    <div class="text-[11px] text-gray-500 mt-2">ROE 45.3%</div>
+                                    <div class="text-[11px] text-gray-500 mt-2"><?php echo htmlspecialchars($valore); ?></div>
                                 </div>
-                                <div class="p-4 bg-gray-50 border border-gray-200 flex flex-col justify-between">
-                                    <div>
-                                        <div class="text-[10px] text-gray-500 uppercase mb-1">Crescita</div>
-                                        <div class="flex items-center gap-1 text-sm font-semibold text-gray-800">
-                                            <i class="fa-solid fa-check text-purple"></i>
-                                            Forte
-                                        </div>
-                                    </div>
-                                    <div class="text-[11px] text-gray-500 mt-2">+49% Ricavi</div>
-                                </div>
-                                <div class="p-4 bg-gray-50 border border-gray-200 flex flex-col justify-between">
-                                    <div>
-                                        <div class="text-[10px] text-gray-500 uppercase mb-1">Solidità</div>
-                                        <div class="flex items-center gap-1 text-sm font-semibold text-gray-800">
-                                            <i class="fa-solid fa-check text-purple"></i>
-                                            Buona
-                                        </div>
-                                    </div>
-                                    <div class="text-[11px] text-gray-500 mt-2">D/E 1.52x</div>
-                                </div>
-                                <div class="p-4 border flex flex-col justify-between" style="background: linear-gradient(135deg, rgba(220, 38, 38, 0.06) 0%, rgba(255, 255, 255, 0) 100%); border-color: rgba(220, 38, 38, 0.25);">
-                                    <div>
-                                        <div class="text-[10px] text-gray-500 uppercase mb-1">Liquidità</div>
-                                        <div class="flex items-center gap-1 text-sm font-semibold text-gray-800">
-                                            <i class="fa-solid fa-triangle-exclamation text-danger"></i>
-                                            Attenzione
-                                        </div>
-                                    </div>
-                                    <div class="text-[11px] text-gray-500 mt-2">Cash 0.06x</div>
-                                </div>
-                                <div class="p-4 border flex flex-col justify-between" style="background: linear-gradient(135deg, rgba(220, 38, 38, 0.06) 0%, rgba(255, 255, 255, 0) 100%); border-color: rgba(220, 38, 38, 0.25);">
-                                    <div>
-                                        <div class="text-[10px] text-gray-500 uppercase mb-1">Efficienza</div>
-                                        <div class="flex items-center gap-1 text-sm font-semibold text-gray-800">
-                                            <i class="fa-solid fa-triangle-exclamation text-danger"></i>
-                                            Migliorabile
-                                        </div>
-                                    </div>
-                                    <div class="text-[11px] text-gray-500 mt-2">DSO 157gg</div>
-                                </div>
-                                <div class="p-4 bg-gray-50 border border-gray-200 flex flex-col justify-between">
-                                    <div>
-                                        <div class="text-[10px] text-gray-500 uppercase mb-1">Rischio</div>
-                                        <div class="flex items-center gap-1 text-sm font-semibold text-gray-800">
-                                            <i class="fa-solid fa-check text-purple"></i>
-                                            Basso
-                                        </div>
-                                    </div>
-                                    <div class="text-[11px] text-gray-500 mt-2">Z-Score 3.18</div>
-                                </div>
+                                <?php endforeach; ?>
                             </div>
                         </div>
                     </div>
@@ -260,16 +263,29 @@
                             <span class="text-xs font-semibold text-primary uppercase tracking-wide">Riepilogo Esecutivo 2025</span>
                         </div>
                         <div class="text-[13px] leading-relaxed text-gray-700">
-                            <div class="pl-4 relative py-2 border-b border-dashed border-gray-300"><span class="absolute left-0 text-danger font-bold">→</span> Cash Ratio 0.06x critico: liquidità immediata insufficiente per coprire i debiti a breve</div>
-                            <div class="pl-4 relative py-2 border-b border-dashed border-gray-300"><span class="absolute left-0 text-danger font-bold">→</span> DSO 157 giorni ancora sopra target (120gg): €75k di cassa bloccata nei crediti</div>
-                            <div class="pl-4 relative py-2 border-b border-dashed border-gray-300"><span class="absolute left-0 text-danger font-bold">→</span> Dipendenza da debiti a breve: €272k (54% del totale debiti) in scadenza entro 12 mesi</div>
-                            <div class="pl-4 relative py-2 border-b border-dashed border-gray-300"><span class="absolute left-0 text-purple font-bold">→</span> Margine struttura negativo -€144k: immobilizzazioni finanziate parzialmente con debito</div>
-                            <div class="pl-4 relative py-2 border-b border-dashed border-gray-300"><span class="absolute left-0 text-purple font-bold">→</span> Ricavi +49% (€825k): crescita organica trainata da nuovi clienti e upselling</div>
-                            <div class="pl-4 relative py-2 border-b border-dashed border-gray-300"><span class="absolute left-0 text-purple font-bold">→</span> EBITDA margin 24.9% (+12.2pp): efficienza operativa ai massimi storici</div>
-                            <div class="pl-4 relative py-2 border-b border-dashed border-gray-300"><span class="absolute left-0 text-purple font-bold">→</span> Utile netto €151k (+4039%): trasformazione da quasi break-even a forte profittabilità</div>
-                            <div class="pl-4 relative py-2 border-b border-dashed border-gray-300"><span class="absolute left-0 text-purple font-bold">→</span> Z-Score 3.18 (zona sicura): rischio insolvenza azzerato vs 1.42 nel 2024</div>
-                            <div class="pl-4 relative py-2 border-b border-dashed border-gray-300"><span class="absolute left-0 text-purple font-bold">→</span> ROE 45.3%: rendimento eccezionale del capitale proprio (+43.3pp)</div>
-                            <div class="pl-4 relative py-2"><span class="absolute left-0 text-purple font-bold">→</span> ICR 8.2x: capacità di copertura interessi eccellente (+447% vs 2024)</div>
+                            <?php
+                                $exec_insights = $ai_insights['executive_summary'] ?? [];
+                                $negativi = $exec_insights['negativi'] ?? [];
+                                $positivi = $exec_insights['positivi'] ?? [];
+                                $total_items = count($negativi) + count($positivi);
+                                $current = 0;
+
+                                // Display negative items first (danger color)
+                                foreach ($negativi as $item):
+                                    $current++;
+                                    $border_class = $current < $total_items ? 'border-b border-dashed border-gray-300' : '';
+                            ?>
+                            <div class="pl-4 relative py-2 <?php echo $border_class; ?>"><span class="absolute left-0 text-danger font-bold">→</span> <?php echo htmlspecialchars($item); ?></div>
+                            <?php endforeach; ?>
+
+                            <?php
+                                // Display positive items (purple color)
+                                foreach ($positivi as $item):
+                                    $current++;
+                                    $border_class = $current < $total_items ? 'border-b border-dashed border-gray-300' : '';
+                            ?>
+                            <div class="pl-4 relative py-2 <?php echo $border_class; ?>"><span class="absolute left-0 text-purple font-bold">→</span> <?php echo htmlspecialchars($item); ?></div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                 </div>
@@ -279,29 +295,66 @@
                 <div class="mb-12 sm:mb-20">
                     <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider mb-3">Insight Strategici</div>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                        <?php
+                            // ROE calculation
+                            $roe_2025 = $kpi['redditivita']['roe'][2] ?? 0;
+                            $roe_2024 = $kpi['redditivita']['roe'][1] ?? 0;
+                            $roe_diff = $roe_2025 - $roe_2024;
+                            $utile_netto = $income['utile_netto'][2] ?? 0;
+                            $patrimonio = $balance['passivo']['totale_patrimonio_netto'][2] ?? 0;
+
+                            // Z-Score calculation
+                            $zscore_2025 = $kpi['rischio']['z_score'][2] ?? 0;
+                            $zscore_2024 = $kpi['rischio']['z_score'][1] ?? 0;
+                            $zscore_var = $zscore_2024 > 0 ? (($zscore_2025 - $zscore_2024) / $zscore_2024) * 100 : 0;
+
+                            // Leva Operativa (EBIT growth / Revenue growth)
+                            $ebit_growth = $income['ebit'][1] > 0 ? (($income['ebit'][2] - $income['ebit'][1]) / $income['ebit'][1]) * 100 : 0;
+                            $rev_growth = $income['ricavi'][1] > 0 ? (($income['ricavi'][2] - $income['ricavi'][1]) / $income['ricavi'][1]) * 100 : 0;
+                            $leva_op = $rev_growth > 0 ? $ebit_growth / $rev_growth : 0;
+
+                            // Break-even
+                            $be_punto = $break_even['punto_pareggio'] ?? 0;
+                            $be_margine_pct = $break_even['margine_sicurezza_pct'] ?? 0;
+                            $be_margine_eur = $break_even['margine_sicurezza_eur'] ?? 0;
+
+                            // Produttività
+                            $costo_pers_2024 = $income['costi_personale'][1] ?? 0;
+                            $costo_pers_2025 = $income['costi_personale'][2] ?? 0;
+                            $prod_var = $costo_pers_2024 > 0 ? (($costo_pers_2025 - $costo_pers_2024) / $costo_pers_2024) * 100 : 0;
+                            $ebitda_2025 = $income['ebitda'][2] ?? 0;
+                            $ebitda_2024 = $income['ebitda'][1] ?? 0;
+                            $ebitda_var = $ebitda_2024 > 0 ? (($ebitda_2025 - $ebitda_2024) / $ebitda_2024) * 100 : 0;
+
+                            // DSO
+                            $dso_2025 = $kpi['efficienza']['dso'][2] ?? 0;
+                            $dso_2024 = $kpi['efficienza']['dso'][1] ?? 0;
+                            $dso_diff = $dso_2025 - $dso_2024;
+                            $cassa_lib = $risks[0]['cassa_liberabile'] ?? 0;
+                        ?>
                         <div class="widget-card widget-purple p-6">
-                            <div class="widget-title">ROE 45.3% (+43.3pp)</div>
-                            <div class="widget-text">Rendimento eccezionale del capitale proprio. Utile netto €151k su patrimonio €334k.</div>
+                            <div class="widget-title">ROE <?php echo number_format($roe_2025, 1, '.', ''); ?>% (<?php echo ($roe_diff >= 0 ? '+' : ''); ?><?php echo number_format($roe_diff, 1, '.', ''); ?>pp)</div>
+                            <div class="widget-text">Rendimento eccezionale del capitale proprio. Utile netto €<?php echo number_format($utile_netto / 1000, 0, '.', ''); ?>k su patrimonio €<?php echo number_format($patrimonio / 1000, 0, '.', ''); ?>k.</div>
                         </div>
                         <div class="widget-card widget-purple p-6">
-                            <div class="widget-title">Z-Score 3.18 (+124%)</div>
-                            <div class="widget-text">Zona sicura raggiunta (>2.9). Rischio insolvenza azzerato vs 1.42 nel 2024.</div>
+                            <div class="widget-title">Z-Score <?php echo number_format($zscore_2025, 2, '.', ''); ?> (<?php echo ($zscore_var >= 0 ? '+' : ''); ?><?php echo number_format($zscore_var, 0, '.', ''); ?>%)</div>
+                            <div class="widget-text">Zona sicura raggiunta (>2.9). Rischio insolvenza azzerato vs <?php echo number_format($zscore_2024, 2, '.', ''); ?> nel 2024.</div>
                         </div>
                         <div class="widget-card widget-purple p-6">
-                            <div class="widget-title">Leva Operativa 8.9x</div>
-                            <div class="widget-text">EBIT cresce 8.9x più veloce dei ricavi vs 2024. Modello ad alta sensibilità al volume.</div>
+                            <div class="widget-title">Leva Operativa <?php echo number_format($leva_op, 1, '.', ''); ?>x</div>
+                            <div class="widget-text">EBIT cresce <?php echo number_format($leva_op, 1, '.', ''); ?>x più veloce dei ricavi vs 2024. Modello ad alta sensibilità al volume.</div>
                         </div>
                         <div class="widget-card widget-purple p-6">
-                            <div class="widget-title">Break-Even €552k</div>
-                            <div class="widget-text">Margine di sicurezza 33% vs 2024. Ricavi possono scendere di €273k prima di perdite.</div>
+                            <div class="widget-title">Break-Even €<?php echo number_format($be_punto / 1000, 0, '.', ''); ?>k</div>
+                            <div class="widget-text">Margine di sicurezza <?php echo $be_margine_pct; ?>% vs 2024. Ricavi possono scendere di €<?php echo number_format($be_margine_eur / 1000, 0, '.', ''); ?>k prima di perdite.</div>
                         </div>
                         <div class="widget-card widget-purple p-6">
-                            <div class="widget-title">Produttività +39%</div>
-                            <div class="widget-text">EBITDA €205k (+216%). Per dipendente +€26k vs 2024. Team scalabile.</div>
+                            <div class="widget-title">Produttività +<?php echo number_format($prod_var, 0, '.', ''); ?>%</div>
+                            <div class="widget-text">EBITDA €<?php echo number_format($ebitda_2025 / 1000, 0, '.', ''); ?>k (+<?php echo number_format($ebitda_var, 0, '.', ''); ?>%). Per dipendente +€26k vs 2024. Team scalabile.</div>
                         </div>
                         <div class="widget-card widget-negative p-6">
-                            <div class="widget-title"><i class="fa-solid fa-triangle-exclamation text-negative"></i> DSO 157gg</div>
-                            <div class="widget-text">-57gg vs 2024 ma target 120gg. Riduzione libera €75k cassa.</div>
+                            <div class="widget-title"><i class="fa-solid fa-triangle-exclamation text-negative"></i> DSO <?php echo $dso_2025; ?>gg</div>
+                            <div class="widget-text"><?php echo $dso_diff; ?>gg vs 2024 ma target 120gg. Riduzione libera €<?php echo number_format($cassa_lib / 1000, 0, '.', ''); ?>k cassa.</div>
                         </div>
                     </div>
                 </div>
@@ -326,7 +379,7 @@
                                 <div class="flex items-center gap-2 mb-2 pb-2 border-b border-purple/20">
                                     <span class="badge-ai bg-purple text-white text-[9px] font-bold px-1.5 py-0.5 uppercase tracking-wide">AI Insight</span>
                                 </div>
-                                <strong><i class="fa-solid fa-scale-balanced text-purple"></i> Leva Finanziaria Ottimale:</strong> Il D/E sceso da 3.17x a 1.52x (-52%) indica un riequilibrio della struttura finanziaria. Il ROE esploso al 45.3% (+43pp) deriva dalla combinazione di maggior leverage (1.52x) e margine netto 18.3%. La struttura è ora più sostenibile.
+                                <strong><i class="fa-solid fa-scale-balanced text-purple"></i> Leva Finanziaria Ottimale:</strong> <?php echo htmlspecialchars($ai_insights['leva_finanziaria'] ?? ''); ?>
                             </div>
                         </div>
                         <div class="widget-card widget-purple p-6">
@@ -345,7 +398,7 @@
                                 <div class="flex items-center gap-2 mb-2 pb-2 border-b border-purple/20">
                                     <span class="badge-ai bg-purple text-white text-[9px] font-bold px-1.5 py-0.5 uppercase tracking-wide">AI Insight</span>
                                 </div>
-                                <strong><i class="fa-solid fa-chart-line text-purple"></i> Efficienza Operativa:</strong> I costi sono scesi dal 82.5% al 72.3% dei ricavi (-10.2pp), segnalando forte leva operativa. Il DSO a 157gg rimane critico (era 214gg nel 2023). Priorità: ridurre ulteriormente i giorni incasso per liberare €75k di cassa. I margini operativi sono ormai ottimali.
+                                <strong><i class="fa-solid fa-chart-line text-purple"></i> Efficienza Operativa:</strong> <?php echo htmlspecialchars($ai_insights['efficienza_costi_dso'] ?? ''); ?>
                             </div>
                         </div>
                     </div>
@@ -370,7 +423,7 @@
                                 <div class="flex items-center gap-2 mb-2 pb-2 border-b border-purple/20">
                                     <span class="badge-ai bg-purple text-white text-[9px] font-bold px-1.5 py-0.5 uppercase tracking-wide">AI Insight</span>
                                 </div>
-                                <strong><i class="fa-solid fa-chart-line text-purple"></i> Crescita Accelerata:</strong> Ricavi +49% (€825k) con EBITDA +216% (€205k). Il margine EBITDA è passato dal 12.7% al 24.9% (+12.2pp), segnalando forte leva operativa. La crescita è organica, trainata da nuovi clienti e upselling.
+                                <strong><i class="fa-solid fa-chart-line text-purple"></i> Crescita Accelerata:</strong> <?php echo htmlspecialchars($ai_insights['crescita_ricavi'] ?? ''); ?>
                             </div>
                         </div>
 
@@ -390,7 +443,7 @@
                                 <div class="flex items-center gap-2 mb-2 pb-2 border-b border-purple/20">
                                     <span class="badge-ai bg-purple text-white text-[9px] font-bold px-1.5 py-0.5 uppercase tracking-wide">AI Insight</span>
                                 </div>
-                                <strong><i class="fa-solid fa-coins text-purple"></i> Profittabilità Esplosa:</strong> EBIT +452% (€180k) e Utile Netto +4039% (€151k). Il margine netto è salito dallo 0.7% al 18.3%. La trasformazione da quasi break-even a forte profittabilità riflette il controllo dei costi e la scalabilità del modello.
+                                <strong><i class="fa-solid fa-coins text-purple"></i> Profittabilità Esplosa:</strong> <?php echo htmlspecialchars($ai_insights['profittabilita'] ?? ''); ?>
                             </div>
                         </div>
                     </div>
@@ -414,26 +467,46 @@
                         </div>
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+                        <?php
+                            // DSO data
+                            $dso_2025 = $kpi['efficienza']['dso'][2] ?? 0;
+                            $dso_2024 = $kpi['efficienza']['dso'][1] ?? 0;
+                            $dso_var = $dso_2024 > 0 ? (($dso_2025 - $dso_2024) / $dso_2024) * 100 : 0;
+
+                            // DPO data
+                            $dpo_2025 = $kpi['efficienza']['dpo'][2] ?? 0;
+                            $dpo_2024 = $kpi['efficienza']['dpo'][1] ?? 0;
+                            $dpo_var = $dpo_2024 > 0 ? (($dpo_2025 - $dpo_2024) / $dpo_2024) * 100 : 0;
+
+                            // Ciclo Finanziario data
+                            $ciclo_2025 = $kpi['efficienza']['ciclo_finanziario'][2] ?? 0;
+                            $ciclo_2024 = $kpi['efficienza']['ciclo_finanziario'][1] ?? 0;
+                            $ciclo_var = $ciclo_2024 > 0 ? (($ciclo_2025 - $ciclo_2024) / $ciclo_2024) * 100 : 0;
+                        ?>
                         <div class="widget-card widget-negative p-6 text-left">
                             <div class="widget-label mb-2">Giorni Incasso (DSO)</div>
-                            <div class="widget-metric-large text-negative">-27%</div>
-                            <div class="text-sm text-gray-500">157 giorni</div>
+                            <div class="widget-metric-large text-negative"><?php echo number_format($dso_var, 0, '.', ''); ?>%</div>
+                            <div class="text-sm text-gray-500"><?php echo $dso_2025; ?> giorni</div>
                             <div class="text-xs text-gray-400 mt-1">Target: 120 giorni</div>
                             <div class="widget-status-badge mt-2 bg-red-100 text-red-700 text-[9px]"><i class="fa-solid fa-triangle-exclamation"></i> Sopra target</div>
                         </div>
                         <div class="widget-card widget-purple p-6 text-left">
                             <div class="widget-label mb-2">Giorni Pagamento (DPO)</div>
-                            <div class="widget-metric-large text-gray-500">0%</div>
-                            <div class="text-sm text-gray-500">56 giorni</div>
+                            <div class="widget-metric-large text-gray-500"><?php echo number_format($dpo_var, 0, '.', ''); ?>%</div>
+                            <div class="text-sm text-gray-500"><?php echo $dpo_2025; ?> giorni</div>
                         </div>
                         <div class="widget-card widget-purple p-6 text-left">
                             <div class="widget-label mb-2">Ciclo Finanziario</div>
-                            <div class="widget-metric-large text-positive">-29%</div>
-                            <div class="text-sm text-gray-500">101 giorni</div>
+                            <div class="widget-metric-large text-positive"><?php echo number_format($ciclo_var, 0, '.', ''); ?>%</div>
+                            <div class="text-sm text-gray-500"><?php echo $ciclo_2025; ?> giorni</div>
                         </div>
                         <div class="widget-card widget-purple p-6 text-left">
                             <div class="widget-label mb-2">Cassa Liberabile</div>
-                            <div class="widget-metric-large">€75k</div>
+                            <?php
+                                $cassa_lib = $risks[0]['cassa_liberabile'] ?? 0;
+                                $cassa_lib_k = number_format($cassa_lib / 1000, 0, '.', '');
+                            ?>
+                            <div class="widget-metric-large">€<?php echo $cassa_lib_k; ?>k</div>
                             <div class="text-xs text-gray-500 mt-1">Con DSO a 120gg</div>
                         </div>
                     </div>
@@ -441,7 +514,7 @@
                         <div class="flex items-center gap-2 mb-2 pb-2 border-b border-purple/20">
                             <span class="badge-ai bg-purple text-white text-[9px] font-bold px-1.5 py-0.5 uppercase tracking-wide">AI Insight</span>
                         </div>
-                        <strong><i class="fa-solid fa-clock text-purple"></i> Efficienza Operativa:</strong> Il ciclo finanziario è sceso del 29% (da 142 a 101 giorni), ma rimane elevato. Il DSO a 157gg (vs target 120gg) congela €75k di cassa. Migliorare la gestione crediti per liberare liquidità.
+                        <strong><i class="fa-solid fa-clock text-purple"></i> Efficienza Operativa:</strong> <?php echo htmlspecialchars($ai_insights['ciclo_capitale'] ?? ''); ?>
                     </div>
                 </div>
 
@@ -460,9 +533,14 @@
                             </div>
                             <div class="relative h-[180px] sm:h-[240px] mb-3"><canvas id="currentRatioChart"></canvas></div>
                             <div class="text-left">
-                                <div class="widget-metric-large">1.52x</div>
+                                <?php
+                                    $cr_2025 = $kpi['liquidita']['current_ratio'][2] ?? 0;
+                                    $cr_2024 = $kpi['liquidita']['current_ratio'][1] ?? 0;
+                                    $cr_var = $cr_2024 > 0 ? (($cr_2025 - $cr_2024) / $cr_2024) * 100 : 0;
+                                ?>
+                                <div class="widget-metric-large"><?php echo number_format($cr_2025, 2, '.', ''); ?>x</div>
                                 <div class="flex items-center justify-center gap-2 mt-1">
-                                    <span class="widget-change-positive">+65% vs 2024</span>
+                                    <span class="widget-change-positive"><?php echo ($cr_var >= 0 ? '+' : ''); ?><?php echo number_format($cr_var, 0, '.', ''); ?>% vs 2024</span>
                                     <span class="widget-status-badge bg-positive/10 text-positive"><i class="fa-solid fa-check"></i> Accettabile</span>
                                 </div>
                             </div>
@@ -479,9 +557,14 @@
                             </div>
                             <div class="relative h-[180px] sm:h-[240px] mb-3"><canvas id="cashRatioChart"></canvas></div>
                             <div class="text-left">
-                                <div class="widget-metric-large text-negative">0.06x</div>
+                                <?php
+                                    $cash_r_2025 = $kpi['liquidita']['cash_ratio'][2] ?? 0;
+                                    $cash_r_2024 = $kpi['liquidita']['cash_ratio'][1] ?? 0;
+                                    $cash_r_var = $cash_r_2024 > 0 ? (($cash_r_2025 - $cash_r_2024) / $cash_r_2024) * 100 : 0;
+                                ?>
+                                <div class="widget-metric-large text-negative"><?php echo number_format($cash_r_2025, 2, '.', ''); ?>x</div>
                                 <div class="flex items-center justify-center gap-2 mt-1">
-                                    <span class="widget-change-positive">+200% vs 2024</span>
+                                    <span class="widget-change-positive"><?php echo ($cash_r_var >= 0 ? '+' : ''); ?><?php echo number_format($cash_r_var, 0, '.', ''); ?>% vs 2024</span>
                                     <span class="widget-status-badge bg-negative/10 text-negative"><i class="fa-solid fa-triangle-exclamation"></i> Critico</span>
                                 </div>
                             </div>
@@ -498,10 +581,19 @@
                             </div>
                             <div class="relative h-[180px] sm:h-[240px] mb-3"><canvas id="treasuryMarginChart"></canvas></div>
                             <div class="text-left">
-                                <div class="widget-metric-large text-positive">€100k</div>
+                                <?php
+                                    $tm = $kpi['liquidita']['margine_tesoreria'] ?? [];
+                                    $tm_2025 = $tm[2] ?? 0;
+                                    $tm_2024 = $tm[1] ?? 0;
+                                    $tm_status = $tm_2025 >= 0 ? 'Positivo' : 'Negativo';
+                                    $tm_color = $tm_2025 >= 0 ? 'text-positive' : 'text-negative';
+                                    $tm_badge_color = $tm_2025 >= 0 ? 'bg-positive/10 text-positive' : 'bg-negative/10 text-negative';
+                                    $tm_icon = $tm_2025 >= 0 ? 'fa-check' : 'fa-triangle-exclamation';
+                                ?>
+                                <div class="widget-metric-large <?php echo $tm_color; ?>"><?php echo ($tm_2025 >= 0 ? '' : '-'); ?>€<?php echo number_format(abs($tm_2025) / 1000, 0, '.', ''); ?>k</div>
                                 <div class="flex items-center justify-center gap-2 mt-1">
-                                    <span class="widget-change-positive">da -€63k</span>
-                                    <span class="widget-status-badge bg-positive/10 text-positive"><i class="fa-solid fa-check"></i> Positivo</span>
+                                    <span class="widget-change-positive">da <?php echo ($tm_2024 >= 0 ? '+' : ''); ?>€<?php echo number_format(abs($tm_2024) / 1000, 0, '.', ''); ?>k</span>
+                                    <span class="widget-status-badge <?php echo $tm_badge_color; ?>"><i class="fa-solid <?php echo $tm_icon; ?>"></i> <?php echo $tm_status; ?></span>
                                 </div>
                             </div>
                         </div>
@@ -510,7 +602,7 @@
                         <div class="flex items-center gap-2 mb-2 pb-2 border-b border-purple/20">
                             <span class="badge-ai bg-purple text-white text-[9px] font-bold px-1.5 py-0.5 uppercase tracking-wide">AI Insight</span>
                         </div>
-                        <strong><i class="fa-solid fa-droplet text-purple"></i> Liquidità:</strong> Il Current Ratio è migliorato al 1.52x (+65% vs 2024), ma il Cash Ratio rimane critico a 0.06x. L'azienda può coprire i debiti a breve con le attività correnti, ma ha scarsa liquidità immediata. Priorità: accelerare incassi e aumentare disponibilità liquide.
+                        <strong><i class="fa-solid fa-droplet text-purple"></i> Liquidità:</strong> <?php echo htmlspecialchars($ai_insights['liquidita_ratios'] ?? ''); ?>
                     </div>
                 </div>
 
@@ -527,22 +619,24 @@
                         <div class="relative h-[280px] sm:h-[350px]"><canvas id="cashFlowWaterfallChart"></canvas></div>
                         <div class="mt-4 pt-4 border-t border-gray-200">
                             <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-left">
+                                <?php
+                                    $cf_data = $data['cash_flow'] ?? [];
+                                    $items = [
+                                        ['label' => 'Autofinanziamento', 'key' => 'autofinanziamento', 'color' => 'text-positive'],
+                                        ['label' => 'Δ Capitale Circolante', 'key' => 'delta_capitale_circolante', 'color' => 'text-positive'],
+                                        ['label' => 'Investimenti', 'key' => 'investimenti', 'color' => 'text-negative'],
+                                        ['label' => 'Δ Debiti Finanziari', 'key' => 'delta_debiti_finanziari', 'color' => 'text-negative'],
+                                    ];
+                                    foreach ($items as $item):
+                                        $val = $cf_data[$item['key']][2] ?? 0;
+                                        $formatted = number_format(abs($val) / 1000, 1, '.', '');
+                                        $prefix = ($val >= 0 ? '+' : '-');
+                                ?>
                                 <div>
-                                    <div class="widget-label">Autofinanziamento</div>
-                                    <div class="widget-metric-medium text-positive">€188.9k</div>
+                                    <div class="widget-label"><?php echo $item['label']; ?></div>
+                                    <div class="widget-metric-medium <?php echo $item['color']; ?>"><?php echo ($val < 0 ? '-' : '+'); ?>€<?php echo $formatted; ?>k</div>
                                 </div>
-                                <div>
-                                    <div class="widget-label">Δ Capitale Circolante</div>
-                                    <div class="widget-metric-medium text-positive">+€100.6k</div>
-                                </div>
-                                <div>
-                                    <div class="widget-label">Investimenti</div>
-                                    <div class="widget-metric-medium text-negative">-€66.3k</div>
-                                </div>
-                                <div>
-                                    <div class="widget-label">Δ Debiti Finanziari</div>
-                                    <div class="widget-metric-medium text-negative">-€69.4k</div>
-                                </div>
+                                <?php endforeach; ?>
                             </div>
                         </div>
                     </div>
@@ -550,7 +644,7 @@
                         <div class="flex items-center gap-2 mb-2 pb-2 border-b border-purple/20">
                             <span class="badge-ai bg-purple text-white text-[9px] font-bold px-1.5 py-0.5 uppercase tracking-wide">AI Insight</span>
                         </div>
-                        <strong><i class="fa-solid fa-arrow-trend-up text-purple"></i> Generazione Cassa:</strong> Il flusso operativo è positivo (€289k = €189k autofinanziamento + €100k Δ capitale circolante). I CAPEX (-€66k) e il rimborso debiti (-€69k) sono coperti dalla gestione corrente. La cassa finale è in aumento, segnalando buona salute finanziaria.
+                        <strong><i class="fa-solid fa-arrow-trend-up text-purple"></i> Generazione Cassa:</strong> <?php echo htmlspecialchars($ai_insights['cash_flow_waterfall'] ?? ''); ?>
                     </div>
                 </div>
 
@@ -573,7 +667,7 @@
                         <div class="flex items-center gap-2 mb-2 pb-2 border-b border-purple/20">
                             <span class="badge-ai bg-purple text-white text-[9px] font-bold px-1.5 py-0.5 uppercase tracking-wide">AI Insight</span>
                         </div>
-                        <strong><i class="fa-solid fa-money-bill-trend-up text-purple"></i> Trend Cash Flow:</strong> Il CFO è triplicato nel triennio (€62k → €189k, +205%). La liquidità 2024 è scesa a €7k per assorbimento del capitale circolante e investimenti, ma nel 2025 si è ripresa a €17k (+143%). La crescita del CFO garantisce capacità di autofinanziamento per futuri investimenti.
+                        <strong><i class="fa-solid fa-money-bill-trend-up text-purple"></i> Trend Cash Flow:</strong> <?php echo htmlspecialchars($ai_insights['cash_flow_trend'] ?? ''); ?>
                     </div>
                 </div>
 
@@ -596,36 +690,36 @@
                         <div class="widget-card widget-purple p-4 sm:p-6 lg:col-span-3">
                             <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider mb-6">Dettaglio per Anno</div>
                             <div class="space-y-8">
+                                <?php
+                                    $fiscal_years = ['2023', '2024', '2025'];
+                                    $breve = $debt['breve_termine'] ?? [];
+                                    $lungo = $debt['lungo_termine'] ?? [];
+                                    $breve_pct = $debt['breve_pct'] ?? [];
+                                    $lungo_pct = $debt['lungo_pct'] ?? [];
+
+                                    foreach ([0, 1, 2] as $idx):
+                                        $year = $fiscal_years[$idx];
+                                        $b_val = $breve[$idx] ?? 0;
+                                        $l_val = $lungo[$idx] ?? 0;
+                                        $total = $b_val + $l_val;
+                                        $b_pct = $breve_pct[$idx] ?? 0;
+                                        $l_pct = $lungo_pct[$idx] ?? 0;
+                                        $icon = '';
+                                        if ($idx === 1) $icon = '<i class="fa-solid fa-triangle-exclamation mr-1 text-[8px]"></i>';
+                                        if ($idx === 2) $icon = '<i class="fa-solid fa-check mr-1 text-[8px]"></i>';
+                                        $variazione = ($idx === 2) ? ' (-12%)' : '';
+                                ?>
                                 <div>
                                     <div class="flex justify-between mb-1.5">
-                                        <span class="text-[10px] font-medium text-gray-700">2023</span>
-                                        <span class="text-[10px] text-gray-500">€430k totali</span>
+                                        <span class="text-[10px] font-medium text-gray-700"><?php echo $year; ?></span>
+                                        <span class="text-[10px] text-gray-500">€<?php echo round($total/1000); ?>k totali<?php echo $variazione; ?></span>
                                     </div>
                                     <div class="flex h-6 overflow-hidden rounded">
-                                        <div class="bg-purple flex items-center justify-center text-white text-[10px] font-medium" style="width: 53%">53% Breve</div>
-                                        <div class="bg-zinc-500 flex items-center justify-center text-white text-[10px] font-medium" style="width: 47%">47% Lungo</div>
+                                        <div class="bg-purple flex items-center justify-center text-white text-[10px] font-medium" style="width: <?php echo $b_pct; ?>%"><?php echo $icon; ?><?php echo $b_pct; ?>% Breve</div>
+                                        <div class="bg-zinc-500 flex items-center justify-center text-white text-[10px] font-medium" style="width: <?php echo $l_pct; ?>%"><?php echo $l_pct; ?>% Lungo</div>
                                     </div>
                                 </div>
-                                <div>
-                                    <div class="flex justify-between mb-1.5">
-                                        <span class="text-[10px] font-medium text-gray-700">2024</span>
-                                        <span class="text-[10px] text-gray-500">€575k totali</span>
-                                    </div>
-                                    <div class="flex h-6 overflow-hidden rounded">
-                                        <div class="bg-purple flex items-center justify-center text-white text-[10px] font-medium" style="width: 68%"><i class="fa-solid fa-triangle-exclamation mr-1 text-[8px]"></i> 68% Breve</div>
-                                        <div class="bg-zinc-500 flex items-center justify-center text-white text-[10px] font-medium" style="width: 32%">32% Lungo</div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="flex justify-between mb-1.5">
-                                        <span class="text-[10px] font-medium text-gray-700">2025</span>
-                                        <span class="text-[10px] text-gray-500">€506k totali (-12%)</span>
-                                    </div>
-                                    <div class="flex h-6 overflow-hidden rounded">
-                                        <div class="bg-purple flex items-center justify-center text-white text-[10px] font-medium" style="width: 54%">54% Breve</div>
-                                        <div class="bg-zinc-500 flex items-center justify-center text-white text-[10px] font-medium" style="width: 46%"><i class="fa-solid fa-check mr-1 text-[8px]"></i> 46% Lungo</div>
-                                    </div>
-                                </div>
+                                <?php endforeach; ?>
                             </div>
                         </div>
                     </div>
@@ -633,7 +727,7 @@
                         <div class="flex items-center gap-2 mb-2 pb-2 border-b border-purple/20">
                             <span class="badge-ai bg-purple text-white text-[9px] font-bold px-1.5 py-0.5 uppercase tracking-wide">AI Insight</span>
                         </div>
-                        <strong><i class="fa-solid fa-scale-balanced text-purple"></i> Struttura Debiti:</strong> Mix migliorato di 14pp vs 2024 (da 68% a 54% breve termine). Il riequilibrio riduce la pressione sulla liquidità a breve. Debito totale -12% (€506k vs €575k).
+                        <strong><i class="fa-solid fa-scale-balanced text-purple"></i> Struttura Debiti:</strong> <?php echo htmlspecialchars($ai_insights['struttura_debiti'] ?? ''); ?>
                     </div>
                 </div>
 
@@ -653,25 +747,37 @@
                         <div class="widget-card widget-purple p-4 sm:p-6 lg:col-span-3">
                             <div class="widget-detail-header">Analisi Sostenibilità Debito</div>
                             <div>
+                                <?php
+                                    $ebit_2025 = $interest_coverage['ebit'][2] ?? 0;
+                                    $oneri_2025 = $interest_coverage['oneri_finanziari'][2] ?? 0;
+                                    $oneri_2024 = $interest_coverage['oneri_finanziari'][1] ?? 0;
+                                    $icr_2025 = $interest_coverage['icr'][2] ?? 0;
+                                    $icr_2024 = $interest_coverage['icr'][1] ?? 0;
+                                    $costo_debito = $interest_coverage['costo_medio_debito'] ?? 0;
+                                    $dscr = $kpi['redditivita']['dscr'][2] ?? 0;
+
+                                    $oneri_var = $oneri_2024 > 0 ? (($oneri_2025 - $oneri_2024) / $oneri_2024) * 100 : 0;
+                                    $icr_var = $icr_2024 > 0 ? (($icr_2025 - $icr_2024) / $icr_2024) * 100 : 0;
+                                ?>
                                 <div class="widget-detail-row">
                                     <span class="widget-detail-label">EBIT 2025</span>
-                                    <span class="widget-detail-value">€180.0k</span>
+                                    <span class="widget-detail-value">€<?php echo number_format($ebit_2025 / 1000, 1, '.', ''); ?>k</span>
                                 </div>
                                 <div class="widget-detail-row">
                                     <span class="widget-detail-label">Oneri Finanziari 2025</span>
-                                    <span class="widget-detail-value">€21.9k (-10% vs 2024)</span>
+                                    <span class="widget-detail-value">€<?php echo number_format($oneri_2025 / 1000, 1, '.', ''); ?>k (<?php echo number_format($oneri_var, 0, '.', ''); ?>% vs 2024)</span>
                                 </div>
                                 <div class="widget-detail-row">
                                     <span class="widget-detail-label">Interest Coverage Ratio</span>
-                                    <span class="widget-detail-value">8.2x (+447% vs 2024)</span>
+                                    <span class="widget-detail-value"><?php echo number_format($icr_2025, 1, '.', ''); ?>x (<?php echo number_format($icr_var, 0, '.', ''); ?>% vs 2024)</span>
                                 </div>
                                 <div class="widget-detail-row">
                                     <span class="widget-detail-label">Costo Medio Debito</span>
-                                    <span class="widget-detail-value">4.33%</span>
+                                    <span class="widget-detail-value"><?php echo number_format($costo_debito, 2, '.', ''); ?>%</span>
                                 </div>
                                 <div class="widget-detail-row">
                                     <span class="widget-detail-label">DSCR</span>
-                                    <span class="widget-detail-value">9.06x</span>
+                                    <span class="widget-detail-value"><?php echo number_format($dscr, 2, '.', ''); ?>x</span>
                                 </div>
                             </div>
                         </div>
@@ -680,7 +786,7 @@
                         <div class="flex items-center gap-2 mb-2 pb-2 border-b border-purple/20">
                             <span class="badge-ai bg-purple text-white text-[9px] font-bold px-1.5 py-0.5 uppercase tracking-wide">AI Insight</span>
                         </div>
-                        <strong><i class="fa-solid fa-shield-halved text-purple"></i> Sostenibilità Debito:</strong> ICR da 1.5x (2024) a 8.2x (+447%). DSCR a 9.06x garantisce ampia capacità di servire il debito. Costo medio 4.33% sostenibile con EBIT di €180k.
+                        <strong><i class="fa-solid fa-shield-halved text-purple"></i> Sostenibilità Debito:</strong> <?php echo htmlspecialchars($ai_insights['sostenibilita_debito'] ?? ''); ?>
                     </div>
                 </div>
 
@@ -703,30 +809,46 @@
                         </div>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <?php
+                            $sm = $data['structure_margin'] ?? [];
+                            $pn = $sm['patrimonio_netto'] ?? [];
+                            $immob = $sm['immobilizzazioni'] ?? [];
+                            $margine_vals = $sm['margine'] ?? [];
+                            $stati = $sm['stato'] ?? [];
+                            $fiscal_years = [2023, 2024, 2025];
+
+                            foreach ([0, 1, 2] as $idx):
+                                $year = $fiscal_years[$idx];
+                                $pn_val = $pn[$idx] ?? 0;
+                                $immob_val = $immob[$idx] ?? 0;
+                                $margine_val = $margine_vals[$idx] ?? 0;
+                                $stato = $stati[$idx] ?? 'Neutrale';
+                                $comparison = $pn_val >= $immob_val ? '>' : '<';
+                                $badge_color = ($margine_val >= 0) ? 'bg-positive/10 text-positive' : 'bg-negative/10 text-negative';
+                                $badge_icon = ($margine_val >= 0) ? 'fa-check' : 'fa-triangle-exclamation';
+                                $variation = '';
+                                if ($idx === 2) {
+                                    $prev_margine = $margine_vals[1] ?? 0;
+                                    if ($prev_margine != 0) {
+                                        $pct_change = (($margine_val - $prev_margine) / abs($prev_margine)) * 100;
+                                        $variation = '<div class="widget-change-positive mt-1">' . ($pct_change >= 0 ? '+' : '') . number_format($pct_change, 0, '.', '') . '% vs 2024</div>';
+                                    }
+                                }
+                        ?>
                         <div class="widget-card widget-purple p-6 text-left">
-                            <div class="widget-label mb-2">2023</div>
-                            <div class="widget-metric-large">+€16k</div>
-                            <div class="text-xs text-gray-500 mt-1">PN €162k > Immob. €146k</div>
-                            <div class="widget-status-badge mt-2 bg-positive/10 text-positive"><i class="fa-solid fa-check"></i> Equilibrato</div>
+                            <div class="widget-label mb-2"><?php echo $year; ?></div>
+                            <div class="widget-metric-large"><?php echo ($margine_val >= 0 ? '+' : ''); ?>€<?php echo number_format(abs($margine_val) / 1000, 0, '.', ''); ?>k</div>
+                            <div class="text-xs text-gray-500 mt-1">PN €<?php echo number_format($pn_val / 1000, 0, '.', ''); ?>k <?php echo $comparison; ?> Immob. €<?php echo number_format($immob_val / 1000, 0, '.', ''); ?>k</div>
+                            <div class="widget-status-badge mt-2 <?php echo $badge_color; ?>"><i class="fa-solid <?php echo $badge_icon; ?>"></i> <?php echo $stato; ?></div>
+                            <?php echo $variation; ?>
                         </div>
-                        <div class="widget-card widget-purple p-6 text-left">
-                            <div class="widget-label mb-2">2024</div>
-                            <div class="widget-metric-large">-€254k</div>
-                            <div class="text-xs text-gray-500 mt-1">PN €182k < Immob. €436k</div>
-                            <div class="widget-status-badge mt-2 bg-negative/10 text-negative"><i class="fa-solid fa-triangle-exclamation"></i> Investimenti</div>
-                        </div>
-                        <div class="widget-card widget-purple p-6 text-left">
-                            <div class="widget-label mb-2">2025</div>
-                            <div class="widget-metric-large">-€144k</div>
-                            <div class="text-xs text-gray-500 mt-1">PN €333k < Immob. €477k</div>
-                            <div class="widget-change-positive mt-1">+43% vs 2024</div>
-                        </div>
+                        <?php endforeach; ?>
                     </div>
                     <div class="ai-insight-box">
                         <div class="flex items-center gap-2 mb-2 pb-2 border-b border-purple/20">
                             <span class="badge-ai bg-purple text-white text-[9px] font-bold px-1.5 py-0.5 uppercase tracking-wide">AI Insight</span>
                         </div>
-                        <strong><i class="fa-solid fa-scale-balanced text-purple"></i> Analisi Strutturale:</strong> Il margine di struttura è migliorato del 43% (da -€254k a -€144k) grazie all'aumento del PN (+83%). La struttura patrimoniale si sta riequilibrando, riducendo la dipendenza dal debito per finanziare le immobilizzazioni.
+                        <strong><i class="fa-solid fa-scale-balanced text-purple"></i> Analisi Strutturale:</strong> <?php echo htmlspecialchars($ai_insights['margine_struttura'] ?? ''); ?>
                     </div>
                 </div>
 
@@ -751,76 +873,48 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="font-semibold bg-gray-50 border-b border-gray-200">
-                                    <td class="px-4 py-3">Ricavi</td>
-                                    <td class="px-4 py-3 text-right" data-sort-value="526061">€526.061</td>
-                                    <td class="px-4 py-3 text-right" data-sort-value="553475">€553.475</td>
-                                    <td class="px-4 py-3 text-right" data-sort-value="824708">€824.708</td>
-                                    <td class="px-4 py-3 text-right text-positive font-bold" data-sort-value="49">+49.0%</td>
+                                <?php
+                                    // Define table structure
+                                    $table_rows = [
+                                        ['label' => 'Ricavi', 'key' => 'ricavi', 'is_main' => true, 'is_negative' => false],
+                                        ['label' => 'Costi per Servizi', 'key' => 'costi_servizi', 'is_main' => false, 'is_negative' => true],
+                                        ['label' => 'Costi del Personale', 'key' => 'costi_personale', 'is_main' => false, 'is_negative' => true],
+                                        ['label' => 'Altri Costi Operativi', 'key' => 'altri_costi_operativi', 'is_main' => false, 'is_negative' => true],
+                                        ['label' => 'EBITDA', 'key' => 'ebitda', 'is_main' => true, 'is_negative' => false],
+                                        ['label' => 'Ammortamenti', 'key' => 'ammortamenti', 'is_main' => false, 'is_negative' => true],
+                                        ['label' => 'EBIT (Utile Operativo)', 'key' => 'ebit', 'is_main' => true, 'is_negative' => false],
+                                        ['label' => 'Oneri Finanziari Netti', 'key' => 'oneri_finanziari', 'is_main' => false, 'is_negative' => true],
+                                        ['label' => 'Imposte', 'key' => 'imposte', 'is_main' => false, 'is_negative' => true],
+                                        ['label' => 'Utile Netto', 'key' => 'utile_netto', 'is_main' => true, 'is_negative' => false],
+                                    ];
+
+                                    foreach ($table_rows as $row):
+                                        $val_2023 = $income[$row['key']][0] ?? 0;
+                                        $val_2024 = $income[$row['key']][1] ?? 0;
+                                        $val_2025 = $income[$row['key']][2] ?? 0;
+                                        $variation = $val_2024 != 0 ? (($val_2025 - $val_2024) / $val_2024) * 100 : 0;
+
+                                        $is_main = $row['is_main'] ? 'font-semibold' : '';
+                                        $bg_class = $row['is_main'] ? 'bg-purple/5 border-b border-gray-200' : 'border-b border-gray-200 hover:bg-purple-50';
+                                        $pl_class = $row['is_main'] ? '' : 'pl-6';
+                                        $var_color = $variation < 0 && !$row['is_negative'] ? 'text-positive' : (($variation < 0 || $row['is_negative']) && $variation > 0 ? 'text-negative' : 'text-positive');
+
+                                        if ($row['is_negative']) {
+                                            $var_color = $variation > 0 ? 'text-negative' : 'text-positive';
+                                        } else {
+                                            $var_color = $variation > 0 ? 'text-positive' : 'text-negative';
+                                        }
+
+                                        $var_bold = $row['is_main'] ? 'font-bold' : '';
+                                ?>
+                                <tr class="<?php echo $is_main . ' ' . $bg_class; ?>">
+                                    <td class="px-4 py-3 <?php echo $pl_class; ?>"><?php echo $row['label']; ?></td>
+                                    <td class="px-4 py-3 text-right" data-sort-value="<?php echo $val_2023 * ($row['is_negative'] ? -1 : 1); ?>"><?php echo $row['is_negative'] ? '(' : ''; ?>€<?php echo number_format($val_2023, 0, '.', '.'); ?><?php echo $row['is_negative'] ? ')' : ''; ?></td>
+                                    <td class="px-4 py-3 text-right" data-sort-value="<?php echo $val_2024 * ($row['is_negative'] ? -1 : 1); ?>"><?php echo $row['is_negative'] ? '(' : ''; ?>€<?php echo number_format($val_2024, 0, '.', '.'); ?><?php echo $row['is_negative'] ? ')' : ''; ?></td>
+                                    <td class="px-4 py-3 text-right" data-sort-value="<?php echo $val_2025 * ($row['is_negative'] ? -1 : 1); ?>"><?php echo $row['is_negative'] ? '(' : ''; ?>€<?php echo number_format($val_2025, 0, '.', '.'); ?><?php echo $row['is_negative'] ? ')' : ''; ?></td>
+                                    <td class="px-4 py-3 text-right <?php echo $var_color . ' ' . $var_bold; ?>" data-sort-value="<?php echo round($variation, 1); ?>"><?php echo ($variation >= 0 ? '+' : '') . number_format($variation, 1, '.', ''); ?>%</td>
                                 </tr>
-                                <tr class="border-b border-gray-200 hover:bg-purple-50">
-                                    <td class="px-4 py-3 pl-6">Costi per Servizi</td>
-                                    <td class="px-4 py-3 text-right" data-sort-value="-241142">(€241.142)</td>
-                                    <td class="px-4 py-3 text-right" data-sort-value="-254242">(€254.242)</td>
-                                    <td class="px-4 py-3 text-right" data-sort-value="-314464">(€314.464)</td>
-                                    <td class="px-4 py-3 text-right text-negative" data-sort-value="23.7">+23.7%</td>
-                                </tr>
-                                <tr class="border-b border-gray-200 hover:bg-purple-50">
-                                    <td class="px-4 py-3 pl-6">Costi del Personale</td>
-                                    <td class="px-4 py-3 text-right" data-sort-value="-198004">(€198.004)</td>
-                                    <td class="px-4 py-3 text-right" data-sort-value="-202405">(€202.405)</td>
-                                    <td class="px-4 py-3 text-right" data-sort-value="-282113">(€282.113)</td>
-                                    <td class="px-4 py-3 text-right text-negative" data-sort-value="39.4">+39.4%</td>
-                                </tr>
-                                <tr class="border-b border-gray-200 hover:bg-purple-50">
-                                    <td class="px-4 py-3 pl-6">Altri Costi Operativi</td>
-                                    <td class="px-4 py-3 text-right" data-sort-value="-53785">(€53.785)</td>
-                                    <td class="px-4 py-3 text-right" data-sort-value="-31995">(€31.995)</td>
-                                    <td class="px-4 py-3 text-right" data-sort-value="-29520">(€29.520)</td>
-                                    <td class="px-4 py-3 text-right text-positive" data-sort-value="-7.7">-7.7%</td>
-                                </tr>
-                                <tr class="font-semibold bg-purple/5 border-b border-gray-200">
-                                    <td class="px-4 py-3">EBITDA</td>
-                                    <td class="px-4 py-3 text-right" data-sort-value="40039">€40.039</td>
-                                    <td class="px-4 py-3 text-right" data-sort-value="64833">€64.833</td>
-                                    <td class="px-4 py-3 text-right" data-sort-value="205335">€205.335</td>
-                                    <td class="px-4 py-3 text-right text-positive font-bold" data-sort-value="216.7">+216.7%</td>
-                                </tr>
-                                <tr class="border-b border-gray-200 hover:bg-gray-50">
-                                    <td class="px-4 py-3 pl-6">Ammortamenti</td>
-                                    <td class="px-4 py-3 text-right" data-sort-value="-18921">(€18.921)</td>
-                                    <td class="px-4 py-3 text-right" data-sort-value="-28687">(€28.687)</td>
-                                    <td class="px-4 py-3 text-right" data-sort-value="-25621">(€25.621)</td>
-                                    <td class="px-4 py-3 text-right text-positive" data-sort-value="-10.7">-10.7%</td>
-                                </tr>
-                                <tr class="font-semibold bg-purple/5 border-b border-gray-200">
-                                    <td class="px-4 py-3">EBIT (Utile Operativo)</td>
-                                    <td class="px-4 py-3 text-right" data-sort-value="16311">€16.311</td>
-                                    <td class="px-4 py-3 text-right" data-sort-value="32605">€32.605</td>
-                                    <td class="px-4 py-3 text-right" data-sort-value="180049">€180.049</td>
-                                    <td class="px-4 py-3 text-right text-positive font-bold" data-sort-value="452.2">+452.2%</td>
-                                </tr>
-                                <tr class="border-b border-gray-200 hover:bg-gray-50">
-                                    <td class="px-4 py-3 pl-6">Oneri Finanziari Netti</td>
-                                    <td class="px-4 py-3 text-right" data-sort-value="-7774">(€7.774)</td>
-                                    <td class="px-4 py-3 text-right" data-sort-value="-21104">(€21.104)</td>
-                                    <td class="px-4 py-3 text-right" data-sort-value="-18948">(€18.948)</td>
-                                    <td class="px-4 py-3 text-right text-positive" data-sort-value="-10.2">-10.2%</td>
-                                </tr>
-                                <tr class="border-b border-gray-200 hover:bg-gray-50">
-                                    <td class="px-4 py-3 pl-6">Imposte</td>
-                                    <td class="px-4 py-3 text-right" data-sort-value="-5871">(€5.871)</td>
-                                    <td class="px-4 py-3 text-right" data-sort-value="-7861">(€7.861)</td>
-                                    <td class="px-4 py-3 text-right" data-sort-value="-10424">(€10.424)</td>
-                                    <td class="px-4 py-3 text-right text-negative" data-sort-value="32.6">+32.6%</td>
-                                </tr>
-                                <tr class="font-semibold bg-purple/5">
-                                    <td class="px-4 py-3">Utile Netto</td>
-                                    <td class="px-4 py-3 text-right" data-sort-value="2666">€2.666</td>
-                                    <td class="px-4 py-3 text-right" data-sort-value="3640">€3.640</td>
-                                    <td class="px-4 py-3 text-right" data-sort-value="150677">€150.677</td>
-                                    <td class="px-4 py-3 text-right text-positive font-bold" data-sort-value="4039">+4039%</td>
-                                </tr>
+                                <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>
@@ -834,7 +928,7 @@
                         <div class="flex items-center gap-2 mb-2 pb-2 border-b border-purple/20">
                             <span class="badge-ai bg-purple text-white text-[9px] font-bold px-1.5 py-0.5 uppercase tracking-wide">AI Insight</span>
                         </div>
-                        <strong><i class="fa-solid fa-chart-column text-purple"></i> Performance Economica:</strong> I ricavi 2025 sono cresciuti del 49% (€825k). L'utile netto è esploso del +4039% (€151k), evidenziando un'efficienza operativa eccezionale con margini significativamente migliorati. La gestione è passata da fragile (2024) a molto solida (2025).
+                        <strong><i class="fa-solid fa-chart-column text-purple"></i> Performance Economica:</strong> <?php echo htmlspecialchars($ai_insights['performance_economica'] ?? ''); ?>
                     </div>
                 </div>
 
@@ -851,39 +945,44 @@
                         <div class="widget-card widget-purple p-4 sm:p-6">
                             <div class="widget-detail-header">Attivo</div>
                             <div>
+                                <?php
+                                    // Assets data structure
+                                    $assets_items = [
+                                        ['label' => 'Immobilizzazioni', 'key' => 'immobilizzazioni_totale'],
+                                        ['label' => 'Crediti Commerciali', 'key' => 'crediti_commerciali'],
+                                        ['label' => 'Attività Finanziarie', 'key' => 'attivita_finanziarie'],
+                                        ['label' => 'Disponibilità Liquide', 'key' => 'disponibilita_liquide'],
+                                    ];
+
+                                    foreach ($assets_items as $item):
+                                        $attivo_data = $balance['attivo'] ?? [];
+                                        $val_2024 = $attivo_data[$item['key']][1] ?? 0;
+                                        $val_2025 = $attivo_data[$item['key']][2] ?? 0;
+                                        $variation = $val_2024 > 0 ? (($val_2025 - $val_2024) / $val_2024) * 100 : 0;
+                                        $var_color = $variation >= 0 ? 'text-positive' : 'text-negative';
+                                        $var_text = ($variation >= 0 ? '+' : '') . number_format($variation, 0, '.', '') . '%';
+                                ?>
                                 <div class="widget-detail-row">
-                                    <span class="widget-detail-label">Immobilizzazioni</span>
+                                    <span class="widget-detail-label"><?php echo $item['label']; ?></span>
                                     <div class="text-right">
-                                        <span class="widget-detail-value">€477.0k</span>
-                                        <span class="ml-2 widget-text text-positive">+9% vs 2024</span>
+                                        <span class="widget-detail-value">€<?php echo number_format($val_2025 / 1000, 1, '.', ''); ?>k</span>
+                                        <span class="ml-2 widget-text <?php echo $var_color; ?>"><?php echo $var_text; ?> vs 2024</span>
                                     </div>
                                 </div>
-                                <div class="widget-detail-row">
-                                    <span class="widget-detail-label">Crediti Commerciali</span>
-                                    <div class="text-right">
-                                        <span class="widget-detail-value">€355.0k</span>
-                                        <span class="ml-2 widget-text text-positive">+10% vs 2024</span>
-                                    </div>
-                                </div>
-                                <div class="widget-detail-row">
-                                    <span class="widget-detail-label">Attività Finanziarie</span>
-                                    <div class="text-right">
-                                        <span class="widget-detail-value">€42.9k</span>
-                                        <span class="ml-2 widget-text text-positive">+32% vs 2024</span>
-                                    </div>
-                                </div>
-                                <div class="widget-detail-row">
-                                    <span class="widget-detail-label">Disponibilità Liquide</span>
-                                    <div class="text-right">
-                                        <span class="widget-detail-value">€17.0k</span>
-                                        <span class="ml-2 widget-text text-positive">+136% vs 2024</span>
-                                    </div>
-                                </div>
+                                <?php endforeach; ?>
                                 <div class="flex justify-between items-center font-bold">
                                     <span class="widget-label">Totale Attivo</span>
                                     <div class="text-right">
-                                        <span class="widget-detail-value">€896.2k</span>
-                                        <span class="ml-2 widget-text text-positive">+12% vs 2024</span>
+                                        <?php
+                                            $attivo_data = $balance['attivo'] ?? [];
+                                            $total_2024 = $attivo_data['totale_attivo'][1] ?? 0;
+                                            $total_2025 = $attivo_data['totale_attivo'][2] ?? 0;
+                                            $total_var = $total_2024 > 0 ? (($total_2025 - $total_2024) / $total_2024) * 100 : 0;
+                                            $total_var_color = $total_var >= 0 ? 'text-positive' : 'text-negative';
+                                            $total_var_text = ($total_var >= 0 ? '+' : '') . number_format($total_var, 0, '.', '') . '%';
+                                        ?>
+                                        <span class="widget-detail-value">€<?php echo number_format($total_2025 / 1000, 1, '.', ''); ?>k</span>
+                                        <span class="ml-2 widget-text <?php echo $total_var_color; ?>"><?php echo $total_var_text; ?> vs 2024</span>
                                     </div>
                                 </div>
                             </div>
@@ -891,39 +990,44 @@
                         <div class="widget-card widget-purple p-6">
                             <div class="widget-detail-header">Passivo</div>
                             <div>
+                                <?php
+                                    // Liabilities data structure
+                                    $liabilities_items = [
+                                        ['label' => 'Patrimonio Netto', 'key' => 'totale_patrimonio_netto'],
+                                        ['label' => 'TFR', 'key' => 'tfr'],
+                                        ['label' => 'Debiti a Breve', 'key' => 'debiti_breve_termine'],
+                                        ['label' => 'Debiti a Lungo', 'key' => 'debiti_lungo_termine'],
+                                    ];
+
+                                    foreach ($liabilities_items as $item):
+                                        $passivo_data = $balance['passivo'] ?? [];
+                                        $val_2024 = $passivo_data[$item['key']][1] ?? 0;
+                                        $val_2025 = $passivo_data[$item['key']][2] ?? 0;
+                                        $variation = $val_2024 > 0 ? (($val_2025 - $val_2024) / $val_2024) * 100 : 0;
+                                        $var_color = $variation >= 0 ? 'text-positive' : 'text-negative';
+                                        $var_text = ($variation >= 0 ? '+' : '') . number_format($variation, 0, '.', '') . '%';
+                                ?>
                                 <div class="widget-detail-row">
-                                    <span class="widget-detail-label">Patrimonio Netto</span>
+                                    <span class="widget-detail-label"><?php echo $item['label']; ?></span>
                                     <div class="text-right">
-                                        <span class="widget-detail-value">€332.7k</span>
-                                        <span class="ml-2 widget-text text-positive">+83% vs 2024</span>
+                                        <span class="widget-detail-value">€<?php echo number_format($val_2025 / 1000, 1, '.', ''); ?>k</span>
+                                        <span class="ml-2 widget-text <?php echo $var_color; ?>"><?php echo $var_text; ?> vs 2024</span>
                                     </div>
                                 </div>
-                                <div class="widget-detail-row">
-                                    <span class="widget-detail-label">TFR</span>
-                                    <div class="text-right">
-                                        <span class="widget-detail-value">€54.1k</span>
-                                        <span class="ml-2 widget-text text-positive">+30% vs 2024</span>
-                                    </div>
-                                </div>
-                                <div class="widget-detail-row">
-                                    <span class="widget-detail-label">Debiti a Breve</span>
-                                    <div class="text-right">
-                                        <span class="widget-detail-value">€272.3k</span>
-                                        <span class="ml-2 widget-text text-negative">-31% vs 2024</span>
-                                    </div>
-                                </div>
-                                <div class="widget-detail-row">
-                                    <span class="widget-detail-label">Debiti a Lungo</span>
-                                    <div class="text-right">
-                                        <span class="widget-detail-value">€233.7k</span>
-                                        <span class="ml-2 widget-text text-positive">+28% vs 2024</span>
-                                    </div>
-                                </div>
+                                <?php endforeach; ?>
                                 <div class="flex justify-between items-center font-bold">
                                     <span class="widget-label">Totale Passivo</span>
                                     <div class="text-right">
-                                        <span class="widget-detail-value">€896.2k</span>
-                                        <span class="ml-2 widget-text text-positive">+12% vs 2024</span>
+                                        <?php
+                                            $passivo_data = $balance['passivo'] ?? [];
+                                            $total_2024 = $passivo_data['totale_passivo'][1] ?? 0;
+                                            $total_2025 = $passivo_data['totale_passivo'][2] ?? 0;
+                                            $total_var = $total_2024 > 0 ? (($total_2025 - $total_2024) / $total_2024) * 100 : 0;
+                                            $total_var_color = $total_var >= 0 ? 'text-positive' : 'text-negative';
+                                            $total_var_text = ($total_var >= 0 ? '+' : '') . number_format($total_var, 0, '.', '') . '%';
+                                        ?>
+                                        <span class="widget-detail-value">€<?php echo number_format($total_2025 / 1000, 1, '.', ''); ?>k</span>
+                                        <span class="ml-2 widget-text <?php echo $total_var_color; ?>"><?php echo $total_var_text; ?> vs 2024</span>
                                     </div>
                                 </div>
                             </div>
@@ -956,7 +1060,7 @@
                         <div class="flex items-center gap-2 mb-2 pb-2 border-b border-purple/20">
                             <span class="badge-ai bg-purple text-white text-[9px] font-bold px-1.5 py-0.5 uppercase tracking-wide">AI Insight</span>
                         </div>
-                        <strong><i class="fa-solid fa-building-columns text-purple"></i> Solidità Patrimoniale:</strong> Il patrimonio netto è cresciuto dell'83% (€333k), rafforzando la base finanziaria. I crediti commerciali (€355k) rappresentano il 43% dell'attivo circolante. Le immobilizzazioni (€477k) sono coperte al 70% dal PN, segnalando una struttura sana e equilibrata.
+                        <strong><i class="fa-solid fa-building-columns text-purple"></i> Solidità Patrimoniale:</strong> <?php echo htmlspecialchars($ai_insights['solidita_patrimoniale'] ?? ''); ?>
                     </div>
                 </div>
             </div>
@@ -985,25 +1089,33 @@
                             <div class="lg:col-span-2">
                                 <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider mb-4">Struttura Costi e BEP</div>
                                 <div class="space-y-3">
+                                    <?php
+                                        $be = $data['break_even'] ?? [];
+                                        $costi_fissi = $be['costi_fissi'] ?? 0;
+                                        $costi_variabili = $be['costi_variabili'] ?? 0;
+                                        $margine_pct = ($be['margine_contribuzione'] ?? 0) * 100;
+                                        $punto_pareggio = $be['punto_pareggio'] ?? 0;
+                                        $margine_sicurezza_pct = $be['margine_sicurezza_pct'] ?? 0;
+                                    ?>
                                     <div class="flex justify-between items-center pb-3 border-b border-gray-200">
                                         <span class="text-xs text-gray-600">Costi Fissi Stimati</span>
-                                        <span class="text-sm font-bold text-gray-700">€350k</span>
+                                        <span class="text-sm font-bold text-gray-700">€<?php echo number_format($costi_fissi / 1000, 0, '.', ''); ?>k</span>
                                     </div>
                                     <div class="flex justify-between items-center pb-3 border-b border-gray-200">
                                         <span class="text-xs text-gray-600">Costi Variabili</span>
-                                        <span class="text-sm font-bold text-gray-700">€302k</span>
+                                        <span class="text-sm font-bold text-gray-700">€<?php echo number_format($costi_variabili / 1000, 0, '.', ''); ?>k</span>
                                     </div>
                                     <div class="flex justify-between items-center pb-3 border-b border-gray-200">
                                         <span class="text-xs text-gray-600">Margine di Contribuzione %</span>
-                                        <span class="text-sm font-bold text-gray-700">63.4%</span>
+                                        <span class="text-sm font-bold text-gray-700"><?php echo number_format($margine_pct, 1, '.', ''); ?>%</span>
                                     </div>
                                     <div class="flex justify-between items-center pb-3 border-b border-gray-200">
                                         <span class="text-xs text-gray-600">Punto di Pareggio</span>
-                                        <span class="font-bold text-xl text-primary">€552k</span>
+                                        <span class="font-bold text-xl text-primary">€<?php echo number_format($punto_pareggio / 1000, 0, '.', ''); ?>k</span>
                                     </div>
                                     <div class="flex justify-between items-center">
                                         <span class="text-xs text-gray-600">Margine di Sicurezza</span>
-                                        <span class="font-semibold text-positive">33%</span>
+                                        <span class="font-semibold text-positive"><?php echo $margine_sicurezza_pct; ?>%</span>
                                     </div>
                                 </div>
                             </div>
@@ -1012,7 +1124,7 @@
                             <div class="flex items-center gap-2 mb-2 pb-2 border-b border-purple/20">
                                 <span class="badge-ai bg-purple text-white text-[9px] font-bold px-1.5 py-0.5 uppercase tracking-wide">AI Insight</span>
                             </div>
-                            <strong><i class="fa-solid fa-check text-purple"></i> Solidità:</strong> I ricavi possono scendere del 33% (€273k) prima di entrare in perdita.
+                            <strong><i class="fa-solid fa-check text-purple"></i> Solidità:</strong> <?php echo htmlspecialchars($ai_insights['break_even'] ?? ''); ?>
                         </div>
                     </div>
                 </div>
@@ -1037,37 +1149,34 @@
                             <div class="lg:col-span-2">
                                 <div class="widget-detail-header">Metriche di Efficienza</div>
                                 <div class="space-y-3">
+                                    <?php
+                                        $metrics = [
+                                            ['label' => 'Ricavi / Costo Personale', 'val_2025' => $productivity['ricavi_per_dipendente'][2] ?? 0, 'unit' => 'x', 'var' => 7],
+                                            ['label' => 'Valore Aggiunto / Personale', 'val_2025' => $productivity['valore_aggiunto_per_dipendente_euro'][2] ?? 0, 'unit' => '€', 'var' => 64],
+                                            ['label' => 'EBITDA / Personale', 'val_2025' => ($kpi['redditivita']['ebitda_margin'][2] ?? 0) * ($income['ricavi'][2] ?? 0) / ($productivity['dipendenti'][2] ?? 1) / 1000, 'unit' => '€', 'var' => 127],
+                                        ];
+                                        foreach ($metrics as $m):
+                                            $unit = ($m['unit'] === 'x') ? 'x' : 'k';
+                                            $formatted = ($m['unit'] === 'x') ? number_format($m['val_2025'], 2, '.', '') : round($m['val_2025']);
+                                    ?>
                                     <div class="widget-detail-row">
-                                        <span class="widget-detail-label">Ricavi / Costo Personale</span>
+                                        <span class="widget-detail-label"><?php echo $m['label']; ?></span>
                                         <div class="text-right">
-                                            <span class="widget-detail-value">2.92x</span>
-                                            <span class="ml-2 widget-text text-positive">+7% vs 2024</span>
+                                            <span class="widget-detail-value"><?php echo ($m['unit'] === '€' ? '€' : ''); ?><?php echo $formatted; ?><?php echo $unit; ?></span>
+                                            <span class="ml-2 widget-text text-positive">+<?php echo $m['var']; ?><?php echo ($m['unit'] === 'x' ? '%' : '%'); ?> vs 2024</span>
                                         </div>
                                     </div>
-                                    <div class="widget-detail-row">
-                                        <span class="widget-detail-label">Valore Aggiunto / Personale</span>
-                                        <div class="text-right">
-                                            <span class="widget-detail-value">€100k</span>
-                                            <span class="ml-2 widget-text text-positive">+64% vs 2024</span>
-                                        </div>
-                                    </div>
-                                    <div class="widget-detail-row">
-                                        <span class="widget-detail-label">EBITDA / Personale</span>
-                                        <div class="text-right">
-                                            <span class="widget-detail-value">€73k</span>
-                                            <span class="ml-2 widget-text text-positive">+127% vs 2024</span>
-                                        </div>
-                                    </div>
+                                    <?php endforeach; ?>
                                     <div class="widget-detail-row">
                                         <span class="widget-detail-label">Costo Medio Dipendente</span>
                                         <div class="text-right">
-                                            <span class="widget-detail-value">€47k</span>
+                                            <span class="widget-detail-value">€<?php echo round(($income['costi_personale'][2] ?? 0) / ($productivity['dipendenti'][2] ?? 1) / 1000); ?>k</span>
                                             <span class="ml-2 widget-text text-gray-600">+39% vs 2024</span>
                                         </div>
                                     </div>
                                     <div class="flex justify-between items-center">
                                         <span class="widget-detail-label">N. Dipendenti (stimato)</span>
-                                        <span class="widget-detail-value">~12</span>
+                                        <span class="widget-detail-value">~<?php echo $productivity['dipendenti_stimati'] ?? 12; ?></span>
                                     </div>
                                 </div>
                             </div>
@@ -1076,7 +1185,7 @@
                             <div class="flex items-center gap-2 mb-2 pb-2 border-b border-purple/20">
                                 <span class="badge-ai bg-purple text-white text-[9px] font-bold px-1.5 py-0.5 uppercase tracking-wide">AI Insight</span>
                             </div>
-                            <strong><i class="fa-solid fa-chart-line text-purple"></i> Performance:</strong> L'EBITDA per dipendente è aumentato del 127% (€73k), segnalando un'efficienza operativa eccezionale. Il team attuale massimizza il valore generato.
+                            <strong><i class="fa-solid fa-chart-line text-purple"></i> Performance:</strong> <?php echo htmlspecialchars($ai_insights['produttivita'] ?? ''); ?>
                         </div>
                     </div>
                 </div>
@@ -1096,22 +1205,27 @@
                             <div>
                                 <div class="widget-label-medium mb-4">Dettaglio Investimenti</div>
                                 <div class="space-y-4">
+                                    <?php foreach ($capex['dettagli'] as $capex_item):
+                                        $periodo = $capex_item['periodo'] ?? '';
+                                        $totale = $capex_item['totale'] ?? 0;
+                                        $delta = $capex_item['delta_immobilizzazioni'] ?? 0;
+                                        $ammort = $capex_item['ammortamenti'] ?? 0;
+                                        $nota = $capex_item['nota'] ?? '';
+                                        // Determine if negative or positive based on nota
+                                        $class = (strpos($nota, 'pesante') !== false) ? 'widget-change-negative' : 'widget-change-positive';
+                                        $totale_k = round($totale / 1000);
+                                        $delta_k = round($delta / 1000);
+                                        $ammort_k = round($ammort / 1000);
+                                    ?>
                                     <div class="p-3 bg-gray-50 border border-gray-200">
                                         <div class="flex justify-between items-center mb-2">
-                                            <span class="widget-label-medium">2023→2024</span>
-                                            <span class="widget-metric-small">€319k</span>
+                                            <span class="widget-label-medium"><?php echo htmlspecialchars($periodo); ?></span>
+                                            <span class="widget-metric-small">€<?php echo $totale_k; ?>k</span>
                                         </div>
-                                        <div class="widget-text text-gray-500">Δ Immob. €291k + Ammort. €29k</div>
-                                        <div class="widget-change-negative mt-1">Ciclo investimento pesante</div>
+                                        <div class="widget-text text-gray-500">Δ Immob. €<?php echo $delta_k; ?>k + Ammort. €<?php echo $ammort_k; ?>k</div>
+                                        <div class="<?php echo $class; ?> mt-1"><?php echo htmlspecialchars($nota); ?></div>
                                     </div>
-                                    <div class="p-3 bg-gray-50 border border-gray-200">
-                                        <div class="flex justify-between items-center mb-2">
-                                            <span class="widget-label-medium">2024→2025</span>
-                                            <span class="widget-metric-small">€66k</span>
-                                        </div>
-                                        <div class="widget-text text-gray-500">Δ Immob. €41k + Ammort. €26k</div>
-                                        <div class="widget-change-positive mt-1">-79% vs periodo precedente</div>
-                                    </div>
+                                    <?php endforeach; ?>
                                 </div>
                             </div>
                         </div>
@@ -1119,7 +1233,7 @@
                             <div class="flex items-center gap-2 mb-2 pb-2 border-b border-purple/20">
                                 <span class="badge-ai bg-purple text-white text-[9px] font-bold px-1.5 py-0.5 uppercase tracking-wide">AI Insight</span>
                             </div>
-                            <strong><i class="fa-solid fa-check text-purple"></i> Strategia:</strong> I CAPEX sono calati del 79% vs 2024, segnalando la fine del ciclo di investimenti. Prossimo step: ottimizzare l'efficienza degli asset acquisiti.
+                            <strong><i class="fa-solid fa-check text-purple"></i> Strategia:</strong> <?php echo htmlspecialchars($ai_insights['capex'] ?? ''); ?>
                         </div>
                     </div>
                 </div>
@@ -1135,68 +1249,43 @@
                     </div>
                     <div class="widget-card widget-purple p-6">
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                            <div class="bg-gray-50  border border-gray-200 p-6">
+                            <?php
+                                $dupont_data = [
+                                    ['label' => 'Margine Netto', 'key' => 'margine_netto', 'unit' => '%', 'info' => 'Utile Netto / Ricavi. Quanto profitto rimane per ogni euro di vendita.', 'chart' => 'dupontMarginChart'],
+                                    ['label' => 'Rotazione Attivo', 'key' => 'rotazione_attivo', 'unit' => 'x', 'info' => 'Ricavi / Totale Attivo. Efficienza nell\'utilizzo delle risorse.', 'chart' => 'dupontTurnoverChart'],
+                                    ['label' => 'Leva Finanziaria', 'key' => 'leva_finanziaria', 'unit' => 'x', 'info' => 'Totale Attivo / Patrimonio Netto. Grado di indebitamento.', 'chart' => 'dupontLeverageChart'],
+                                    ['label' => 'ROA', 'key' => 'roa', 'unit' => '%', 'info' => 'Return on Assets = Utile Netto / Totale Attivo. Redditività del capitale investito.', 'chart' => 'roaChart']
+                                ];
+
+                                foreach ($dupont_data as $item):
+                                    $val_2025 = $dupont[$item['key']][2] ?? 0;
+                                    $val_2024 = $dupont[$item['key']][1] ?? 0;
+                                    $variazione = $val_2024 > 0 ? (($val_2025 - $val_2024) / abs($val_2024)) * 100 : 0;
+                                    $formatted = ($item['unit'] === '%') ? number_format($val_2025, 1, '.', '') . '%' : number_format($val_2025, 2, '.', '') . 'x';
+                                    $var_text = $variazione > 0 ? '+' . number_format($variazione, 1, '.', '') : number_format($variazione, 1, '.', '');
+                                    $var_unit = ($item['unit'] === '%') ? 'pp' : '%';
+                            ?>
+                            <div class="bg-gray-50 border border-gray-200 p-6">
                                 <div class="flex items-center justify-center gap-2 mb-2">
-                                    <span class="text-[11px] text-gray-500 uppercase font-semibold">Margine Netto</span>
+                                    <span class="text-[11px] text-gray-500 uppercase font-semibold"><?php echo $item['label']; ?></span>
                                     <div class="tooltip-container">
                                         <i class="fa-solid fa-circle-info text-gray-400 text-[10px] cursor-help"></i>
-                                        <div class="tooltip-content">Utile Netto / Ricavi. Quanto profitto rimane per ogni euro di vendita.</div>
+                                        <div class="tooltip-content"><?php echo $item['info']; ?></div>
                                     </div>
                                 </div>
-                                <div class="relative h-[200px]"><canvas id="dupontMarginChart"></canvas></div>
+                                <div class="relative h-[200px]"><canvas id="<?php echo $item['chart']; ?>"></canvas></div>
                                 <div class="text-left mt-2">
-                                    <div class="text-xl font-semibold text-primary">18.3%</div>
-                                    <div class="text-xs text-positive">+17.6pp vs 2024</div>
+                                    <div class="text-xl font-semibold text-primary"><?php echo $formatted; ?></div>
+                                    <div class="text-xs text-positive"><?php echo $var_text . $var_unit; ?> vs 2024</div>
                                 </div>
                             </div>
-                            <div class="bg-gray-50  border border-gray-200 p-6">
-                                <div class="flex items-center justify-center gap-2 mb-2">
-                                    <span class="text-[11px] text-gray-500 uppercase font-semibold">Rotazione Attivo</span>
-                                    <div class="tooltip-container">
-                                        <i class="fa-solid fa-circle-info text-gray-400 text-[10px] cursor-help"></i>
-                                        <div class="tooltip-content">Ricavi / Totale Attivo. Efficienza nell'utilizzo delle risorse.</div>
-                                    </div>
-                                </div>
-                                <div class="relative h-[200px]"><canvas id="dupontTurnoverChart"></canvas></div>
-                                <div class="text-left mt-2">
-                                    <div class="text-xl font-semibold text-primary">0.92x</div>
-                                    <div class="text-xs text-positive">+33% vs 2024</div>
-                                </div>
-                            </div>
-                            <div class="bg-gray-50  border border-gray-200 p-6">
-                                <div class="flex items-center justify-center gap-2 mb-2">
-                                    <span class="text-[11px] text-gray-500 uppercase font-semibold">Leva Finanziaria</span>
-                                    <div class="tooltip-container">
-                                        <i class="fa-solid fa-circle-info text-gray-400 text-[10px] cursor-help"></i>
-                                        <div class="tooltip-content">Totale Attivo / Patrimonio Netto. Grado di indebitamento.</div>
-                                    </div>
-                                </div>
-                                <div class="relative h-[200px]"><canvas id="dupontLeverageChart"></canvas></div>
-                                <div class="text-left mt-2">
-                                    <div class="text-xl font-semibold text-primary">2.69x</div>
-                                    <div class="text-xs text-positive">-39% vs 2024</div>
-                                </div>
-                            </div>
-                            <div class="bg-gray-50  border border-gray-200 p-6">
-                                <div class="flex items-center justify-center gap-2 mb-2">
-                                    <span class="text-[11px] text-gray-500 uppercase font-semibold">ROA</span>
-                                    <div class="tooltip-container">
-                                        <i class="fa-solid fa-circle-info text-gray-400 text-[10px] cursor-help"></i>
-                                        <div class="tooltip-content">Return on Assets = Utile Netto / Totale Attivo. Redditività del capitale investito.</div>
-                                    </div>
-                                </div>
-                                <div class="relative h-[200px]"><canvas id="roaChart"></canvas></div>
-                                <div class="text-left mt-2">
-                                    <div class="text-xl font-semibold text-primary">16.8%</div>
-                                    <div class="text-xs text-positive">+16.4pp vs 2024</div>
-                                </div>
-                            </div>
+                            <?php endforeach; ?>
                         </div>
                         <div class="ai-insight-box">
                             <div class="flex items-center gap-2 mb-2 pb-2 border-b border-purple/20">
                                 <span class="badge-ai bg-purple text-white text-[9px] font-bold px-1.5 py-0.5 uppercase tracking-wide">AI Insight</span>
                             </div>
-                            <strong>Insight:</strong> Il ROE 2025 è trainato dal margine netto (+17.6pp vs 2024), non dalla leva (in calo). Crescita sana e sostenibile.
+                            <strong>Insight:</strong> <?php echo htmlspecialchars($ai_insights['dupont'] ?? ''); ?>
                         </div>
                     </div>
                 </div>
@@ -1213,27 +1302,33 @@
                     <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider mb-3">Azioni Prioritarie</div>
                     <div class="widget-card widget-purple p-6">
                         <div class="space-y-4">
-                            <div class="flex items-center gap-6 p-4 bg-red-50 border border-red-300">
-                                <div class="bg-red-500 text-white text-xs font-bold px-2 py-1">P1</div>
+                            <?php foreach ($risks as $risk):
+                                $priority = $risk['priority'] ?? '';
+                                $titolo = $risk['titolo'] ?? '';
+                                $target = $risk['target'] ?? '';
+                                $azioni = $risk['azioni'] ?? '';
+                                $criticita = $risk['criticita'] ?? '';
+                                $css_class = $risk['css_class'] ?? 'widget-positive';
+
+                                // Determina il colore di fondo e border basato su criticita
+                                if ($criticita === 'alta') {
+                                    $bg_class = 'bg-red-50';
+                                    $border_class = 'border-red-300';
+                                    $badge_bg = 'bg-red-500';
+                                } else {
+                                    $bg_class = 'bg-purple/3';
+                                    $border_class = 'border-purple/15';
+                                    $badge_bg = 'bg-purple/60';
+                                }
+                            ?>
+                            <div class="flex items-center gap-6 p-4 <?php echo $bg_class; ?> border <?php echo $border_class; ?>">
+                                <div class="<?php echo $badge_bg; ?> text-white text-xs font-bold px-2 py-1"><?php echo htmlspecialchars($priority); ?></div>
                                 <div>
-                                    <div class="font-semibold text-primary">Migliorare Cash Ratio</div>
-                                    <div class="text-xs text-gray-600">Target: >0.2x (attuale 0.06x). Azioni: accelerare incassi, factoring, linea RBF. Con DSO a 120gg si liberano €75k.</div>
+                                    <div class="font-semibold text-primary"><?php echo htmlspecialchars($titolo); ?></div>
+                                    <div class="text-xs text-gray-600"><?php echo htmlspecialchars($target); ?>. Azioni: <?php echo htmlspecialchars($azioni); ?></div>
                                 </div>
                             </div>
-                            <div class="flex items-center gap-6 p-4 bg-red-50/60 border border-red-200">
-                                <div class="bg-red-400 text-white text-xs font-bold px-2 py-1">P2</div>
-                                <div>
-                                    <div class="font-semibold text-primary">Ridurre DSO a 120 giorni</div>
-                                    <div class="text-xs text-gray-600">Da 157gg attuali (-27% vs 2024 ma ancora alto). Azioni: sconti pagamento anticipato, rinegoziazione termini, credit management.</div>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-6 p-4 bg-purple/3 border border-purple/15">
-                                <div class="bg-purple/60 text-white text-xs font-bold px-2 py-1">P3</div>
-                                <div>
-                                    <div class="font-semibold text-primary">Consolidare margini 22-25% EBITDA</div>
-                                    <div class="text-xs text-gray-600">Validare sostenibilità del 24.9% raggiunto. Scenari: diversificazione clienti, protezione volume, controllo costi.</div>
-                                </div>
-                            </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                 </div>
@@ -1242,58 +1337,25 @@
                 <div class="mb-12 sm:mb-20">
                     <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider mb-3">Matrice dei Rischi</div>
                     <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+                        <?php foreach ($risk_matrix as $matrix):
+                            $categoria = $matrix['categoria'] ?? '';
+                            $livello = $matrix['livello'] ?? '';
+                            $indicatori = $matrix['indicatori'] ?? [];
+                        ?>
                         <div class="widget-card widget-purple p-6">
                             <div class="flex items-center gap-2.5 mb-3 pb-2.5 border-b border-gray-200">
-                                <span class="risk-badge text-[9px] font-bold px-1.5 py-0.5 uppercase">Basso</span>
-                                <span class="text-xs font-semibold text-primary uppercase">Rischio Operativo</span>
+                                <span class="risk-badge text-[9px] font-bold px-1.5 py-0.5 uppercase"><?php echo htmlspecialchars($livello); ?></span>
+                                <span class="text-xs font-semibold text-primary uppercase"><?php echo htmlspecialchars($categoria); ?></span>
                             </div>
                             <div class="text-[13px] leading-relaxed text-gray-700">
                                 <ul class="space-y-1.5">
-                                    <li class="pl-3.5 relative before:content-['✓'] before:absolute before:left-0 before:text-purple">Margine EBITDA 24.9% (+13.2pp vs 2024)</li>
-                                    <li class="pl-3.5 relative before:content-['✓'] before:absolute before:left-0 before:text-purple">Break-even con margine sicurezza 33%</li>
-                                    <li class="pl-3.5 relative before:content-['✓'] before:absolute before:left-0 before:text-purple">Leva operativa controllata</li>
+                                    <?php foreach ($indicatori as $indicatore): ?>
+                                    <li class="pl-3.5 relative before:content-['✓'] before:absolute before:left-0 before:text-purple"><?php echo htmlspecialchars($indicatore); ?></li>
+                                    <?php endforeach; ?>
                                 </ul>
                             </div>
                         </div>
-                        <div class="widget-card widget-purple p-6">
-                            <div class="flex items-center gap-2.5 mb-3 pb-2.5 border-b border-gray-200">
-                                <span class="risk-badge text-[9px] font-bold px-1.5 py-0.5 uppercase">Basso</span>
-                                <span class="text-xs font-semibold text-primary uppercase">Rischio Finanziario</span>
-                            </div>
-                            <div class="text-[13px] leading-relaxed text-gray-700">
-                                <ul class="space-y-1.5">
-                                    <li class="pl-3.5 relative before:content-['✓'] before:absolute before:left-0 before:text-purple">D/E 1.52x (-52% vs 2024)</li>
-                                    <li class="pl-3.5 relative before:content-['✓'] before:absolute before:left-0 before:text-purple">ICR 8.2x (+447% vs 2024)</li>
-                                    <li class="pl-3.5 relative before:content-['✓'] before:absolute before:left-0 before:text-purple">Struttura debiti riequilibrata</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="widget-card widget-purple p-6">
-                            <div class="flex items-center gap-2.5 mb-3 pb-2.5 border-b border-gray-200">
-                                <span class="risk-badge text-[9px] font-bold px-1.5 py-0.5 uppercase">Medio</span>
-                                <span class="text-xs font-semibold text-primary uppercase">Rischio Liquidità</span>
-                            </div>
-                            <div class="text-[13px] leading-relaxed text-gray-700">
-                                <ul class="space-y-1.5">
-                                    <li class="pl-3.5 relative before:content-['⚠'] before:absolute before:left-0 before:text-red-500">Cash Ratio 0.06x (+200% vs 2024 ma critico)</li>
-                                    <li class="pl-3.5 relative before:content-['⚠'] before:absolute before:left-0 before:text-red-500">DSO 157gg (-27% vs 2024, target 120gg)</li>
-                                    <li class="pl-3.5 relative before:content-['✓'] before:absolute before:left-0 before:text-purple">Current Ratio 1.52x (+65% vs 2024)</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="widget-card widget-purple p-6">
-                            <div class="flex items-center gap-2.5 mb-3 pb-2.5 border-b border-gray-200">
-                                <span class="risk-badge text-[9px] font-bold px-1.5 py-0.5 uppercase">Info</span>
-                                <span class="text-xs font-semibold text-primary uppercase">Rischio Concentrazione</span>
-                            </div>
-                            <div class="text-[13px] leading-relaxed text-gray-700">
-                                <ul class="space-y-1.5">
-                                    <li class="pl-3.5 relative before:content-['?'] before:absolute before:left-0 before:text-purple">Dipendenza top client da verificare</li>
-                                    <li class="pl-3.5 relative before:content-['?'] before:absolute before:left-0 before:text-purple">Mix settoriale da analizzare</li>
-                                    <li class="pl-3.5 relative before:content-['→'] before:absolute before:left-0 before:text-purple">Dati non disponibili nei bilanci</li>
-                                </ul>
-                            </div>
-                        </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
 
@@ -1335,36 +1397,36 @@
 
                             <!-- Z-Score Value - compact -->
                             <div>
+                                <?php
+                                    $zscore_2025 = $z_score['punteggio'][2] ?? 0;
+                                    $zscore_2024 = $z_score['punteggio'][1] ?? 0;
+                                    $zscore_variazione = $zscore_2024 > 0 ? round((($zscore_2025 - $zscore_2024) / $zscore_2024) * 100) : 0;
+                                    $zone_2025 = $z_score['zone'][2] ?? 'grey';
+                                    $zone_label = $zone_2025 === 'safe' ? 'ZONA SICURA' : ($zone_2025 === 'grey' ? 'ZONA GRIGIA' : 'ZONA RISCHIO');
+                                    $components = $z_score['components_2025'] ?? [];
+                                ?>
                                 <div class="border border-gray-200 p-5 mb-3">
                                     <div class="text-xs text-gray-500 uppercase tracking-wide mb-2">Z-Score 2025</div>
-                                    <div class="text-2xl font-semibold text-primary mb-1">3.18</div>
-                                    <div class="text-xs text-positive font-semibold mb-3">+124% vs 2024</div>
-                                    <div class="inline-block px-2 py-1 bg-positive/10 text-positive font-semibold text-[10px] border border-positive/30">ZONA SICURA</div>
+                                    <div class="text-2xl font-semibold text-primary mb-1"><?php echo number_format($zscore_2025, 2, '.', ''); ?></div>
+                                    <div class="text-xs text-positive font-semibold mb-3">+<?php echo $zscore_variazione; ?>% vs 2024</div>
+                                    <div class="inline-block px-2 py-1 bg-positive/10 text-positive font-semibold text-[10px] border border-positive/30"><?php echo $zone_label; ?></div>
                                 </div>
 
                                 <!-- Components compact -->
                                 <div class="text-[10px] font-semibold text-gray-700 uppercase tracking-wide mb-2">Componenti</div>
                                 <div class="space-y-0">
-                                    <div class="flex justify-between items-center py-1.5 border-b border-gray-100">
-                                        <span class="text-[10px] text-gray-600">X1</span>
-                                        <span class="font-semibold text-[10px]">0.11</span>
+                                    <?php
+                                        $component_labels = ['X1', 'X2', 'X3', 'X4', 'X5'];
+                                        $component_keys = ['x1', 'x2', 'x3', 'x4', 'x5'];
+                                        foreach ($component_keys as $idx => $key):
+                                            $value = $components[$key] ?? 0;
+                                            $is_last = ($idx === count($component_keys) - 1);
+                                    ?>
+                                    <div class="flex justify-between items-center py-1.5 <?php echo !$is_last ? 'border-b border-gray-100' : ''; ?>">
+                                        <span class="text-[10px] text-gray-600"><?php echo $component_labels[$idx]; ?></span>
+                                        <span class="font-semibold text-[10px]"><?php echo number_format($value, 2, '.', ''); ?></span>
                                     </div>
-                                    <div class="flex justify-between items-center py-1.5 border-b border-gray-100">
-                                        <span class="text-[10px] text-gray-600">X2</span>
-                                        <span class="font-semibold text-[10px]">0.06</span>
-                                    </div>
-                                    <div class="flex justify-between items-center py-1.5 border-b border-gray-100">
-                                        <span class="text-[10px] text-gray-600">X3</span>
-                                        <span class="font-semibold text-[10px]">0.62</span>
-                                    </div>
-                                    <div class="flex justify-between items-center py-1.5 border-b border-gray-100">
-                                        <span class="text-[10px] text-gray-600">X4</span>
-                                        <span class="font-semibold text-[10px]">0.25</span>
-                                    </div>
-                                    <div class="flex justify-between items-center py-1.5">
-                                        <span class="text-[10px] text-gray-600">X5</span>
-                                        <span class="font-semibold text-[10px]">0.92</span>
-                                    </div>
+                                    <?php endforeach; ?>
                                 </div>
                             </div>
                         </div>
@@ -1372,7 +1434,7 @@
                             <div class="flex items-center gap-2 mb-2 pb-2 border-b border-purple/20">
                                 <span class="badge-ai bg-purple text-white text-[9px] font-bold px-1.5 py-0.5 uppercase tracking-wide">AI Insight</span>
                             </div>
-                            <strong><i class="fa-solid fa-shield-check text-purple"></i> Solidità Finanziaria:</strong> Il punteggio Z-Score di 3.18 posiziona l'azienda in "ZONA SICURA". La probabilità di insolvenza a 2 anni è <2%. I fondamentali sono sani e sostenibili.
+                            <strong><i class="fa-solid fa-shield-check text-purple"></i> Solidità Finanziaria:</strong> <?php echo htmlspecialchars($ai_insights['z_score'] ?? ''); ?>
                         </div>
                     </div>
                 </div>
@@ -1404,48 +1466,28 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php foreach ($documents as $doc):
+                                    $nome = $doc['nome_file'] ?? '';
+                                    $tipo = $doc['tipo'] ?? '';
+                                    $esercizio = $doc['esercizio'] ?? '';
+                                    $data = $doc['data_chiusura'] ?? '';
+                                    $url = $doc['url'] ?? '';
+                                ?>
                                 <tr class="border-b border-gray-200 hover:bg-gray-50">
                                     <td class="px-4 py-3">
                                         <div class="flex items-center gap-2">
                                             <i class="fa-regular fa-file-pdf text-purple"></i>
-                                            <a href="docs/bilanci/IT04572610-2025-Esercizio-1-101239144.pdf" target="_blank" class="font-medium text-purple hover:underline">IT04572610-2025-Esercizio-1.pdf</a>
+                                            <a href="<?php echo htmlspecialchars($url); ?>" target="_blank" class="font-medium text-purple hover:underline"><?php echo htmlspecialchars($nome); ?></a>
                                         </div>
                                     </td>
-                                    <td class="px-4 py-3">Bilancio CEE</td>
-                                    <td class="px-4 py-3">2025</td>
-                                    <td class="px-4 py-3">31/05/2025</td>
+                                    <td class="px-4 py-3"><?php echo htmlspecialchars($tipo); ?></td>
+                                    <td class="px-4 py-3"><?php echo htmlspecialchars($esercizio); ?></td>
+                                    <td class="px-4 py-3"><?php echo htmlspecialchars($data); ?></td>
                                     <td class="px-4 py-3 text-center">
-                                        <a href="docs/bilanci/IT04572610-2025-Esercizio-1-101239144.pdf" download class="action-btn inline-flex items-center justify-center"><i class="fa-solid fa-download"></i></a>
+                                        <a href="<?php echo htmlspecialchars($url); ?>" download class="action-btn inline-flex items-center justify-center"><i class="fa-solid fa-download"></i></a>
                                     </td>
                                 </tr>
-                                <tr class="border-b border-gray-200 hover:bg-gray-50">
-                                    <td class="px-4 py-3">
-                                        <div class="flex items-center gap-2">
-                                            <i class="fa-regular fa-file-pdf text-purple"></i>
-                                            <a href="docs/bilanci/IT04572610-2024-Esercizio-2-101239144.pdf" target="_blank" class="font-medium text-purple hover:underline">IT04572610-2024-Esercizio-2.pdf</a>
-                                        </div>
-                                    </td>
-                                    <td class="px-4 py-3">Bilancio CEE</td>
-                                    <td class="px-4 py-3">2024</td>
-                                    <td class="px-4 py-3">31/05/2024</td>
-                                    <td class="px-4 py-3 text-center">
-                                        <a href="docs/bilanci/IT04572610-2024-Esercizio-2-101239144.pdf" download class="action-btn inline-flex items-center justify-center"><i class="fa-solid fa-download"></i></a>
-                                    </td>
-                                </tr>
-                                <tr class="border-b border-gray-200 hover:bg-gray-50">
-                                    <td class="px-4 py-3">
-                                        <div class="flex items-center gap-2">
-                                            <i class="fa-regular fa-file-pdf text-purple"></i>
-                                            <a href="docs/bilanci/IT04572610-2023-Esercizio-3-101239144.pdf" target="_blank" class="font-medium text-purple hover:underline">IT04572610-2023-Esercizio-3.pdf</a>
-                                        </div>
-                                    </td>
-                                    <td class="px-4 py-3">Bilancio CEE</td>
-                                    <td class="px-4 py-3">2023</td>
-                                    <td class="px-4 py-3">31/05/2023</td>
-                                    <td class="px-4 py-3 text-center">
-                                        <a href="docs/bilanci/IT04572610-2023-Esercizio-3-101239144.pdf" download class="action-btn inline-flex items-center justify-center"><i class="fa-solid fa-download"></i></a>
-                                    </td>
-                                </tr>
+                                <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>
