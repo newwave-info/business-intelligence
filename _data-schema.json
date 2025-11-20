@@ -1,0 +1,387 @@
+{
+  "metadata": {
+    "company_name": "Perspect srl",
+    "fiscal_years": ["2023", "2024", "2025"],
+    "currency": "EUR",
+    "last_update": "18 nov 2025",
+    "notes": "Nel 2023 la società era denominata \"Tessari Associati SRL\", successivamente rinominata in \"Perspect S.R.L.\""
+  },
+  "income_statement": {
+    "ricavi": [526061, 553475, 824708],
+    "costi_servizi": [241142, 254242, 314464],
+    "costi_personale": [198004, 202405, 282113],
+    "altri_costi_operativi": [53785, 31995, 29520],
+    "ebitda": [40039, 64833, 205335],
+    "ammortamenti": [18921, 28687, 25621],
+    "ebit": [16311, 32605, 180049],
+    "oneri_finanziari": [7774, 21104, 18948],
+    "imposte": [5871, 7861, 10424],
+    "utile_netto": [2666, 3640, 150677]
+  },
+  "balance_sheet": {
+    "attivo": {
+      "immobilizzazioni_immateriali": [0, 0, 1000],
+      "immobilizzazioni_materiali": [400000, 436000, 471000],
+      "immobilizzazioni_finanziarie": [0, 0, 5000],
+      "immobilizzazioni_totale": [400000, 436000, 477000],
+      "crediti_commerciali": [150000, 323000, 355000],
+      "attivita_finanziarie": [30000, 32000, 42900],
+      "disponibilita_liquide": [20000, 7000, 17000],
+      "ratei_risconti_attivi": [15000, 5000, 4000],
+      "totale_attivo": [615000, 803000, 896200]
+    },
+    "passivo": {
+      "capitale_sociale": [100000, 100000, 100000],
+      "riserva_legale": [3000, 4000, 5000],
+      "altre_riserve": [10000, 15000, 17000],
+      "utili_esercizi_precedenti": [50000, 53000, 61000],
+      "utile_esercizio": [3000, 4000, 151000],
+      "totale_patrimonio_netto": [166000, 182000, 332700],
+      "tfr": [30000, 42000, 54100],
+      "debiti_breve_termine": [229000, 393000, 272300],
+      "debiti_lungo_termine": [200000, 182000, 233700],
+      "ratei_risconti_passivi": [0, 10000, 3000],
+      "totale_passivo": [615000, 803000, 896200]
+    }
+  },
+  "structure_margin": {
+    "patrimonio_netto": [166000, 182000, 332700],
+    "immobilizzazioni": [400000, 436000, 477000],
+    "margine": [16000, -254000, -144000],
+    "stato": ["Equilibrato", "Investimenti", "Equilibrato in miglioramento"]
+  },
+  "cash_flow": {
+    "utile_netto": [0, 0, 151000],
+    "ammortamenti": [0, 0, 26000],
+    "variazione_tfr": [0, 0, 13000],
+    "variazione_crediti": [0, 0, 31000],
+    "variazione_debiti": [0, 0, -69000],
+    "investimenti": [0, 0, -66000],
+    "variazione_cassa": [0, 0, 10000],
+    "cash_flow_operativo": [62000, 97000, 189000],
+    "autofinanziamento": [0, 0, 188900],
+    "delta_capitale_circolante": [0, 0, 100600],
+    "delta_debiti_finanziari": [0, 0, -69400]
+  },
+  "kpi": {
+    "redditivita": {
+      "roe": [1.6, 2.0, 45.3],
+      "roa": [0.43, 0.45, 16.8],
+      "ros": [0.5, 0.7, 18.3],
+      "ebitda_margin": [7.6, 11.7, 24.9]
+    },
+    "liquidita": {
+      "current_ratio": [1.92, 0.92, 1.52],
+      "quick_ratio": [0.87, 0.84, 1.53],
+      "cash_ratio": [0.2, 0.02, 0.06],
+      "margine_tesoreria": [-43000, -63000, 100000]
+    },
+    "solidita": {
+      "debt_equity": [2.66, 3.16, 1.52],
+      "leverage": [3.8, 4.41, 2.69],
+      "icr": [2.2, 1.5, 8.2],
+      "dscr": [0, 0, 9.06]
+    },
+    "efficienza": {
+      "dso": [254, 214, 157],
+      "dpo": [56, 56, 56],
+      "ciclo_finanziario": [142, 142, 101],
+      "asset_turnover": [0.86, 0.69, 0.92]
+    },
+    "rischio": {
+      "z_score": [1.85, 1.42, 3.18],
+      "z_score_zone": ["grey", "grey", "safe"]
+    }
+  },
+  "dupont_analysis": {
+    "margine_netto": [0.5, 0.7, 18.3],
+    "rotazione_attivo": [0.86, 0.69, 0.92],
+    "leva_finanziaria": [3.8, 4.41, 2.69],
+    "roa": [0.43, 0.45, 16.8]
+  },
+  "break_even": {
+    "costi_fissi": 350000,
+    "costi_variabili": 302000,
+    "margine_contribuzione": 0.634,
+    "punto_pareggio": 552000,
+    "margine_sicurezza_pct": 33,
+    "margine_sicurezza_eur": 273000,
+    "ricavi_2025": 824708
+  },
+  "debt_structure": {
+    "breve_termine": [229000, 393000, 272300],
+    "lungo_termine": [200000, 182000, 233700],
+    "totale": [429000, 575000, 506000],
+    "breve_pct": [53, 68, 54],
+    "lungo_pct": [47, 32, 46],
+    "costo_medio_debito": 4.33
+  },
+  "produttivita": {
+    "dipendenti": [198, 203, 283],
+    "ricavi_per_dipendente": [2.66, 2.73, 2.92],
+    "valore_aggiunto_per_dipendente": [4.8, 6.1, 10.0],
+    "ebitda_per_dipendente": [20, 32, 73],
+    "ricavi_su_costo_personale": [2.66, 2.73, 2.92],
+    "valore_aggiunto_per_dipendente_euro": [0, 0, 100000],
+    "costo_medio_dipendente": [0, 0, 47000],
+    "dipendenti_stimati": 12
+  },
+  "capex": {
+    "periodi": ["2023-2024", "2024-2025"],
+    "valori": [319000, 66000],
+    "dettagli": [
+      {
+        "periodo": "2023-2024",
+        "totale": 319000,
+        "delta_immobilizzazioni": 291000,
+        "ammortamenti": 29000,
+        "nota": "Ciclo investimento pesante"
+      },
+      {
+        "periodo": "2024-2025",
+        "totale": 66000,
+        "delta_immobilizzazioni": 41000,
+        "ammortamenti": 26000,
+        "nota": "Riduzione 79% vs periodo precedente"
+      }
+    ]
+  },
+  "composizione_attivo": {
+    "labels": [
+      "Immob. Materiali",
+      "Crediti",
+      "Attività Fin.",
+      "Liquidità",
+      "Immob. Fin.",
+      "Ratei",
+      "Immob. Immat."
+    ],
+    "valori_2025": [471000, 355000, 43000, 17000, 5000, 4000, 1000],
+    "percentuali_2025": [52.6, 39.6, 4.8, 1.9, 0.6, 0.4, 0.1]
+  },
+  "composizione_passivo": {
+    "labels": [
+      "Debiti Breve",
+      "Debiti Lungo",
+      "Utile Esercizio",
+      "Capitale",
+      "Utili a Nuovo",
+      "TFR",
+      "Altre Riserve",
+      "Riserva Legale",
+      "Ratei"
+    ],
+    "valori_2025": [
+      272300, 233700, 151000, 100000, 61000, 54100, 17000, 5000, 3000
+    ],
+    "percentuali_2025": [30.4, 26.1, 16.8, 11.2, 6.8, 6.0, 1.9, 0.6, 0.3]
+  },
+  "composizione_costi": {
+    "labels": [
+      "Servizi",
+      "Personale",
+      "Ammortamenti",
+      "Oneri Diversi",
+      "Godim. Beni",
+      "Materie Prime"
+    ],
+    "valori_2025": [314464, 282113, 25621, 13000, 10000, 7000],
+    "percentuali_2025": [47.3, 42.4, 3.8, 1.9, 1.5, 1.0]
+  },
+  "executive_summary": {
+    "salute_generale": "Buona",
+    "aree": {
+      "liquidita": {
+        "stato": "Attenzione",
+        "valore": "Cash 0.06x",
+        "css_class": "subwidget-negative"
+      },
+      "efficienza": {
+        "stato": "Migliorabile",
+        "valore": "DSO 157gg",
+        "css_class": "subwidget-negative"
+      },
+      "redditivita": {
+        "stato": "Ottima",
+        "valore": "ROE 45.3%",
+        "css_class": "subwidget-neutral"
+      },
+      "crescita": {
+        "stato": "Forte",
+        "valore": "+49% Ricavi",
+        "css_class": "subwidget-neutral"
+      },
+      "solidita": {
+        "stato": "Buona",
+        "valore": "D/E 1.52x",
+        "css_class": "subwidget-neutral"
+      },
+      "rischio": {
+        "stato": "Basso",
+        "valore": "Z-Score 3.18",
+        "css_class": "subwidget-neutral"
+      }
+    }
+  },
+  "risk_priorities": [
+    {
+      "priority": "P1",
+      "criticita": "alta",
+      "titolo": "Migliorare Cash Ratio",
+      "target": ">0.2x (attuale 0.06x)",
+      "azioni": "Accelerare incassi, factoring, linea RBF",
+      "cassa_liberabile": 75000,
+      "css_class": "widget-negative"
+    },
+    {
+      "priority": "P2",
+      "criticita": "alta",
+      "titolo": "Ridurre DSO a 120 giorni",
+      "target": "120gg (attuale 157gg)",
+      "azioni": "Sconti pagamento anticipato, credit management",
+      "miglioramento": "27%",
+      "css_class": "widget-negative"
+    },
+    {
+      "priority": "P3",
+      "criticita": "media",
+      "titolo": "Consolidare margini EBITDA",
+      "target": "22-25%",
+      "azioni": "Diversificazione clienti, controllo costi",
+      "valore_attuale": "24.9%",
+      "css_class": "widget-positive"
+    }
+  ],
+  "risk_matrix": [
+    {
+      "categoria": "Rischio Operativo",
+      "livello": "Basso",
+      "indicatori": [
+        "EBITDA 24.9% (+13.2pp vs 2024)",
+        "Break-even +33%",
+        "Leva operativa controllata"
+      ],
+      "css_class": "widget-positive"
+    },
+    {
+      "categoria": "Rischio Finanziario",
+      "livello": "Basso",
+      "indicatori": [
+        "D/E 1.52x (-52% vs 2024)",
+        "ICR 8.2x (+447% vs 2024)",
+        "Struttura debiti riequilibrata"
+      ],
+      "css_class": "widget-positive"
+    },
+    {
+      "categoria": "Rischio Liquidità",
+      "livello": "Medio",
+      "indicatori": [
+        "Cash Ratio 0.06x critico",
+        "DSO 157gg sopra target",
+        "Current Ratio 1.52x ok"
+      ],
+      "css_class": "widget-negative"
+    },
+    {
+      "categoria": "Rischio Concentrazione",
+      "livello": "Info",
+      "indicatori": [
+        "Dipendenza top client da verificare",
+        "Mix settoriale da analizzare"
+      ],
+      "css_class": "widget-purple"
+    }
+  ],
+  "z_score_altman": {
+    "punteggio": [1.85, 1.42, 3.18],
+    "zone": ["grey", "grey", "safe"],
+    "zone_descrizione": {
+      "safe": "Zona Sicura (>2.9)",
+      "grey": "Zona Grigia (1.23-2.9)",
+      "risk": "Zona Rischio (<1.23)"
+    },
+    "css_class_2025": "widget-positive",
+    "components_2025": {
+      "x1": 0.11,
+      "x2": 0.06,
+      "x3": 0.62,
+      "x4": 0.25,
+      "x5": 0.92
+    },
+    "probabilita_insolvenza": "<2%"
+  },
+  "interest_coverage": {
+    "ebit": [16311, 32605, 180049],
+    "oneri_finanziari": [7774, 21104, 18948],
+    "icr": [2.2, 1.5, 8.2],
+    "costo_medio_debito": 4.33
+  },
+  "ai_insights": {
+    "executive_summary": {
+      "negativi": [
+        "Cash Ratio 0.06x critico: liquidità immediata insufficiente",
+        "DSO 157 giorni sopra target: €75k bloccata nei crediti",
+        "Dipendenza debiti breve: €272k in scadenza 12 mesi",
+        "Margine struttura negativo -€144k: immobilizzazioni finanziate parzialmente con debito"
+      ],
+      "positivi": [
+        "Ricavi +49%: crescita organica trainata da nuovi clienti",
+        "EBITDA +217%: margine operativo esploso al 24.9%",
+        "Quick Ratio +82%: migliorata capacità di pagamento",
+        "DSO -27%: recupero crediti più efficiente",
+        "D/E -52%: struttura finanziaria riequilibrata",
+        "Z-Score 3.18: azienda in zona sicura",
+        "Utile netto €151k (+4039%): trasformazione in forte profittabilità",
+        "ROE 45.3%: rendimento eccezionale del capitale proprio",
+        "ICR 8.2x: capacità di copertura interessi eccellente"
+      ]
+    },
+    "leva_finanziaria": "Il D/E sceso da 3.17x a 1.52x (-52%) indica un riequilibrio della struttura finanziaria. Il ROE esploso al 45.3% (+43pp) deriva dalla combinazione di maggior leverage (1.52x) e margine netto 18.3%. La struttura è ora più sostenibile.",
+    "efficienza_costi_dso": "I costi sono scesi dal 82.5% al 72.3% dei ricavi (-10.2pp), segnalando forte leva operativa. Il DSO a 157gg rimane critico (era 214gg nel 2023). Priorità: ridurre ulteriormente i giorni incasso per liberare €75k di cassa. I margini operativi sono ormai ottimali.",
+    "crescita_ricavi": "Ricavi +49% (€825k) con EBITDA +216% (€205k). Il margine EBITDA è passato dal 12.7% al 24.9% (+12.2pp), segnalando forte leva operativa. La crescita è organica, trainata da nuovi clienti e upselling.",
+    "profittabilita": "EBIT +452% (€180k) e Utile Netto +4039% (€151k). Il margine netto è salito dallo 0.7% al 18.3%. La trasformazione da quasi break-even a forte profittabilità riflette il controllo dei costi e la scalabilità del modello.",
+    "ciclo_capitale": "Il ciclo finanziario è sceso del 29% (da 142 a 101 giorni), ma rimane elevato. Il DSO a 157gg (vs target 120gg) congela €75k di cassa. Migliorare la gestione crediti per liberare liquidità.",
+    "liquidita_ratios": "Il Current Ratio è migliorato al 1.52x (+65% vs 2024), ma il Cash Ratio rimane critico a 0.06x. L'azienda può coprire i debiti a breve con le attività correnti, ma ha scarsa liquidità immediata. Priorità: accelerare incassi e aumentare disponibilità liquide.",
+    "cash_flow_waterfall": "Il flusso operativo è positivo (€289k = €189k autofinanziamento + €100k Δ capitale circolante). I CAPEX (-€66k) e il rimborso debiti (-€69k) sono coperti dalla gestione corrente. La cassa finale è in aumento, segnalando buona salute finanziaria.",
+    "cash_flow_trend": "Il CFO è triplicato nel triennio (€62k → €189k, +205%). La liquidità 2024 è scesa a €7k per assorbimento del capitale circolante e investimenti, ma nel 2025 si è ripresa a €17k (+143%). La crescita del CFO garantisce capacità di autofinanziamento per futuri investimenti.",
+    "struttura_debiti": "Mix migliorato di 14pp vs 2024 (da 68% a 54% breve termine). Il riequilibrio riduce la pressione sulla liquidità a breve. Debito totale -12% (€506k vs €575k).",
+    "sostenibilita_debito": "ICR da 1.5x (2024) a 8.2x (+447%). DSCR a 9.06x garantisce ampia capacità di servire il debito. Costo medio 4.33% sostenibile con EBIT di €180k.",
+    "margine_struttura": "Il margine di struttura è migliorato del 43% (da -€254k a -€144k) grazie all'aumento del PN (+83%). La struttura patrimoniale si sta riequilibrando, riducendo la dipendenza dal debito per finanziare le immobilizzazioni.",
+    "performance_economica": "I ricavi 2025 sono cresciuti del 49% (€825k). L'utile netto è esploso del +4039% (€151k), evidenziando un'efficienza operativa eccezionale con margini significativamente migliorati. La gestione è passata da fragile (2024) a molto solida (2025).",
+    "solidita_patrimoniale": "Il patrimonio netto è cresciuto dell'83% (€333k), rafforzando la base finanziaria. I crediti commerciali (€355k) rappresentano il 43% dell'attivo circolante. Le immobilizzazioni (€477k) sono coperte al 70% dal PN, segnalando una struttura sana e equilibrata.",
+    "break_even": "I ricavi possono scendere del 33% (€273k) prima di entrare in perdita.",
+    "produttivita": "L'EBITDA per dipendente è aumentato del 127% (€73k), segnalando un'efficienza operativa eccezionale. Il team attuale massimizza il valore generato.",
+    "capex": "I CAPEX sono calati del 79% vs 2024, segnalando la fine del ciclo di investimenti. Prossimo step: ottimizzare l'efficienza degli asset acquisiti.",
+    "dupont": "Il ROE 2025 è trainato dal margine netto (+17.6pp vs 2024), non dalla leva (in calo). Crescita sana e sostenibile.",
+    "z_score": "Il punteggio Z-Score di 3.18 posiziona l'azienda in \"ZONA SICURA\". La probabilità di insolvenza a 2 anni è <2%. I fondamentali sono sani e sostenibili."
+  },
+  "documents": [
+    {
+      "nome_file": "IT04572610-2025-Esercizio-1.pdf",
+      "tipo": "Bilancio CEE",
+      "esercizio": "2025",
+      "data_chiusura": "31/05/2025",
+      "url": "docs/bilanci/IT04572610-2025-Esercizio-1-101239144.pdf"
+    },
+    {
+      "nome_file": "IT04572610-2024-Esercizio-2.pdf",
+      "tipo": "Bilancio CEE",
+      "esercizio": "2024",
+      "data_chiusura": "31/05/2024",
+      "url": "docs/bilanci/IT04572610-2024-Esercizio-2-101239144.pdf"
+    },
+    {
+      "nome_file": "IT04572610-2023-Esercizio-3.pdf",
+      "tipo": "Bilancio CEE",
+      "esercizio": "2023",
+      "data_chiusura": "31/05/2023",
+      "url": "docs/bilanci/IT04572610-2023-Esercizio-3-101239144.pdf"
+    }
+  ],
+  "documents_info": {
+    "periodo_copertura": "Esercizi chiusi al 31 maggio 2023, 2024, 2025",
+    "formato": "PDF conformi alla tassonomia XBRL itcc-ci-2018-11-04",
+    "note": "Nel 2023 la società era denominata \"Tessari Associati SRL\", successivamente rinominata in \"Perspect S.R.L.\""
+  }
+}

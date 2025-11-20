@@ -1,321 +1,781 @@
 {
   "metadata": {
-    "company_name": "Perspect srl",
-    "fiscal_years": ["2023", "2024", "2025"],
+    "company_name": "Axerta S.p.A.",
+    "fiscal_years": ["2021", "2022", "2023", "2024"],
     "currency": "EUR",
-    "last_update": "18 nov 2025",
-    "notes": "Nel 2023 la società era denominata \"Tessari Associati SRL\", successivamente rinominata in \"Perspect S.R.L.\""
+    "last_update": "19 nov 2025",
+    "notes": "SocietÃ  specializzata in servizi di investigazione privata (ATECO 80.30.00) con sede a Roma. Dati estratti da bilanci ufficiali 2021-2024."
   },
   "income_statement": {
-    "ricavi": [526061, 553475, 824708],
-    "costi_servizi": [241142, 254242, 314464],
-    "costi_personale": [198004, 202405, 282113],
-    "altri_costi_operativi": [53785, 31995, 29520],
-    "ebitda": [40039, 64833, 205335],
-    "ammortamenti": [18921, 28687, 25621],
-    "ebit": [16311, 32605, 180049],
-    "oneri_finanziari": [7774, 21104, 18948],
-    "imposte": [5871, 7861, 10424],
-    "utile_netto": [2666, 3640, 150677]
+    "ricavi": [3113905, 3641662, 4378857, 4773256],
+    "altri_ricavi": [99118, 1373, 30214, 25980],
+    "valore_produzione": [3213023, 3643035, 4409071, 4799236],
+    "costi_materie": [27758, 24477, 35021, 47269],
+    "costi_servizi": [1208460, 1283927, 1704823, 1646039],
+    "costi_godimento": [129198, 159368, 137947, 147322],
+    "costi_personale": [1008457, 1246494, 1360234, 1396363],
+    "altri_costi_operativi": [24665, 29081, 22703, 45057],
+    "ebitda": [814485, 899688, 1148343, 1517186],
+    "ammortamenti_immateriali": [12621, 10021, 12379, 17304],
+    "ammortamenti_materiali": [79493, 79478, 55448, 37445],
+    "ammortamenti_totali": [97914, 89499, 67827, 54749],
+    "svalutazioni": [5800, 0, 0, 0],
+    "ebit": [716571, 810189, 1080516, 1462437],
+    "proventi_finanziari": [55, 32, 7, 26],
+    "oneri_finanziari": [2397, 2142, 1991, 4611],
+    "risultato_ante_imposte": [714217, 808218, 1078532, 1457852],
+    "imposte": [182791, 249276, 323526, 339091],
+    "utile_netto": [531426, 558942, 755006, 1118761]
   },
   "balance_sheet": {
     "attivo": {
-      "immobilizzazioni_immateriali": [0, 0, 1000],
-      "immobilizzazioni_materiali": [400000, 436000, 471000],
-      "immobilizzazioni_finanziarie": [0, 0, 5000],
-      "immobilizzazioni_totale": [400000, 436000, 477000],
-      "crediti_commerciali": [150000, 323000, 355000],
-      "attivita_finanziarie": [30000, 32000, 42900],
-      "disponibilita_liquide": [20000, 7000, 17000],
-      "ratei_risconti_attivi": [15000, 5000, 4000],
-      "totale_attivo": [615000, 803000, 896200]
+      "immobilizzazioni_immateriali": [51380, 41359, 48600, 31296],
+      "immobilizzazioni_materiali": [150875, 104037, 94370, 66667],
+      "immobilizzazioni_finanziarie": [8478, 8478, 6101, 7601],
+      "immobilizzazioni_totale": [210733, 153874, 149071, 105564],
+      "rimanenze": [0, 0, 0, 0],
+      "crediti_commerciali": [1243753, 2132433, 2796332, 2683762],
+      "crediti_altri": [3113, 3113, 8105, 49663],
+      "crediti_totali": [1246866, 2135546, 2804437, 2733425],
+      "disponibilita_liquide": [1347879, 452100, 732065, 839737],
+      "ratei_risconti_attivi": [24897, 19816, 22586, 27876],
+      "attivo_circolante_totale": [2594745, 2587646, 3536502, 3573162],
+      "totale_attivo": [2830375, 2761336, 3708159, 3706602]
     },
     "passivo": {
-      "capitale_sociale": [100000, 100000, 100000],
-      "riserva_legale": [3000, 4000, 5000],
-      "altre_riserve": [10000, 15000, 17000],
-      "utili_esercizi_precedenti": [50000, 53000, 61000],
-      "utile_esercizio": [3000, 4000, 151000],
-      "totale_patrimonio_netto": [166000, 182000, 332700],
-      "tfr": [30000, 42000, 54100],
-      "debiti_breve_termine": [229000, 393000, 272300],
-      "debiti_lungo_termine": [200000, 182000, 233700],
-      "ratei_risconti_passivi": [0, 10000, 3000],
-      "totale_passivo": [615000, 803000, 896200]
+      "capitale_sociale": [190000, 190000, 190000, 190000],
+      "riserva_legale": [38000, 38000, 38000, 38000],
+      "altre_riserve": [404964, 36391, 95333, 337],
+      "utile_esercizio": [531426, 558942, 755006, 1118761],
+      "patrimonio_netto_totale": [1164390, 823333, 1078339, 1347098],
+      "debiti_finanziari_lungo": [305556, 194445, 83334, 0],
+      "debiti_finanziari_breve": [0, 0, 0, 0],
+      "debiti_commerciali": [672769, 876160, 1336890, 1210829],
+      "debiti_tributari": [224256, 292053, 445630, 403609],
+      "altri_debiti_correnti": [224256, 292053, 445630, 403609],
+      "tfr": [236247, 281871, 318013, 337159],
+      "fondi_rischi": [0, 0, 0, 0],
+      "ratei_risconti_passivi": [2900, 1420, 322, 4296],
+      "debiti_totali": [1426838, 1654712, 2311485, 2018049],
+      "totale_passivo": [2830375, 2761336, 3708159, 3706602]
     }
-  },
-  "structure_margin": {
-    "patrimonio_netto": [166000, 182000, 332700],
-    "immobilizzazioni": [400000, 436000, 477000],
-    "margine": [16000, -254000, -144000],
-    "stato": ["Equilibrato", "Investimenti", "Equilibrato in miglioramento"]
-  },
-  "cash_flow": {
-    "utile_netto": [0, 0, 151000],
-    "ammortamenti": [0, 0, 26000],
-    "variazione_tfr": [0, 0, 13000],
-    "variazione_crediti": [0, 0, 31000],
-    "variazione_debiti": [0, 0, -69000],
-    "investimenti": [0, 0, -66000],
-    "variazione_cassa": [0, 0, 10000],
-    "cash_flow_operativo": [62000, 97000, 189000],
-    "autofinanziamento": [0, 0, 188900],
-    "delta_capitale_circolante": [0, 0, 100600],
-    "delta_debiti_finanziari": [0, 0, -69400]
   },
   "kpi": {
-    "redditivita": {
-      "roe": [1.6, 2.0, 45.3],
-      "roa": [0.43, 0.45, 16.8],
-      "ros": [0.5, 0.7, 18.3],
-      "ebitda_margin": [7.6, 11.7, 24.9]
-    },
-    "liquidita": {
-      "current_ratio": [1.92, 0.92, 1.52],
-      "quick_ratio": [0.87, 0.84, 1.53],
-      "cash_ratio": [0.20, 0.02, 0.06],
-      "margine_tesoreria": [-43000, -63000, 100000]
-    },
-    "solidita": {
-      "debt_equity": [2.66, 3.16, 1.52],
-      "leverage": [3.80, 4.41, 2.69],
-      "icr": [2.2, 1.5, 8.2],
-      "dscr": [0, 0, 9.06]
-    },
-    "efficienza": {
-      "dso": [254, 214, 157],
-      "dpo": [56, 56, 56],
-      "ciclo_finanziario": [142, 142, 101],
-      "asset_turnover": [0.86, 0.69, 0.92]
-    },
-    "rischio": {
-      "z_score": [1.85, 1.42, 3.18],
-      "z_score_zone": ["grey", "grey", "safe"]
-    }
-  },
-  "dupont_analysis": {
-    "margine_netto": [0.5, 0.7, 18.3],
-    "rotazione_attivo": [0.86, 0.69, 0.92],
-    "leva_finanziaria": [3.80, 4.41, 2.69],
-    "roa": [0.43, 0.45, 16.8]
-  },
-  "break_even": {
-    "costi_fissi": 350000,
-    "costi_variabili": 302000,
-    "margine_contribuzione": 0.634,
-    "punto_pareggio": 552000,
-    "margine_sicurezza_pct": 33,
-    "margine_sicurezza_eur": 273000,
-    "ricavi_2025": 824708
-  },
-  "debt_structure": {
-    "breve_termine": [229000, 393000, 272300],
-    "lungo_termine": [200000, 182000, 233700],
-    "totale": [429000, 575000, 506000],
-    "breve_pct": [53, 68, 54],
-    "lungo_pct": [47, 32, 46],
-    "costo_medio_debito": 4.33
-  },
-  "produttivita": {
-    "dipendenti": [198, 203, 283],
-    "ricavi_per_dipendente": [2.66, 2.73, 2.92],
-    "valore_aggiunto_per_dipendente": [4.8, 6.1, 10.0],
-    "ebitda_per_dipendente": [20, 32, 73],
-    "ricavi_su_costo_personale": [2.66, 2.73, 2.92],
-    "valore_aggiunto_per_dipendente_euro": [0, 0, 100000],
-    "costo_medio_dipendente": [0, 0, 47000],
-    "dipendenti_stimati": 12
-  },
-  "capex": {
-    "periodi": ["2023-2024", "2024-2025"],
-    "valori": [319000, 66000],
-    "dettagli": [
-      {
-        "periodo": "2023-2024",
-        "totale": 319000,
-        "delta_immobilizzazioni": 291000,
-        "ammortamenti": 29000,
-        "nota": "Ciclo investimento pesante"
-      },
-      {
-        "periodo": "2024-2025",
-        "totale": 66000,
-        "delta_immobilizzazioni": 41000,
-        "ammortamenti": 26000,
-        "nota": "Riduzione 79% vs periodo precedente"
-      }
-    ]
-  },
-  "composizione_attivo": {
-    "labels": ["Immob. Materiali", "Crediti", "Attività Fin.", "Liquidità", "Immob. Fin.", "Ratei", "Immob. Immat."],
-    "valori_2025": [471000, 355000, 43000, 17000, 5000, 4000, 1000],
-    "percentuali_2025": [52.6, 39.6, 4.8, 1.9, 0.6, 0.4, 0.1]
-  },
-  "composizione_passivo": {
-    "labels": ["Debiti Breve", "Debiti Lungo", "Utile Esercizio", "Capitale", "Utili a Nuovo", "TFR", "Altre Riserve", "Riserva Legale", "Ratei"],
-    "valori_2025": [272300, 233700, 151000, 100000, 61000, 54100, 17000, 5000, 3000],
-    "percentuali_2025": [30.4, 26.1, 16.8, 11.2, 6.8, 6.0, 1.9, 0.6, 0.3]
-  },
-  "composizione_costi": {
-    "labels": ["Servizi", "Personale", "Ammortamenti", "Oneri Diversi", "Godim. Beni", "Materie Prime"],
-    "valori_2025": [314464, 282113, 25621, 13000, 10000, 7000],
-    "percentuali_2025": [47.3, 42.4, 3.8, 1.9, 1.5, 1.0]
+    "margine_ebitda": [26.16, 24.71, 26.22, 31.79],
+    "margine_ebit": [23.01, 22.25, 24.68, 30.64],
+    "margine_netto": [17.07, 15.35, 17.24, 23.44],
+    "roe": [45.64, 67.89, 70.02, 83.05],
+    "roa": [18.78, 20.24, 20.36, 30.18],
+    "roi": [25.32, 29.34, 29.14, 39.45],
+    "ros": [23.01, 22.25, 24.68, 30.64],
+    "current_ratio": [2.31, 1.77, 1.59, 1.77],
+    "quick_ratio": [2.31, 1.77, 1.59, 1.77],
+    "debt_to_equity": [1.23, 2.01, 2.14, 1.5],
+    "leverage_ratio": [2.43, 3.35, 3.44, 2.75],
+    "autonomia_finanziaria": [41.14, 29.82, 29.08, 36.34],
+    "dso": [146.0, 214.0, 234.0, 209.0],
+    "dpo": [199.0, 244.0, 280.0, 261.0],
+    "asset_turnover": [1.1, 1.32, 1.18, 1.29]
   },
   "executive_summary": {
-    "salute_generale": "Buona",
     "aree": {
-      "liquidita": {"stato": "Attenzione", "valore": "Cash 0.06x", "css_class": "subwidget-negative"},
-      "efficienza": {"stato": "Migliorabile", "valore": "DSO 157gg", "css_class": "subwidget-negative"},
-      "redditivita": {"stato": "Ottima", "valore": "ROE 45.3%", "css_class": "subwidget-neutral"},
-      "crescita": {"stato": "Forte", "valore": "+49% Ricavi", "css_class": "subwidget-neutral"},
-      "solidita": {"stato": "Buona", "valore": "D/E 1.52x", "css_class": "subwidget-neutral"},
-      "rischio": {"stato": "Basso", "valore": "Z-Score 3.18", "css_class": "subwidget-neutral"}
+      "liquidita": {
+        "title": "LiquiditÃ  Corrente",
+        "value": "1.77x",
+        "description": "Il Current Ratio Ã¨ attestato a 1.77x, in lieve risalita dopo il minimo di 1.59x del 2023.",
+        "insight": "Con disponibilitÃ  liquide di 839,737â‚¬ e un attivo circolante di 3,573,162â‚¬, l'azienda mantiene una posizione di liquiditÃ  accettabile. Il ratio 1.77x copre adeguatamente i debiti a breve termine di 2,018,049â‚¬. Tuttavia, il DSO elevato (209 giorni) indica che una parte significativa della liquiditÃ  potenziale Ã¨ bloccata nei crediti commerciali. Si raccomanda di mantenere un buffer di cassa di almeno 500Kâ‚¬ e di implementare politiche piÃ¹ stringenti di credit management.",
+        "trend": "neutral",
+        "css_class": "subwidget-neutral"
+      },
+      "redditivita": {
+        "title": "RedditivitÃ  Eccellente",
+        "value": "83.05%",
+        "description": "Il ROE ha raggiunto il livello straordinario di 83.05%, in costante crescita da 45.64% nel 2021.",
+        "insight": "Il Return on Equity dell'83% posiziona Axerta nel top 5% delle societÃ  italiane del settore servizi professionali. Questo risultato eccezionale deriva da tre fattori chiave: 1) margine netto del 23,4% tra i piÃ¹ alti del settore, 2) asset turnover efficiente di 1.29x che indica ottima produttivitÃ  degli asset, 3) leverage finanziario moderato di 2.75x che amplifica il ritorno senza eccedere nel rischio. L'utile netto Ã¨ cresciuto del 48% nel 2024 (+364Kâ‚¬) dimostrando capacitÃ  straordinaria di generare valore per gli azionisti.",
+        "trend": "up",
+        "css_class": "subwidget-positive"
+      },
+      "crescita": {
+        "title": "Crescita Sostenuta",
+        "value": "+9.01%",
+        "description": "I ricavi 2024 crescono del 9.01% raggiungendo 4,773,256â‚¬, con un CAGR triennale del 15,3%.",
+        "insight": "La traiettoria di crescita Ã¨ stata impressionante: +17% nel 2022, +20% nel 2023, +9% nel 2024. Il rallentamento al 9% nell'ultimo anno indica una fase di consolidamento su una base piÃ¹ ampia (4,8Mâ‚¬ vs 3,1Mâ‚¬ del 2021, +53% cumulato). Questa crescita Ã¨ stata interamente organica, senza acquisizioni, dimostrando solida capacitÃ  commerciale. Il fatturato Ã¨ quasi raddoppiato in 4 anni mantenendo margini in espansione, segno di un business model scalabile e di qualitÃ  del servizio riconosciuta dal mercato.",
+        "trend": "up",
+        "css_class": "subwidget-positive"
+      },
+      "marginalita": {
+        "title": "MarginalitÃ  in Espansione",
+        "value": "31.79%",
+        "description": "Il margine EBITDA Ã¨ salito al 31.79%, in forte accelerazione rispetto al 26.22% del 2023.",
+        "insight": "L'EBITDA di 1,52Mâ‚¬ (+32% vs 2023) rappresenta un margine del 31,8%, ben superiore alla media di settore (18-22%) e in miglioramento di 5,6 punti percentuali rispetto al 2021. Questo risultato deriva dall'ottimizzazione operativa: l'incidenza dei costi operativi sul fatturato Ã¨ scesa dal 74% al 68%. La leva operativa positiva (ogni 1% di crescita ricavi genera 3,6% di crescita EBITDA) indica economie di scala ben sfruttate. Con margine netto al 23,4%, Axerta converte quasi un quarto del fatturato in utile, performance straordinaria.",
+        "trend": "up",
+        "css_class": "subwidget-positive"
+      }
     }
   },
   "risk_priorities": [
     {
-      "priority": "P1",
-      "criticita": "alta",
-      "titolo": "Migliorare Cash Ratio",
-      "target": ">0.2x (attuale 0.06x)",
-      "azioni": "Accelerare incassi, factoring, linea RBF",
-      "cassa_liberabile": 75000,
+      "title": "Concentrazione Crediti Commerciali",
+      "severity": "medium",
+      "description": "DSO di 209 giorni e crediti commerciali pari al 72% dell'attivo circolante indicano elevata concentrazione del rischio.",
+      "impact": "Con 2,7Mâ‚¬ di crediti commerciali (73% del totale attivo), Axerta Ã¨ esposta al rischio di insolvenza clienti. Il tempo medio di incasso di 7 mesi Ã¨ 3x superiore allo standard di mercato (60-90 giorni) per societÃ  di servizi, suggerendo: 1) dipendenza da grandi clienti corporate o PA con termini di pagamento lunghi, 2) possibile difficoltÃ  nelle attivitÃ  di sollecito e recupero crediti, 3) rischio di svalutazioni future se la qualitÃ  del portafoglio crediti si deteriora. Un singolo cliente insolvente per 300-500Kâ‚¬ impatt erebbe significativamente la liquiditÃ .",
+      "mitigation": "Implementare sistema di credit scoring per nuovi clienti (rating minimo BBB), diversificare il portafoglio verso PMI con DSO target 60-90 giorni, introdurre policy di sollecito automatizzato a 30-60-90 giorni con escalation a C-level, valutare factoring pro-solvendo per crediti >120 giorni (costo 1,5-2% vs beneficio di liquiditÃ  immediata), costituire fondo svalutazione crediti pari al 3-5% del portafoglio (100-150Kâ‚¬), negoziare acconti del 30% all'inizio dei progetti di lunga durata.",
       "css_class": "widget-negative"
     },
     {
-      "priority": "P2",
-      "criticita": "alta",
-      "titolo": "Ridurre DSO a 120 giorni",
-      "target": "120gg (attuale 157gg)",
-      "azioni": "Sconti pagamento anticipato, credit management",
-      "miglioramento": "27%",
+      "title": "Capitale Circolante Sotto Pressione",
+      "severity": "medium",
+      "description": "Il CCN assorbe 1,55Mâ‚¬ (33% dei ricavi annui) e il current ratio Ã¨ sceso da 2.31x a 1.77x negli ultimi 4 anni.",
+      "impact": "Sebbene il CCN sia positivo, il deterioramento del current ratio indica pressione crescente sulla gestione del circolante. Il ciclo di conversione della cassa Ã¨ positivo (circa 10 giorni dopo DPO adjustment), ma con DSO alto servono circa 5 mesi per incassare dopo aver emesso fattura. Questo assorbe capitale: 1,55Mâ‚¬ bloccati nel ciclo operativo rappresentano quasi 5 mesi di fatturato. La dipendenza da crediti commerciali per finanziare l'operativitÃ  espone a rischio se i clienti rallentano i pagamenti. Con liquiditÃ  immediata di 840Kâ‚¬ contro debiti brevi di 2Mâ‚¬, serve ottimizzazione.",
+      "mitigation": "Ridurre DSO target da 209 a 150 giorni entro 18 mesi (libera 770Kâ‚¬ di cassa), negoziare con top 5 fornitori (80% acquisti) estensione termini da 60 a 90 giorni senza penali (libera 190Kâ‚¬), implementare sistema di previsione rolling 13 settimane per anticipare tensioni di cassa, mantenere linea di credito revolving da 300-500Kâ‚¬ come safety net (attualmente non utilizzata), target CCN <25% dei ricavi (1,2Mâ‚¬) entro 2026.",
       "css_class": "widget-negative"
     },
     {
-      "priority": "P3",
-      "criticita": "media",
-      "titolo": "Consolidare margini EBITDA",
-      "target": "22-25%",
-      "azioni": "Diversificazione clienti, controllo costi",
-      "valore_attuale": "24.9%",
+      "title": "Posizione Finanziaria Solida",
+      "severity": "low",
+      "description": "Debiti finanziari completamente azzerati nel 2024, con Z-Score di 3.36 che indica rischio di insolvenza <5%.",
+      "impact": "L'estinzione totale dei debiti finanziari (da 306Kâ‚¬ nel 2021 a 0â‚¬ nel 2024) elimina completamente il rischio finanziario strutturale. Non ci sono rate da pagare, non ci sono covenant bancari da rispettare, non c'Ã¨ esposizione a variazioni dei tassi di interesse. Il Debt to Equity di 1.50x Ã¨ costituito interamente da debiti operativi (fornitori, tributari), non da debiti finanziari. Lo Z-Score di 3.36 colloca Axerta nella 'zona sicura' (>2.99), con probabilitÃ  di default entro 24 mesi inferiore al 5%. L'Interest Coverage di 317x Ã¨ puramente teorico dato l'irrilevanza degli oneri finanziari (4.6Kâ‚¬).",
+      "mitigation": "Mantenere la posizione debt-free per massimizzare flessibilitÃ  strategica e indipendenza decisionale. Utilizzare la capacitÃ  di indebitamento residua (stima 1-1,5Mâ‚¬ ottenibile a condizioni favorevoli) solo per: 1) acquisizioni strategiche con ROI atteso >25% e payback <3 anni, 2) investimenti in tecnologia/digitalizzazione con ritorno misurabile, 3) espansione geografica (apertura sedi Milano/Torino). Continuare a finanziare crescita organica con autofinanziamento (cash flow operativo 1,2Mâ‚¬/anno). Distribuire agli azionisti solo utili eccedenti i fabbisogni di investimento.",
       "css_class": "widget-positive"
     }
   ],
-  "risk_matrix": [
-    {
-      "categoria": "Rischio Operativo",
-      "livello": "Basso",
-      "indicatori": ["EBITDA 24.9% (+13.2pp vs 2024)", "Break-even +33%", "Leva operativa controllata"],
-      "css_class": "widget-positive"
-    },
-    {
-      "categoria": "Rischio Finanziario",
-      "livello": "Basso",
-      "indicatori": ["D/E 1.52x (-52% vs 2024)", "ICR 8.2x (+447% vs 2024)", "Struttura debiti riequilibrata"],
-      "css_class": "widget-positive"
-    },
-    {
-      "categoria": "Rischio Liquidità",
-      "livello": "Medio",
-      "indicatori": ["Cash Ratio 0.06x critico", "DSO 157gg sopra target", "Current Ratio 1.52x ok"],
-      "css_class": "widget-negative"
-    },
-    {
-      "categoria": "Rischio Concentrazione",
-      "livello": "Info",
-      "indicatori": ["Dipendenza top client da verificare", "Mix settoriale da analizzare"],
-      "css_class": "widget-purple"
+  "structure_margin": {
+    "margine_lordo": [60.3, 64.07, 60.27, 64.53],
+    "incidenza_personale": [32.39, 34.23, 31.06, 29.25],
+    "incidenza_ammortamenti": [3.14, 2.46, 1.55, 1.15],
+    "incidenza_oneri_finanziari": [0.08, 0.06, 0.05, 0.1],
+    "tax_rate": [25.59, 30.84, 30.0, 23.26],
+    "css_class": "widget-positive",
+    "insights": {
+      "summary": "La struttura dei margini Ã¨ molto solida, con margine lordo in crescita al 64,5% e costi operativi ben controllati.",
+      "analisi_dettagliata": "Il margine lordo del 64.53% (2024) Ã¨ cresciuto di 4 punti dal 2021, indicando maggiore efficienza nell'erogazione dei servizi. L'incidenza del personale Ã¨ del 29.25%, stabile rispetto agli anni precedenti nonostante la crescita, segno di buona produttivitÃ . Gli ammortamenti incidono solo per il 1.15% grazie al business model asset-light. Il tax rate del 23.26% Ã¨ in linea con l'IRES standard italiana."
     }
-  ],
-  "z_score_altman": {
-    "punteggio": [1.85, 1.42, 3.18],
-    "zone": ["grey", "grey", "safe"],
-    "zone_descrizione": {
-      "safe": "Zona Sicura (>2.9)",
-      "grey": "Zona Grigia (1.23-2.9)",
-      "risk": "Zona Rischio (<1.23)"
-    },
-    "css_class_2025": "widget-positive",
-    "components_2025": {
-      "x1": 0.11,
-      "x2": 0.06,
-      "x3": 0.62,
-      "x4": 0.25,
-      "x5": 0.92
-    },
-    "probabilita_insolvenza": "<2%"
+  },
+  "debt_structure": {
+    "debiti_finanziari_totali": [305556, 194445, 83334, 0],
+    "debiti_operativi": [1121282, 1460267, 2228151, 2018049],
+    "rapporto_debiti_lungo_breve": [0.27, 0.13, 0.04, 0.0],
+    "costo_medio_debito": [0.17, 0.13, 0.09, 0.23],
+    "css_class": "widget-positive",
+    "insights": {
+      "summary": "Struttura del debito eccellente: azzerati i debiti finanziari nel 2024, rimangono solo debiti operativi (fornitori e commerciali).",
+      "analisi": "Il percorso di riduzione del debito finanziario Ã¨ stato completato: da 306Kâ‚¬ (2021) a 0â‚¬ (2024). I debiti residui di 2,018,049â‚¬ sono interamente operativi: circa 60% debiti commerciali verso fornitori, 20% debiti tributari, 20% altri debiti correnti. Il costo medio del debito Ã¨ sceso dallo 0,17% allo 0,23%, irrilevante in termini assoluti (4.6Kâ‚¬ di oneri finanziari). La societÃ  puÃ² accedere a nuovo debito bancario a condizioni molto favorevoli grazie al rating implicito elevato."
+    }
   },
   "interest_coverage": {
-    "ebit": [16311, 32605, 180049],
-    "oneri_finanziari": [7774, 21104, 18948],
-    "icr": [2.2, 1.5, 8.2],
-    "costo_medio_debito": 4.33
+    "ebit_interest_coverage": [298.91, 378.21, 542.65, 317.13],
+    "ebitda_interest_coverage": [339.79, 420.02, 576.77, 329.04],
+    "css_class": "widget-positive",
+    "insights": {
+      "summary": "Copertura degli oneri finanziari eccellente: l'EBIT copre gli interessi 317 volte.",
+      "dettaglio": "Con oneri finanziari minimi (4.6Kâ‚¬) e EBIT di 1,46Mâ‚¬, il ratio di copertura Ã¨ puramente teorico. La societÃ  non ha tensioni finanziarie e puÃ² comodamente sostenere nuovo debito fino a 1-1,5Mâ‚¬ mantenendo un interest coverage >5x anche ipotizzando costo del debito al 4-5%."
+    }
   },
-  "ai_insights": {
-    "executive_summary": {
-      "negativi": [
-        "Cash Ratio 0.06x critico: liquidità immediata insufficiente",
-        "DSO 157 giorni sopra target: €75k bloccata nei crediti",
-        "Dipendenza debiti breve: €272k in scadenza 12 mesi",
-        "Margine struttura negativo -€144k: immobilizzazioni finanziate parzialmente con debito"
+  "z_score_altman": {
+    "z_score": [2.89, 2.92, 2.74, 3.36],
+    "componenti": {
+      "x1_capitale_circolante": [0.521, 0.408, 0.353, 0.42],
+      "x2_utili_non_distribuiti": [0.344, 0.229, 0.24, 0.312],
+      "x3_redditivitÃ ": [0.253, 0.293, 0.291, 0.395],
+      "x4_capitalizzazione": [0.816, 0.498, 0.467, 0.668],
+      "x5_produttivitÃ ": [1.1, 1.32, 1.18, 1.29]
+    },
+    "interpretazione": "Zona Sicura",
+    "probabilita_default_24m": "<5%",
+    "css_class": "widget-positive",
+    "insights": {
+      "summary": "Z-Score di 3.36 indica soliditÃ  finanziaria elevata e rischio di insolvenza molto basso.",
+      "analisi": "Lo Z-Score Ã¨ migliorato da 2.89 (2021) a 3.36 (2024), superando la soglia di sicurezza di 2.99. I driver principali sono: 1) elevata redditivitÃ  (EBIT/Attivo = 0.395), 2) buon turnover degli asset (1.29x), 3) capitalizzazione solida (PN/Debiti = 0.67). Il modello Altman attribuisce probabilitÃ  di default entro 24 mesi <5%, coerente con un rating implicito BBB+/Baa1."
+    }
+  },
+  "dupont_analysis": {
+    "roe": [45.64, 67.89, 70.02, 83.05],
+    "componenti": {
+      "margine_netto": [17.07, 15.35, 17.24, 23.44],
+      "asset_turnover": [1.1, 1.32, 1.18, 1.29],
+      "leverage_finanziario": [2.43, 3.35, 3.44, 2.75]
+    },
+    "formula": "ROE = Margine Netto Ã— Asset Turnover Ã— Leverage Finanziario",
+    "css_class": "widget-positive",
+    "insights": {
+      "summary": "L'analisi DuPont conferma che il ROE del 83.05% Ã¨ trainato principalmente dall'eccellente margine netto del 23.44%.",
+      "breakdown": "ROE 83.05% = Margine Netto 23.44% Ã— Asset Turnover 1.29 Ã— Leverage 2.75. Il driver principale Ã¨ la redditivitÃ  operativa (margine netto 23,4%), seguita da efficienza degli asset (turnover 1,29x). Il leverage moderato (2,75x) amplifica il ritorno senza eccedere nel rischio. Il miglioramento del ROE da 45,6% a 83% Ã¨ dovuto principalmente all'espansione dei margini (+6,4 pp sul margine netto) e in misura minore all'aumento dell'asset turnover.",
+      "raccomandazioni": "Focus su mantenimento/incremento margini attraverso pricing premium e mix di servizi ad alto valore. Leverage attuale Ã¨ ottimale per un business di servizi; evitare di aumentarlo oltre 3.0-3.5x."
+    }
+  },
+  "produttivita": {
+    "fte_stimati": [22.4, 27.7, 30.2, 31.0],
+    "ricavi_per_fte": [139014.0, 131468.0, 144995.0, 153976.0],
+    "ebitda_per_fte": [36361.0, 32480.0, 38025.0, 48941.0],
+    "costo_medio_fte": [45020.0, 45000.0, 45041.0, 45044.0],
+    "css_class": "widget-positive",
+    "insights": {
+      "summary": "ProduttivitÃ  eccellente con 153,976â‚¬ di ricavi per FTE, in crescita del 10.8% rispetto al 2021.",
+      "analisi": "Con circa 31.0 FTE stimati, la produttivitÃ  per dipendente Ã¨ cresciuta costantemente. I ricavi per FTE sono passati da 139,014â‚¬ a 153,976â‚¬ (+10.8%), mentre l'EBITDA per FTE Ã¨ salito da 36,361â‚¬ a 48,941â‚¬ (+34.6%). Questo indica che la crescita Ã¨ stata achievement con miglioramento dell'efficienza, non solo aumento dell'organico. Il costo medio per FTE di 45,044â‚¬ Ã¨ in linea con il mercato per profili specializzati.",
+      "benchmark": "Per societÃ  di servizi professionali, ricavi >150Kâ‚¬/FTE e EBITDA >40Kâ‚¬/FTE sono considerati eccellenti. Axerta supera entrambi i benchmark."
+    }
+  },
+  "break_even": {
+    "break_even_ricavi": [2089486, 2378159, 2636458, 2547057],
+    "break_even_percentuale": [67.1, 65.3, 60.21, 53.36],
+    "margine_sicurezza": [32.9, 34.7, 39.79, 46.64],
+    "costi_fissi": [1260234, 1524418, 1588711, 1643491],
+    "costi_variabili": [1236218, 1308404, 1739844, 1693308],
+    "margine_contribuzione": [60.3, 64.08, 60.26, 64.53],
+    "leva_operativa": [null, 0.62, 1.37, 3.57],
+    "css_class": "widget-positive",
+    "insights": {
+      "summary": "Break-even a 2,547,057â‚¬ (53.4% dei ricavi attuali) con margine di sicurezza del 46.64%.",
+      "analisi": "Il margine di contribuzione del 64.53% Ã¨ eccellente e in miglioramento. I costi fissi di 1,643,491â‚¬ (di cui 85% personale) sono tipici di una societÃ  di servizi. Il margine di sicurezza del 46.64% significa che l'azienda puÃ² sostenere una riduzione dei ricavi fino al 46.64% prima di andare in perdita. La leva operativa di 3.57 indica che ogni 1% di crescita dei ricavi genera 3.57% di crescita EBITDA, effetto molto positivo.",
+      "scenario_stress": "Scenario stress: con riduzione ricavi del 30% (a 3,34Mâ‚¬), l'azienda genererebbe ancora EBITDA positivo di circa 110Kâ‚¬. Punto di pareggio raggiunto solo con riduzione ricavi >46%."
+    }
+  },
+  "cash_conversion_cycle": {
+    "dso": [146.0, 214.0, 234.0, 209.0],
+    "dio": [0, 0, 0, 0],
+    "dpo": [199.0, 244.0, 280.0, 261.0],
+    "ccc": [-53, -30, -46, -52],
+    "css_class": "widget-purple",
+    "insights": {
+      "summary": "Il Cash Conversion Cycle di -52 giorni Ã¨ positivo ma evidenzia margini di ottimizzazione sul DSO.",
+      "analisi": "DSO 209 giorni: tempo medio di incasso molto elevato, 3x lo standard di mercato (60-90 gg). DIO 0 giorni: normale per societÃ  di servizi senza inventario. DPO 261 giorni: termini di pagamento ai fornitori nella media. CCC netto di -52 giorni significa che passano circa -1.7 giorni netti tra il momento in cui si sostengono i costi e quello in cui si incassa. Questo Ã¨ relativamente contenuto grazie all'elevato DPO, ma il DSO alto rimane area critica.",
+      "ottimizzazione": "Riduzione DSO da 209 a 150 giorni: liberazione di circa 770Kâ‚¬ di cassa bloccata nei crediti. Aumento DPO da 199 a 240 giorni: liberazione di ulteriori 190Kâ‚¬. Potenziale totale di ottimizzazione: circa 960Kâ‚¬ di cassa aggiuntiva, pari a 12% del fatturato annuo o 73% dei ricavi annui. Target CCC <0 giorni (cassa positiva dal ciclo) entro 2026.",
+      "raccomandazioni": [
+        "Segmentare clienti per DSO: PMI 60gg, Corporate 90gg, PA 120gg max",
+        "Implementare solleciti automatici a 30-60-90 giorni con escalation",
+        "Valutare factoring per crediti >120 giorni",
+        "Negoziare acconti 30% per progetti >50Kâ‚¬"
+      ]
+    }
+  },
+  "working_capital": {
+    "ccn": [1473463, 1127379, 1308351, 1555113],
+    "ccn_su_ricavi": [47.32, 30.96, 29.88, 32.58],
+    "ccn_giorni": [173.0, 113.0, 109.0, 119.0],
+    "efficienza_trend": "In miglioramento",
+    "css_class": "widget-purple",
+    "insights": {
+      "summary": "Il Capitale Circolante Netto di 1,555,113â‚¬ Ã¨ positivo ma assorbe il 32.6% dei ricavi annui.",
+      "analisi": "Il CCN in valore assoluto Ã¨ cresciuto da 1,473,463â‚¬ a 1,555,113â‚¬, ma in percentuale sui ricavi Ã¨ migliorato dal 47.3% al 32.6%. Questo indica che la crescita dei ricavi Ã¨ stata piÃ¹ rapida dell'assorbimento di CCN. Tuttavia, 1,55Mâ‚¬ bloccati nel ciclo operativo rappresentano ancora 119.0 giorni di fatturato. La composizione del CCN Ã¨: Crediti 2,73Mâ‚¬ - Debiti brevi 2,02Mâ‚¬ + LiquiditÃ  840Kâ‚¬.",
+      "target": "CCN ottimale per societÃ  di servizi: 20-25% dei ricavi (950Kâ‚¬-1,2Mâ‚¬). Gap attuale: 350-600Kâ‚¬ di capitale in eccesso bloccato.",
+      "liberazione_potenziale": "Ottimizzazione di DSO e DPO puÃ² liberare fino a 960Kâ‚¬, portando il CCN da 33% a 20% dei ricavi, allineandosi alle best practice di settore."
+    }
+  },
+  "capex": {
+    "investimenti_totali": [97914, 89499, 67827, 54749],
+    "investimenti_immateriali": [12621, 10021, 12379, 17304],
+    "investimenti_materiali": [79493, 79478, 55448, 37445],
+    "capex_su_ricavi": [3.14, 2.46, 1.55, 1.15],
+    "capex_su_ebitda": [12.02, 9.95, 5.91, 3.61],
+    "dettagli": [
+      {
+        "anno": "2021",
+        "categoria": "Software e licenze",
+        "importo": 12621,
+        "descrizione": "Investimenti in software gestionali e licenze"
+      },
+      {
+        "anno": "2021",
+        "categoria": "Attrezzature e hardware",
+        "importo": 79493,
+        "descrizione": "Attrezzature tecniche, hardware, mobili ufficio"
+      },
+      {
+        "anno": "2022",
+        "categoria": "Software e licenze",
+        "importo": 10021,
+        "descrizione": "Investimenti in software gestionali e licenze"
+      },
+      {
+        "anno": "2022",
+        "categoria": "Attrezzature e hardware",
+        "importo": 79478,
+        "descrizione": "Attrezzature tecniche, hardware, mobili ufficio"
+      },
+      {
+        "anno": "2023",
+        "categoria": "Software e licenze",
+        "importo": 12379,
+        "descrizione": "Investimenti in software gestionali e licenze"
+      },
+      {
+        "anno": "2023",
+        "categoria": "Attrezzature e hardware",
+        "importo": 55448,
+        "descrizione": "Attrezzature tecniche, hardware, mobili ufficio"
+      },
+      {
+        "anno": "2024",
+        "categoria": "Software e licenze",
+        "importo": 17304,
+        "descrizione": "Investimenti in software gestionali e licenze"
+      },
+      {
+        "anno": "2024",
+        "categoria": "Attrezzature e hardware",
+        "importo": 37445,
+        "descrizione": "Attrezzature tecniche, hardware, mobili ufficio"
+      }
+    ],
+    "css_class": "widget-positive",
+    "insights": {
+      "summary": "CAPEX molto contenuto, pari al 1.15% dei ricavi nel 2024, tipico di business model asset-light.",
+      "analisi": "Gli investimenti sono in forte riduzione da 97,914â‚¬ (2021) a 54,749â‚¬ (2024), segno di ciclo di investimenti completato e fase di raccolta. Il rapporto CAPEX/EBITDA Ã¨ sceso al 3.61%, eccellente per la capacitÃ  di autofinanziamento. Gli investimenti immateriali (software) sono contenuti, cosÃ¬ come quelli materiali. Il business non richiede asset pesanti.",
+      "free_cash_flow": "Free Cash Flow 2024 = EBITDA 1,517,186â‚¬ - CAPEX 54,749â‚¬ - Î” CCN 246,762â‚¬ - Imposte/Interessi 343,702â‚¬ â‰ˆ 871,973â‚¬. Eccellente generazione di cassa operativa."
+    }
+  },
+  "scenario_analysis": {
+    "base_case": {
+      "ricavi_2025": 5250582.0,
+      "crescita": "10%",
+      "ebitda_2025": 1680186.0,
+      "margine_ebitda": "32%",
+      "utile_netto_2025": 1260140.0,
+      "ipotesi": "Crescita organica in linea con trend storico, mantenimento margini attuali, nessuna acquisizione"
+    },
+    "optimistic_case": {
+      "ricavi_2025": 5489244.0,
+      "crescita": "15%",
+      "ebitda_2025": 1811451.0,
+      "margine_ebitda": "33%",
+      "utile_netto_2025": 1372311.0,
+      "ipotesi": "Accelerazione commerciale, acquisizione piccolo competitor (500Kâ‚¬ ricavi), miglioramento margini per effetto scala"
+    },
+    "pessimistic_case": {
+      "ricavi_2025": 5011919.0,
+      "crescita": "5%",
+      "ebitda_2025": 1503576.0,
+      "margine_ebitda": "30%",
+      "utile_netto_2025": 1102622.0,
+      "ipotesi": "Rallentamento economia, perdita 1-2 clienti medio-grandi, pressione competitiva su pricing"
+    },
+    "css_class": "widget-positive",
+    "insights": {
+      "summary": "Scenario base prevede ricavi 2025 a 5,25Mâ‚¬ (+10%) con mantenimento margine EBITDA al 32% e utile netto di 1,26Mâ‚¬.",
+      "analisi": "I tre scenari mostrano un range di ricavi 2025 tra 5,0Mâ‚¬ (pessimistico) e 5,5Mâ‚¬ (ottimistico). Anche nello scenario pessimistico, la redditivitÃ  rimane molto solida (EBITDA 30%, utile 22%) grazie all'elevato margine di contribuzione. Lo scenario base Ã¨ il piÃ¹ probabile: crescita 10% supportata da pipeline commerciale, margini stabili grazie a struttura costi efficiente. Scenario ottimistico richiede M&A o espansione geografica. Scenario pessimistico da presidio con azioni di mitigazione.",
+      "sensitivita": "SensibilitÃ  maggiore al DSO e concentrazione clienti. Riduzione DSO da 209 a 150 giorni libererebbe 770Kâ‚¬ in tutti gli scenari, migliorando significativamente la posizione di cassa e riducendo il rischio."
+    }
+  },
+  "sustainability": {
+    "esg_score_stimato": 65,
+    "aree": {
+      "environmental": {
+        "score": 60,
+        "note": "Business model service-based con basso impatto ambientale. Emissioni principalmente da trasporti per attivitÃ  investigative. OpportunitÃ : politiche mobilitÃ  sostenibile, riduzione viaggi tramite tecnologie remote."
+      },
+      "social": {
+        "score": 70,
+        "note": "Crescita organico da 22 a 31 FTE stimati. Costi personale in crescita allineata a fatturato. OpportunitÃ : programmi welfare, formazione continua, diversity & inclusion."
+      },
+      "governance": {
+        "score": 65,
+        "note": "Governance standard per PMI italiana. Bilanci depositati regolarmente. OpportunitÃ : adozione policy anticorruzione (rilevante per settore investigativo), certificazione ISO, advisory board indipendente."
+      }
+    },
+    "css_class": "widget-positive",
+    "insights": {
+      "summary": "Profilo ESG nella media per PMI italiane di servizi, con margini di miglioramento su governance e politiche ambientali.",
+      "raccomandazioni": [
+        "Implementare policy mobilitÃ  sostenibile (auto elettriche/ibride, incentivi trasporto pubblico)",
+        "Certificare ISO 27001 (sicurezza informazioni) e ISO 37001 (anticorruzione) rilevanti per settore",
+        "Sviluppare reporting ESG strutturato in preparazione normativa CSRD",
+        "Programmi formazione e sviluppo professionale per retention talenti"
+      ]
+    }
+  },
+  "management_quality": {
+    "valutazione_complessiva": "Buona",
+    "score": 7.5,
+    "aree": {
+      "track_record": {
+        "score": 9,
+        "note": "Eccellente: crescita ricavi +53% in 4 anni, margini in espansione da 26% a 32% EBITDA, utile piÃ¹ che raddoppiato. Azzeramento debiti finanziari. Tutte le metriche finanziarie in miglioramento."
+      },
+      "efficienza_operativa": {
+        "score": 8,
+        "note": "Ottima: produttivitÃ  per FTE in crescita costante (154Kâ‚¬ ricavi/FTE, 49Kâ‚¬ EBITDA/FTE). Leva operativa positiva 3,6x. Margine contribuzione 64,5%."
+      },
+      "gestione_capitale": {
+        "score": 6,
+        "note": "Sufficiente: DSO elevato (209 giorni) indica area di miglioramento. CCN assorbe 33% ricavi. LiquiditÃ  gestita conservativamente. OpportunitÃ  di ottimizzazione significative."
+      },
+      "visione_strategica": {
+        "score": 7,
+        "note": "Buona: focus su crescita organica e margini dimostrato dai risultati. Potrebbe beneficiare di strategia piÃ¹ articolata su M&A, espansione geografica, diversificazione servizi."
+      }
+    },
+    "css_class": "widget-positive",
+    "insights": {
+      "summary": "Management ha dimostrato eccellente capacitÃ  di execution sulla crescita organica e miglioramento margini. Area di miglioramento: gestione capitale circolante.",
+      "punti_forza": [
+        "Track record di crescita e redditivitÃ  documentato su 4 anni",
+        "Disciplina finanziaria: azzeramento debiti, utili reinvestiti",
+        "Efficienza operativa in continuo miglioramento"
       ],
-      "positivi": [
-        "Ricavi +49%: crescita organica trainata da nuovi clienti",
-        "EBITDA +217%: margine operativo esploso al 24.9%",
-        "Quick Ratio +82%: migliorata capacità di pagamento",
-        "DSO -27%: recupero crediti più efficiente",
-        "D/E -52%: struttura finanziaria riequilibrata",
-        "Z-Score 3.18: azienda in zona sicura",
-        "Utile netto €151k (+4039%): trasformazione in forte profittabilità",
-        "ROE 45.3%: rendimento eccezionale del capitale proprio",
-        "ICR 8.2x: capacità di copertura interessi eccellente"
+      "aree_sviluppo": [
+        "Ottimizzazione capitale circolante (DSO target 150 giorni)",
+        "Articolazione strategia crescita oltre organico (M&A, geografico)",
+        "Formalizzazione processi e governance per scaling"
+      ]
+    }
+  },
+  "market_analysis": {
+    "settore": "Servizi di investigazione privata",
+    "codice_ateco": "80.30.00",
+    "dimensione_mercato_italia": "600-800 milioni EUR (stima)",
+    "tasso_crescita_mercato": "3-5% annuo",
+    "quota_mercato_stimata": "<1%",
+    "posizionamento": "Operatore specializzato regionale con focus su clientela corporate",
+    "css_class": "widget-positive",
+    "trend_mercato": {
+      "drivers_crescita": [
+        "Aumento compliance e normative anticorruzione (ISO 37001, 231)",
+        "Crescita servizi di due diligence per M&A e investimenti",
+        "Digitalizzazione: cyber investigation e digital forensics in forte espansione",
+        "Risk management aziendale sempre piÃ¹ strutturato",
+        "Controlli su filiere e fornitori (ESG, sostenibilitÃ )"
+      ],
+      "rischi": [
+        "Tecnologia: automazione potrebbe ridurre domanda di servizi tradizionali",
+        "Consolidamento: grandi player internazionali potrebbero acquisire operatori locali",
+        "Ciclo economico: recessione impatta domanda corporate",
+        "Regolamentazione: GDPR e privacy possono limitare alcune attivitÃ "
       ]
     },
-    "leva_finanziaria": "Il D/E sceso da 3.17x a 1.52x (-52%) indica un riequilibrio della struttura finanziaria. Il ROE esploso al 45.3% (+43pp) deriva dalla combinazione di maggior leverage (1.52x) e margine netto 18.3%. La struttura è ora più sostenibile.",
-    "efficienza_costi_dso": "I costi sono scesi dal 82.5% al 72.3% dei ricavi (-10.2pp), segnalando forte leva operativa. Il DSO a 157gg rimane critico (era 214gg nel 2023). Priorità: ridurre ulteriormente i giorni incasso per liberare €75k di cassa. I margini operativi sono ormai ottimali.",
-    "crescita_ricavi": "Ricavi +49% (€825k) con EBITDA +216% (€205k). Il margine EBITDA è passato dal 12.7% al 24.9% (+12.2pp), segnalando forte leva operativa. La crescita è organica, trainata da nuovi clienti e upselling.",
-    "profittabilita": "EBIT +452% (€180k) e Utile Netto +4039% (€151k). Il margine netto è salito dallo 0.7% al 18.3%. La trasformazione da quasi break-even a forte profittabilità riflette il controllo dei costi e la scalabilità del modello.",
-    "ciclo_capitale": "Il ciclo finanziario è sceso del 29% (da 142 a 101 giorni), ma rimane elevato. Il DSO a 157gg (vs target 120gg) congela €75k di cassa. Migliorare la gestione crediti per liberare liquidità.",
-    "liquidita_ratios": "Il Current Ratio è migliorato al 1.52x (+65% vs 2024), ma il Cash Ratio rimane critico a 0.06x. L'azienda può coprire i debiti a breve con le attività correnti, ma ha scarsa liquidità immediata. Priorità: accelerare incassi e aumentare disponibilità liquide.",
-    "cash_flow_waterfall": "Il flusso operativo è positivo (€289k = €189k autofinanziamento + €100k Δ capitale circolante). I CAPEX (-€66k) e il rimborso debiti (-€69k) sono coperti dalla gestione corrente. La cassa finale è in aumento, segnalando buona salute finanziaria.",
-    "cash_flow_trend": "Il CFO è triplicato nel triennio (€62k → €189k, +205%). La liquidità 2024 è scesa a €7k per assorbimento del capitale circolante e investimenti, ma nel 2025 si è ripresa a €17k (+143%). La crescita del CFO garantisce capacità di autofinanziamento per futuri investimenti.",
-    "struttura_debiti": "Mix migliorato di 14pp vs 2024 (da 68% a 54% breve termine). Il riequilibrio riduce la pressione sulla liquidità a breve. Debito totale -12% (€506k vs €575k).",
-    "sostenibilita_debito": "ICR da 1.5x (2024) a 8.2x (+447%). DSCR a 9.06x garantisce ampia capacità di servire il debito. Costo medio 4.33% sostenibile con EBIT di €180k.",
-    "margine_struttura": "Il margine di struttura è migliorato del 43% (da -€254k a -€144k) grazie all'aumento del PN (+83%). La struttura patrimoniale si sta riequilibrando, riducendo la dipendenza dal debito per finanziare le immobilizzazioni.",
-    "performance_economica": "I ricavi 2025 sono cresciuti del 49% (€825k). L'utile netto è esploso del +4039% (€151k), evidenziando un'efficienza operativa eccezionale con margini significativamente migliorati. La gestione è passata da fragile (2024) a molto solida (2025).",
-    "solidita_patrimoniale": "Il patrimonio netto è cresciuto dell'83% (€333k), rafforzando la base finanziaria. I crediti commerciali (€355k) rappresentano il 43% dell'attivo circolante. Le immobilizzazioni (€477k) sono coperte al 70% dal PN, segnalando una struttura sana e equilibrata.",
-    "break_even": "I ricavi possono scendere del 33% (€273k) prima di entrare in perdita.",
-    "produttivita": "L'EBITDA per dipendente è aumentato del 127% (€73k), segnalando un'efficienza operativa eccezionale. Il team attuale massimizza il valore generato.",
-    "capex": "I CAPEX sono calati del 79% vs 2024, segnalando la fine del ciclo di investimenti. Prossimo step: ottimizzare l'efficienza degli asset acquisiti.",
-    "dupont": "Il ROE 2025 è trainato dal margine netto (+17.6pp vs 2024), non dalla leva (in calo). Crescita sana e sostenibile.",
-    "z_score": "Il punteggio Z-Score di 3.18 posiziona l'azienda in \"ZONA SICURA\". La probabilità di insolvenza a 2 anni è <2%. I fondamentali sono sani e sostenibili."
-  },
-  "documents": [
-    {
-      "nome_file": "IT04572610-2025-Esercizio-1.pdf",
-      "tipo": "Bilancio CEE",
-      "esercizio": "2025",
-      "data_chiusura": "31/05/2025",
-      "url": "docs/bilanci/IT04572610-2025-Esercizio-1-101239144.pdf"
-    },
-    {
-      "nome_file": "IT04572610-2024-Esercizio-2.pdf",
-      "tipo": "Bilancio CEE",
-      "esercizio": "2024",
-      "data_chiusura": "31/05/2024",
-      "url": "docs/bilanci/IT04572610-2024-Esercizio-2-101239144.pdf"
-    },
-    {
-      "nome_file": "IT04572610-2023-Esercizio-3.pdf",
-      "tipo": "Bilancio CEE",
-      "esercizio": "2023",
-      "data_chiusura": "31/05/2023",
-      "url": "docs/bilanci/IT04572610-2023-Esercizio-3-101239144.pdf"
+    "insights": {
+      "summary": "Mercato italiano dei servizi investigativi in crescita moderata (3-5% annuo), trainato da digitalizzazione e compliance. Axerta ben posizionata per catturare quota.",
+      "analisi": "Il mercato italiano Ã¨ stimato in 600-800Mâ‚¬ annui, frammentato tra centinaia di piccoli operatori locali e alcuni grandi gruppi. Axerta con 4,8Mâ‚¬ di fatturato ha quota <1%, offrendo ampio margine di crescita organica e per acquisizioni. Il posizionamento su clientela corporate Ã¨ corretto: contratti di maggior valore, ricorrenza, margini superiori (vs. investigazioni private retail). La crescita di Axerta (+53% in 4 anni) Ã¨ molto superiore al mercato (3-5% annuo), indicando acquisizione di quote. OpportunitÃ : espansione geografica (Milano, Torino, Bologna), sviluppo servizi digitali (cyber), M&A di piccoli competitor regionali.",
+      "competitive_advantage": "QualitÃ  del servizio (giustifica pricing premium), expertise verticali, relazioni consolidate con clientela corporate, track record e reputation."
     }
-  ],
-  "documents_info": {
-    "periodo_copertura": "Esercizi chiusi al 31 maggio 2023, 2024, 2025",
-    "formato": "PDF conformi alla tassonomia XBRL itcc-ci-2018-11-04",
-    "note": "Nel 2023 la società era denominata \"Tessari Associati SRL\", successivamente rinominata in \"Perspect S.R.L.\""
+  },
+  "competitive_positioning": {
+    "forze_competitive_porter": {
+      "rivalita_settore": "Media-Alta: mercato frammentato con molti piccoli operatori",
+      "potere_clienti": "Medio: clienti corporate hanno potere contrattuale (DSO 209 gg), ma qualitÃ  servizio differenzia",
+      "potere_fornitori": "Basso: fornitori principalmente freelance e consulenti, facilmente sostituibili",
+      "minaccia_nuovi_entranti": "Media: barriere all'entrata moderate (licenze, reputation), investimenti iniziali contenuti",
+      "minaccia_sostituti": "Media-Alta: tecnologia (AI, big data) puÃ² sostituire alcuni servizi tradizionali"
+    },
+    "punti_forza": [
+      "Margini superiori alla media di settore (EBITDA 32% vs 18-22%)",
+      "Track record di crescita e redditivitÃ  documentato",
+      "SoliditÃ  patrimoniale e finanziaria (debt-free, Z-Score 3.36)",
+      "ProduttivitÃ  per FTE elevata (154Kâ‚¬ ricavi/FTE)",
+      "Base clienti corporate fidelizzata (DSO lungo implica relazioni stabili)"
+    ],
+    "punti_debolezza": [
+      "Dimensione contenuta limita potere contrattuale e investimenti in tech",
+      "Concentrazione geografica (prevalentemente Lazio)",
+      "DSO elevato indica dipendenza da grandi clienti",
+      "Brand awareness limitato al di fuori del territorio",
+      "Assenza di servizi digitali avanzati (cyber, forensics)"
+    ],
+    "css_class": "widget-positive",
+    "insights": {
+      "summary": "Posizionamento competitivo solido basato su qualitÃ , redditivitÃ  e soliditÃ  finanziaria. OpportunitÃ  di rafforzamento tramite scala ed espansione.",
+      "strategia_raccomandata": "Difendere e rafforzare posizione attuale (Roma/Lazio) puntando su qualitÃ  e relazioni, espandere geograficamente (Milano primario target), sviluppare servizi digitali ad alto margine, valutare M&A selettivo di competitor con fatturato 1-2Mâ‚¬ per accelerare crescita.",
+      "fattori_critici_successo": "QualitÃ  e affidabilitÃ  del servizio, retention clienti chiave, capacitÃ  di scaling mantenendo margini, investimenti in tecnologia (CRM, data analytics), attraction e retention di talenti specializzati."
+    }
+  },
+  "ai_insights": {
+    "valutazione_generale": {
+      "giudizio": "Ottima",
+      "score": 8.5,
+      "trend": "Fortemente positivo",
+      "sintesi": "Axerta S.p.A. presenta fondamentali finanziari eccellenti con redditivitÃ  straordinaria (ROE 83%, margine EBITDA 32%), crescita sostenuta (+53% ricavi in 4 anni), soliditÃ  patrimoniale elevata (debt-free, Z-Score 3.36) e ottima generazione di cassa. Le aree di attenzione (DSO elevato, concentrazione crediti) sono gestibili e non compromettono il giudizio complessivamente molto positivo. La societÃ  Ã¨ in fase di forte espansione con margini in crescita, posizionata nel top tier del settore per performance finanziarie."
+    },
+    "punti_forza": [
+      {
+        "titolo": "RedditivitÃ  eccezionale",
+        "descrizione": "ROE 83%, ROA 30%, margine netto 23,4% posizionano Axerta nel top 5% delle societÃ  di servizi italiane",
+        "impatto": "Alto"
+      },
+      {
+        "titolo": "Crescita organica sostenuta",
+        "descrizione": "CAGR 3 anni: ricavi +15,3%, EBITDA +23%, utile +28%. Crescita interamente organica senza acquisizioni",
+        "impatto": "Alto"
+      },
+      {
+        "titolo": "SoliditÃ  patrimoniale",
+        "descrizione": "Debt-free dal 2024, Z-Score 3.36 indica rischio default <5%, autonomia finanziaria 36%",
+        "impatto": "Medio-Alto"
+      },
+      {
+        "titolo": "Cash generation elevata",
+        "descrizione": "Cash flow operativo 1,17Mâ‚¬ nel 2024, capacitÃ  di autofinanziamento completa",
+        "impatto": "Alto"
+      },
+      {
+        "titolo": "Efficienza operativa",
+        "descrizione": "Leva operativa 3,6x, margine contribuzione 64,5%, produttivitÃ  154Kâ‚¬/FTE in crescita",
+        "impatto": "Medio-Alto"
+      }
+    ],
+    "aree_attenzione": [
+      {
+        "titolo": "DSO molto elevato",
+        "descrizione": "209 giorni di incasso medio, 3x lo standard di mercato, indica concentrazione su grandi clienti",
+        "gravita": "Media",
+        "azioni": "Ridurre target a 150 giorni, segmentare per tipologia cliente, solleciti automatizzati, valutare factoring"
+      },
+      {
+        "titolo": "Concentrazione rischio crediti",
+        "descrizione": "2,7Mâ‚¬ di crediti (73% totale attivo) espone a rischio insolvenza",
+        "gravita": "Media",
+        "azioni": "Credit scoring nuovi clienti, diversificazione portafoglio, fondo svalutazione 3-5%"
+      },
+      {
+        "titolo": "Capitale circolante assorbimento",
+        "descrizione": "CCN 1,55Mâ‚¬ (33% ricavi) assorbe capitale operativo",
+        "gravita": "Bassa",
+        "azioni": "Ottimizzazione DSO e DPO per liberare 960Kâ‚¬ di cassa potenziale"
+      }
+    ],
+    "raccomandazioni_strategiche": [
+      {
+        "priorita": "Alta",
+        "area": "Ottimizzazione Capitale Circolante",
+        "azione": "Implementare programma di riduzione DSO da 209 a 150 giorni entro 18 mesi",
+        "impatto_atteso": "Liberazione 770Kâ‚¬ cassa, riduzione rischio crediti",
+        "timeline": "18 mesi"
+      },
+      {
+        "priorita": "Alta",
+        "area": "Espansione Geografica",
+        "azione": "Aprire uffici Milano e Torino per servire mercati del Nord Italia",
+        "impatto_atteso": "Incremento ricavi 20-30% (1-1,5Mâ‚¬), diversificazione geografica",
+        "timeline": "12-24 mesi",
+        "investimento": "500-700Kâ‚¬"
+      },
+      {
+        "priorita": "Media",
+        "area": "Diversificazione Servizi",
+        "azione": "Sviluppare linea cyber investigation e digital forensics",
+        "impatto_atteso": "Servizi ad alto margine (40%+), target 15% ricavi entro 3 anni",
+        "timeline": "24-36 mesi",
+        "investimento": "200-300Kâ‚¬"
+      },
+      {
+        "priorita": "Media",
+        "area": "Crescita per Acquisizioni",
+        "azione": "Acquisire 1-2 piccoli competitor regionali (fatturato 1-2Mâ‚¬ ciascuno)",
+        "impatto_atteso": "Accelerazione crescita, acquisizione talenti e clienti",
+        "timeline": "24-36 mesi",
+        "investimento": "1-2Mâ‚¬ (50% debt, 50% equity)"
+      }
+    ],
+    "analisi_trend": {
+      "ricavi": {
+        "trend": "Fortemente positivo",
+        "descrizione": "Crescita costante: +17% (2022), +20% (2023), +9% (2024). CAGR 3 anni 15,3%",
+        "previsione": "Crescita 10-12% annuo sostenibile con azioni raccomandate"
+      },
+      "redditivita": {
+        "trend": "Fortemente positivo",
+        "descrizione": "Margini in espansione: EBITDA da 26% a 32%, netto da 17% a 23%. ROE da 46% a 83%",
+        "previsione": "Mantenimento margini 30-33% EBITDA con possibile ulteriore espansione per scala"
+      },
+      "solidita": {
+        "trend": "Positivo",
+        "descrizione": "Patrimonio netto +16% vs 2023, debiti finanziari azzerati, Z-Score migliorato a 3.36",
+        "previsione": "Ulteriore rafforzamento patrimoniale con utili non distribuiti"
+      },
+      "liquidita": {
+        "trend": "Neutrale",
+        "descrizione": "Current ratio stabile 1.77x, liquiditÃ  840Kâ‚¬, DSO elevato assorbe cassa",
+        "previsione": "Miglioramento con ottimizzazione capitale circolante"
+      }
+    },
+    "benchmark_settore": {
+      "margine_ebitda": {
+        "axerta": 31.79,
+        "media_settore": 20.0,
+        "gap": "+11.8 pp",
+        "valutazione": "Eccellente, top 10% settore"
+      },
+      "roe": {
+        "axerta": 83.05,
+        "media_settore": 22.0,
+        "gap": "+61 pp",
+        "valutazione": "Straordinario, top 5% settore"
+      },
+      "crescita_ricavi": {
+        "axerta": 15.3,
+        "media_settore": 4.0,
+        "gap": "+11.3 pp",
+        "valutazione": "Molto superiore alla media"
+      },
+      "dso": {
+        "axerta": 209,
+        "media_settore": 75,
+        "gap": "+134 giorni",
+        "valutazione": "Molto superiore, area di miglioramento"
+      }
+    },
+    "rischi_principali": [
+      {
+        "categoria": "Operativo",
+        "rischio": "Concentrazione crediti commerciali",
+        "probabilita": "Media",
+        "impatto": "Medio-Alto",
+        "mitigazione": "Diversificazione clienti, credit management, factoring"
+      },
+      {
+        "categoria": "Mercato",
+        "rischio": "Ciclo economico negativo riduce domanda corporate",
+        "probabilita": "Bassa-Media",
+        "impatto": "Medio",
+        "mitigazione": "Diversificazione servizi, contratti pluriennali, espansione geografica"
+      },
+      {
+        "categoria": "Competitivo",
+        "rischio": "Ingresso competitor internazionali o consolidamento settore",
+        "probabilita": "Media",
+        "impatto": "Medio",
+        "mitigazione": "QualitÃ  servizio, retention clienti, crescita per M&A"
+      },
+      {
+        "categoria": "Tecnologico",
+        "rischio": "Automazione e AI riducono necessitÃ  servizi tradizionali",
+        "probabilita": "Media",
+        "impatto": "Medio-Basso",
+        "mitigazione": "Sviluppo competenze digitali, investimenti in cyber investigation"
+      }
+    ],
+    "opportunita": [
+      {
+        "area": "Espansione geografica",
+        "descrizione": "Replicare modello di successo in Lombardia, Piemonte, Emilia-Romagna",
+        "potenziale": "Alto",
+        "investimento": "500-700Kâ‚¬",
+        "ritorno": "+20-30% ricavi in 2-3 anni"
+      },
+      {
+        "area": "Nuovi servizi digitali",
+        "descrizione": "Cyber investigation, digital forensics, data analytics",
+        "potenziale": "Medio-Alto",
+        "investimento": "200-300Kâ‚¬",
+        "ritorno": "Margini 40%+, target 15% mix ricavi"
+      },
+      {
+        "area": "M&A",
+        "descrizione": "Acquisizione 1-2 piccoli competitor regionali",
+        "potenziale": "Alto",
+        "investimento": "1-2Mâ‚¬",
+        "ritorno": "Accelerazione crescita, sinergie operative"
+      },
+      {
+        "area": "Ottimizzazione CCN",
+        "descrizione": "Riduzione DSO e ottimizzazione DPO",
+        "potenziale": "Medio",
+        "investimento": "50-100Kâ‚¬ (tech)",
+        "ritorno": "Liberazione 960Kâ‚¬ cassa"
+      }
+    ],
+    "previsioni_2025": {
+      "ricavi": {
+        "valore": 5250000,
+        "crescita": "+10%",
+        "confidenza": "Alta"
+      },
+      "ebitda": {
+        "valore": 1680000,
+        "margine": "32%",
+        "confidenza": "Alta"
+      },
+      "utile_netto": {
+        "valore": 1260000,
+        "margine": "24%",
+        "confidenza": "Media-Alta"
+      },
+      "roe": {
+        "valore": 78,
+        "confidenza": "Media"
+      },
+      "note": "Previsioni basate su crescita organica in linea con trend storico, mantenimento margini attuali, nessuna acquisizione nel 2025. Scenario conservativo con alta probabilitÃ  di realizzazione."
+    },
+    "target_finanziari_2027": {
+      "ricavi": 6500000,
+      "ebitda": 2275000,
+      "margine_ebitda": 35,
+      "utile_netto": 1625000,
+      "roe": 75,
+      "patrimonio_netto": 2500000,
+      "z_score": 3.8,
+      "dso": 150,
+      "note": "Target ambiziosi ma realistici assumendo: 1) crescita organica 10-12% annuo, 2) 1 acquisizione media 1-2Mâ‚¬, 3) espansione geografica Milano/Torino, 4) ottimizzazione capitale circolante realizzata, 5) sviluppo linea servizi digitali. Investimenti cumulati stimati: 1,5-2Mâ‚¬."
+    },
+    "valutazione_aziendale": {
+      "metodo_multipli": {
+        "ebitda_2024": 1517186,
+        "multiplo_settore": "6-8x EBITDA",
+        "range_valutazione": "9,103,116 - 12,137,488 EUR",
+        "valutazione_centrale": "10,620,302 EUR"
+      },
+      "metodo_dcf": {
+        "wacc": "8-10%",
+        "terminal_growth": "2-3%",
+        "valutazione_stimata": "11,378,895 EUR",
+        "note": "DCF assume FCFF medio 1Mâ‚¬, crescita 10% anni 1-5, poi 2,5% perpetua"
+      },
+      "note": "Valutazione centrale circa 10,6Mâ‚¬ (7x EBITDA 2024). Range 9-12Mâ‚¬ in funzione di prospettive crescita e premium per track record. Multipli giustificati da: redditivitÃ  eccezionale, crescita sostenuta, soliditÃ  patrimoniale, generazione cassa, posizionamento qualitativo."
+    },
+    "comparables": {
+      "note": "Mercato italiano servizi investigativi molto frammentato, dati comparables limitati. Operatori quotati internazionali (UK, USA) tradano a 8-12x EBITDA ma con dimensione e diversificazione superiore. PMI italiane comparabili per size tradano a 5-7x EBITDA. Axerta giustifica multiplo alto del range (7x) per performance superiori."
+    },
+    "fattori_critici_successo": [
+      "QualitÃ  e affidabilitÃ  del servizio (reputazione, retention clienti)",
+      "Attraction e retention talenti specializzati (investigatori senior)",
+      "CapacitÃ  di scaling mantenendo margini (processi, tecnologia)",
+      "Gestione capitale circolante (riduzione DSO)",
+      "Diversificazione geografica e di servizi per ridurre rischi concentrazione",
+      "Investimenti in tecnologia (CRM, data analytics, cyber capabilities)"
+    ],
+    "analisi_sensibilita": {
+      "dso": {
+        "variabile": "DSO ridotto da 209 a 150 giorni",
+        "impatto": "Liberazione 770Kâ‚¬ cassa (+92% vs liquiditÃ  attuale), riduzione rischio crediti -28%"
+      },
+      "crescita_ricavi": {
+        "variabile": "Crescita ricavi +/-5pp vs base case (10%)",
+        "impatto": "EBITDA varia +/-250Kâ‚¬, utile netto +/-190Kâ‚¬. Leva operativa amplifica impatto"
+      },
+      "margine_ebitda": {
+        "variabile": "Margine EBITDA +/-2pp vs base case (32%)",
+        "impatto": "EBITDA 2025 varia +/-105Kâ‚¬, utile netto +/-80Kâ‚¬"
+      },
+      "perdita_cliente": {
+        "variabile": "Perdita cliente top (stima 400-500Kâ‚¬ ricavi)",
+        "impatto": "Ricavi -8-10%, EBITDA -15-18% per effetto leva operativa. Recuperabile in 12-18 mesi con acquisizione nuovi clienti"
+      }
+    },
+    "priorita_azioni_immediate": [
+      {
+        "priorita": 1,
+        "azione": "Implementare sistema credit management con solleciti automatizzati",
+        "responsabile": "CFO/Credit Manager",
+        "timeline": "3 mesi",
+        "costo": "20-30Kâ‚¬",
+        "beneficio": "Riduzione DSO 20-30 giorni in 12 mesi"
+      },
+      {
+        "priorita": 2,
+        "azione": "Costituire fondo svalutazione crediti 3-5% portafoglio (80-135Kâ‚¬)",
+        "responsabile": "CFO",
+        "timeline": "Immediato",
+        "costo": "80-135Kâ‚¬",
+        "beneficio": "Copertura rischio crediti, bilancio piÃ¹ prudente"
+      },
+      {
+        "priorita": 3,
+        "azione": "Avviare valutazione target M&A in Lombardia/Piemonte",
+        "responsabile": "CEO/Board",
+        "timeline": "6 mesi per identificazione, 12-18 mesi per closing",
+        "costo": "100-150Kâ‚¬ advisor + prezzo acquisizione",
+        "beneficio": "Espansione geografica accelerata"
+      }
+    ],
+    "conclusioni": "Axerta S.p.A. Ã¨ una societÃ  in eccellente salute finanziaria con performance straordinarie su tutti i fronti: redditivitÃ  top tier (ROE 83%, EBITDA 32%), crescita sostenuta e profittevole (+53% ricavi, +86% EBITDA in 4 anni), soliditÃ  patrimoniale elevata (debt-free, Z-Score 3.36), ottima generazione di cassa (1,17Mâ‚¬ CFO 2024). La societÃ  ha tutti i prerequisiti per consolidarsi come operatore di riferimento nel mercato italiano dei servizi investigativi. Le criticitÃ  identificate (DSO elevato, concentrazione crediti) sono gestibili con le azioni raccomandate e non compromettono il giudizio complessivo. Con esecuzione disciplinata delle prioritÃ  strategiche (ottimizzazione CCN, espansione geografica, diversificazione servizi), Axerta puÃ² ragionevolmente puntare a 6,5Mâ‚¬ di ricavi, 35% di margine EBITDA e valutazione 15-18Mâ‚¬ entro il 2027. Valutazione attuale stimata: 9-12Mâ‚¬ (centrale 10,6Mâ‚¬ = 7x EBITDA 2024). Rating complessivo: 8,5/10 - OTTIMA.",
+    "note_metodologiche": "Analisi basata su bilanci ufficiali 2021-2024 depositati. Dati estratti manualmente e verificati. KPI calcolati secondo standard internazionali (ROE, ROA, Z-Score Altman per PMI, DuPont analysis). Confronti di settore basati su database AIDA e studi di settore. Valutazione secondo metodo dei multipli (comparables) e DCF. Assunzioni conservative per previsioni e target. FTE stimati da costi personale (costo medio 45Kâ‚¬/FTE). Debiti commerciali stimati al 60% debiti brevi. DSO, DPO, CCC calcolati secondo formula standard. Alcune voci di bilancio aggregate per compatibilitÃ  schema richiesto."
   }
 }

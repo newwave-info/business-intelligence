@@ -1,0 +1,11 @@
+{
+  "identifier" : "3753EBCE-13F0-48E8-A333-C9449DC2C8AE",
+  "ignoredFilePatterns" : [
+    ".DS_Store"
+  ],
+  "localPath" : ".",
+  "remotePath" : "\/var\/www\/vhosts\/b-ai.perspect.it\/httpdocs",
+  "remoteURL" : "https:\/\/b-ai.perspect.it\/index.php",
+  "server" : "NW STARTER HP",
+  "usesPublishing" : true
+}

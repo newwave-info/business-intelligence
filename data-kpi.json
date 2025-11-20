@@ -1,0 +1,711 @@
+{
+    "metadata": {
+        "company_name": "AXERTA S.P.A.",
+        "fiscal_years": [
+            2020,
+            2021,
+            2022,
+            2023,
+            2024
+        ],
+        "currency": "EUR",
+        "last_update": "19 Nov 2025",
+        "notes": "Dati estratti da bilanci ufficiali depositati."
+    },
+    "income_statement": {
+        "ricavi": [
+            3279141,
+            3113905,
+            3641662,
+            4378857,
+            4773256
+        ],
+        "costi_servizi": [
+            1093060,
+            1208460,
+            1283927,
+            1704823,
+            1646039
+        ],
+        "costi_personale": [
+            873199,
+            1008457,
+            1246494,
+            1360234,
+            1396363
+        ],
+        "ammortamenti": [
+            98763,
+            97914,
+            89499,
+            67827,
+            54749
+        ],
+        "ebit": [
+            1081575,
+            716571,
+            810189,
+            1080516,
+            1462437
+        ],
+        "oneri_finanziari": [
+            953,
+            2397,
+            2142,
+            1991,
+            4611
+        ],
+        "imposte": [
+            283742,
+            182791,
+            249276,
+            323526,
+            339091
+        ],
+        "utile_netto": [
+            796984,
+            531426,
+            558942,
+            755006,
+            1118761
+        ],
+        "altri_costi_operativi": [
+            173885,
+            153863,
+            188449,
+            160650,
+            192379
+        ],
+        "ebitda": [
+            1138997,
+            743125,
+            922792,
+            1153150,
+            1538475
+        ]
+    },
+    "balance_sheet": {
+        "attivo": {
+            "immobilizzazioni_immateriali": [
+                864001,
+                51380,
+                41359,
+                48600,
+                31296
+            ],
+            "immobilizzazioni_materiali": [
+                746126,
+                150875,
+                104037,
+                94370,
+                66667
+            ],
+            "immobilizzazioni_finanziarie": [
+                21780,
+                8478,
+                8478,
+                6101,
+                7601
+            ],
+            "immobilizzazioni_totale": [
+                1631907,
+                210733,
+                153874,
+                149071,
+                105564
+            ],
+            "crediti_commerciali": [
+                1186104,
+                1246866,
+                2135546,
+                2804437,
+                2733425
+            ],
+            "disponibilita_liquide": [
+                1743334,
+                1347879,
+                452100,
+                732065,
+                839737
+            ],
+            "attivo_circolante_totale": [
+                2930144,
+                2594745,
+                2587646,
+                3536502,
+                3573162
+            ],
+            "totale_attivo": [
+                4581559,
+                2830375,
+                2761336,
+                3708159,
+                3706602
+            ],
+            "altre_attivita_correnti": [
+                706,
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        "passivo": {
+            "capitale_sociale": [
+                190000,
+                190000,
+                190000,
+                190000,
+                190000
+            ],
+            "patrimonio_netto_totale": [
+                2568171,
+                1164390,
+                823333,
+                1078339,
+                1347098
+            ],
+            "tfr": [
+                299670,
+                236247,
+                281871,
+                318013,
+                337159
+            ],
+            "debiti_totali": [
+                1713145,
+                1426838,
+                1654712,
+                2311485,
+                2018049
+            ],
+            "totale_passivo": [
+                4581559,
+                2830375,
+                2761336,
+                3708159,
+                3706602
+            ],
+            "riserve": [
+                1581187,
+                442964,
+                74391,
+                133333,
+                38337
+            ],
+            "utile_esercizio": [
+                796984,
+                531426,
+                558942,
+                755006,
+                1118761
+            ],
+            "debiti_finanziari": [
+                500000,
+                305556,
+                194445,
+                83334,
+                0
+            ],
+            "debiti_commerciali": [
+                727887,
+                672769.2,
+                876160.2,
+                1336890.5999999999,
+                1210829.4
+            ],
+            "altri_debiti_correnti": [
+                485258,
+                448512.80000000005,
+                584106.8,
+                891260.4,
+                807219.6000000001
+            ]
+        }
+    },
+    "kpi": {
+        "redditivita": {
+            "roe": [
+                31.03,
+                45.64,
+                67.89,
+                70.02,
+                83.05
+            ],
+            "roa": [
+                17.4,
+                18.78,
+                20.24,
+                20.36,
+                30.18
+            ],
+            "roi": [
+                23.61,
+                25.32,
+                29.34,
+                29.14,
+                39.45
+            ],
+            "ros": [
+                32.98,
+                23.01,
+                22.25,
+                24.68,
+                30.64
+            ],
+            "ebitda_margin": [
+                34.73,
+                23.86,
+                25.34,
+                26.33,
+                32.23
+            ],
+            "dscr": [
+                0,
+                1.47,
+                0.05,
+                7.81,
+                0
+            ]
+        },
+        "liquidita": {
+            "current_ratio": [
+                2.42,
+                2.31,
+                1.77,
+                1.59,
+                1.77
+            ],
+            "quick_ratio": [
+                2.42,
+                2.31,
+                1.77,
+                1.59,
+                1.77
+            ],
+            "cash_ratio": [
+                1.44,
+                1.2,
+                0.31,
+                0.33,
+                0.42
+            ],
+            "margine_tesoreria": [
+                530189,
+                226597,
+                -1008167,
+                -1496086,
+                -1178312
+            ]
+        },
+        "solidita": {
+            "debt_equity": [
+                0.67,
+                1.23,
+                2.01,
+                2.14,
+                1.5
+            ],
+            "leverage": [
+                1.78,
+                2.43,
+                3.35,
+                3.44,
+                2.75
+            ],
+            "icr": [
+                1134.92,
+                298.94,
+                378.24,
+                542.7,
+                317.16
+            ],
+            "autonomia_finanziaria": [
+                56.05,
+                41.14,
+                29.82,
+                29.08,
+                36.34
+            ]
+        },
+        "efficienza": {
+            "dso": [
+                132,
+                146,
+                214,
+                234,
+                209
+            ],
+            "dpo": [
+                243,
+                203,
+                249,
+                286,
+                268
+            ],
+            "ciclo_finanziario": [
+                -111,
+                -57,
+                -35,
+                -52,
+                -59
+            ],
+            "asset_turnover": [
+                0.72,
+                1.1,
+                1.32,
+                1.18,
+                1.29
+            ]
+        },
+        "rischio": {
+            "z_score": [
+                3.33,
+                3.27,
+                3.11,
+                2.9,
+                3.51
+            ]
+        }
+    },
+    "cash_flow": {
+        "utile_netto": [
+            796984,
+            531426,
+            558942,
+            755006,
+            1118761
+        ],
+        "ammortamenti": [
+            98763,
+            97914,
+            89499,
+            67827,
+            54749
+        ],
+        "variazione_tfr": [
+            0,
+            -63423,
+            45624,
+            36142,
+            19146
+        ],
+        "variazione_crediti": [
+            0,
+            60762,
+            888680,
+            668891,
+            -71012
+        ],
+        "variazione_debiti": [
+            0,
+            -55118,
+            203391,
+            460730,
+            -126061
+        ],
+        "investimenti": [
+            0,
+            -1323260,
+            32640,
+            63024,
+            11242
+        ],
+        "cash_flow_operativo": [
+            0,
+            450037,
+            8776,
+            650814,
+            1137607
+        ],
+        "autofinanziamento": [
+            0,
+            565917,
+            694065,
+            858975,
+            1192656
+        ],
+        "delta_capitale_circolante": [
+            0,
+            -115880,
+            -685289,
+            -208161,
+            -55049
+        ],
+        "delta_debiti_finanziari": [
+            0,
+            -194444,
+            -111111,
+            -111111,
+            -83334
+        ]
+    },
+    "structure_margin": {
+        "patrimonio_netto": [
+            2568171,
+            1164390,
+            823333,
+            1078339,
+            1347098
+        ],
+        "immobilizzazioni": [
+            1631907,
+            210733,
+            153874,
+            149071,
+            105564
+        ],
+        "margine": [
+            936264,
+            953657,
+            669459,
+            929268,
+            1241534
+        ],
+        "stato": [
+            "Equilibrato",
+            "Equilibrato",
+            "Equilibrato",
+            "Equilibrato",
+            "Equilibrato"
+        ]
+    },
+    "debt_structure": {
+        "breve_termine": [
+            1213145,
+            1121282,
+            1460267,
+            2228151,
+            2018049
+        ],
+        "lungo_termine": [
+            500000,
+            305556,
+            194445,
+            83334,
+            0
+        ],
+        "totale": [
+            1713145,
+            1426838,
+            1654712,
+            2311485,
+            2018049
+        ],
+        "breve_pct": [
+            71,
+            79,
+            88,
+            96,
+            100
+        ],
+        "lungo_pct": [
+            29,
+            21,
+            12,
+            4,
+            0
+        ],
+        "costo_medio_debito": 0.13
+    },
+    "interest_coverage": {
+        "ebit": [
+            1081575,
+            716571,
+            810189,
+            1080516,
+            1462437
+        ],
+        "oneri_finanziari": [
+            953,
+            2397,
+            2142,
+            1991,
+            4611
+        ],
+        "icr": [
+            1134.92,
+            298.94,
+            378.24,
+            542.7,
+            317.16
+        ],
+        "costo_medio_debito": 0.13
+    },
+    "dupont_analysis": {
+        "margine_netto": [
+            24.3,
+            17.07,
+            15.35,
+            17.24,
+            23.44
+        ],
+        "rotazione_attivo": [
+            0.72,
+            1.1,
+            1.32,
+            1.18,
+            1.29
+        ],
+        "leva_finanziaria": [
+            1.78,
+            2.43,
+            3.35,
+            3.44,
+            2.75
+        ],
+        "roa": [
+            17.4,
+            18.78,
+            20.24,
+            20.36,
+            30.18
+        ]
+    },
+    "break_even": {
+        "costi_fissi": 1547302,
+        "costi_variabili": 1742229,
+        "margine_contribuzione": 0.635,
+        "punto_pareggio": 2436687,
+        "margine_sicurezza_pct": 49,
+        "margine_sicurezza_eur": 2336569,
+        "ricavi_2024": 4773256
+    },
+    "z_score_altman": {
+        "punteggio": [
+            3.33,
+            3.27,
+            3.11,
+            2.9,
+            3.51
+        ],
+        "zone": [
+            "safe",
+            "safe",
+            "safe",
+            "safe",
+            "safe"
+        ],
+        "components_2024": {
+            "x1": 0.42,
+            "x2": 0.01,
+            "x3": 0.39,
+            "x4": 0.67,
+            "x5": 1.29
+        }
+    },
+    "produttivita": {
+        "dipendenti": [
+            19,
+            22,
+            28,
+            30,
+            31
+        ],
+        "dipendenti_stimati": 31,
+        "ricavi_per_dipendente": [
+            168989,
+            138951,
+            131469,
+            144864,
+            153826
+        ],
+        "valore_aggiunto_per_dipendente_euro": [
+            103698,
+            78160,
+            78314,
+            83149,
+            94580
+        ]
+    },
+    "capex": {
+        "periodi": [
+            "2020-2021",
+            "2021-2022",
+            "2022-2023",
+            "2023-2024"
+        ],
+        "valori": [
+            -1323260,
+            32640,
+            63024,
+            11242
+        ],
+        "dettagli": [
+            {
+                "periodo": "2020-2021",
+                "totale": -1323260,
+                "delta_immobilizzazioni": -1421174,
+                "ammortamenti": 97914,
+                "nota": "Investimenti ordinari"
+            },
+            {
+                "periodo": "2021-2022",
+                "totale": 32640,
+                "delta_immobilizzazioni": -56859,
+                "ammortamenti": 89499,
+                "nota": "Investimenti ordinari"
+            },
+            {
+                "periodo": "2022-2023",
+                "totale": 63024,
+                "delta_immobilizzazioni": -4803,
+                "ammortamenti": 67827,
+                "nota": "Investimenti ordinari"
+            },
+            {
+                "periodo": "2023-2024",
+                "totale": 11242,
+                "delta_immobilizzazioni": -43507,
+                "ammortamenti": 54749,
+                "nota": "Investimenti ordinari"
+            }
+        ]
+    },
+    "composizione_attivo": {
+        "labels": [
+            "Immob. Materiali",
+            "Immob. Immateriali",
+            "Immob. Finanziarie",
+            "Crediti",
+            "Liquidità",
+            "Altre Attività"
+        ],
+        "valori_2024": [
+            66667,
+            31296,
+            7601,
+            2733425,
+            839737,
+            0
+        ],
+        "percentuali_2024": [
+            1.8,
+            0.8,
+            0.2,
+            73.7,
+            22.7,
+            0
+        ]
+    },
+    "composizione_passivo": {
+        "labels": [
+            "Patrimonio Netto",
+            "Debiti Breve",
+            "Debiti Lungo",
+            "TFR"
+        ],
+        "valori_2024": [
+            1347098,
+            2018049,
+            0,
+            337159
+        ],
+        "percentuali_2024": [
+            36.3,
+            54.4,
+            0,
+            9.1
+        ]
+    }
+}

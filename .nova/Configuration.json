@@ -1,0 +1,7 @@
+{
+  "index.ignored_file_patterns" : [
+    ".DS_Store",
+    "Configuration.json"
+  ],
+  "workspace.color" : 9
+}
