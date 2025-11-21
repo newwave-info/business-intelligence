@@ -1058,3 +1058,282 @@ function getChartConfigs() {
         }
     };
 }
+
+// Cash Flow Data Functions
+// Store chart instances for cleanup
+const cashFlowCharts = {
+    cumulative: null,
+    category: null
+};
+
+function destroyCashFlowCharts() {
+    if (cashFlowCharts.cumulative) {
+        cashFlowCharts.cumulative.destroy();
+        cashFlowCharts.cumulative = null;
+    }
+    if (cashFlowCharts.category) {
+        cashFlowCharts.category.destroy();
+        cashFlowCharts.category = null;
+    }
+}
+
+function loadCashFlowData() {
+    const container = document.getElementById('monthlyCheckpoints');
+    if (!container) {
+        console.warn('View not yet loaded, retrying...');
+        setTimeout(loadCashFlowData, 100);
+        return;
+    }
+
+    fetch('api/cashflow.php')
+        .then(response => response.json())
+        .then(data => {
+            console.log('Cash flow data loaded, processing...');
+            destroyCashFlowCharts();
+            initCumulativeCashFlowChart(data.cumulativeFlow);
+            generateMonthlyCheckpoints(data.monthlyCheckpoints);
+            initMonthlyCategoryChart(data.monthlyCategories);
+            console.log('Cash flow view updated');
+        })
+        .catch(error => console.error('Error loading cash flow data:', error));
+}
+
+function initCumulativeCashFlowChart(data) {
+    const ctx = document.getElementById('cumulativeCashFlowChart');
+    if (!ctx) return;
+
+    // Ensure canvas context is clean
+    const canvasElement = ctx.parentElement ? ctx : null;
+    if (!canvasElement) return;
+
+    const isDark = document.documentElement.classList.contains('dark-mode');
+    const colors = {
+        entrate: '#3b82f6',
+        uscite: '#ef4444',
+        saldo: '#22c55e',
+        grid: isDark ? 'rgba(71, 85, 105, 0.4)' : 'rgba(0, 0, 0, 0.1)'
+    };
+
+    cashFlowCharts.cumulative = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: data.dates.map(d => {
+                const [year, month] = d.split('-');
+                const months = ['Gen', 'Feb', 'Mar', 'Apr', 'Mag', 'Giu', 'Lug', 'Ago', 'Set', 'Ott', 'Nov', 'Dic'];
+                return months[parseInt(month) - 1];
+            }),
+            datasets: [
+                {
+                    label: 'Entrate Cumulative',
+                    data: data.entrate,
+                    borderColor: colors.entrate,
+                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                    borderWidth: 2.5,
+                    tension: 0.4,
+                    fill: true,
+                    pointRadius: 5,
+                    pointBackgroundColor: colors.entrate,
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2
+                },
+                {
+                    label: 'Uscite Cumulative',
+                    data: data.uscite,
+                    borderColor: colors.uscite,
+                    backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                    borderWidth: 2.5,
+                    tension: 0.4,
+                    fill: true,
+                    pointRadius: 5,
+                    pointBackgroundColor: colors.uscite,
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2
+                },
+                {
+                    label: 'Saldo Netto',
+                    data: data.saldo,
+                    borderColor: colors.saldo,
+                    backgroundColor: 'rgba(34, 197, 94, 0.1)',
+                    borderWidth: 3,
+                    tension: 0.4,
+                    fill: true,
+                    pointRadius: 6,
+                    pointBackgroundColor: colors.saldo,
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            animation: animationConfig,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top',
+                    labels: {
+                        usePointStyle: true,
+                        padding: 15,
+                        font: { size: 12, weight: 500 }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        callback: v => '€' + (v / 1000).toFixed(0) + 'k'
+                    },
+                    grid: { color: colors.grid }
+                },
+                x: {
+                    grid: { color: colors.grid }
+                }
+            }
+        }
+    });
+}
+
+function generateMonthlyCheckpoints(monthlyData) {
+    const container = document.getElementById('monthlyCheckpoints');
+    if (!container) {
+        console.warn('monthlyCheckpoints container not found');
+        return;
+    }
+
+    container.innerHTML = '';
+
+    const months = Object.keys(monthlyData).sort();
+
+    if (months.length === 0) {
+        console.warn('No monthly data available');
+        return;
+    }
+
+    let html = '';
+
+    months.forEach((month, idx) => {
+        const data = monthlyData[month];
+        const isPositive = data.saldo >= 0;
+
+        html += `
+            <div class="widget-card widget-purple p-6 animate-in" style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.06) 0%, rgba(255, 255, 255, 0) 100%); border: 1px solid rgba(139, 92, 246, 0.25); border-radius: 8px; animation-delay: ${idx * 0.05}s;">
+                <div class="flex justify-between items-start mb-4 pb-3 border-b border-gray-200">
+                    <div>
+                        <div class="text-[11px] font-medium text-gray-700 uppercase tracking-wider">${data.mese}</div>
+                        <div class="text-[10px] text-gray-600 mt-1">${data.transazioni} transazioni</div>
+                    </div>
+                    <div class="inline-block px-2 py-1 rounded text-[9px] font-semibold ${isPositive ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}" style="${isPositive ? 'background-color: #dcfce7; color: #15803d;' : 'background-color: #fee2e2; color: #dc2626;'}">
+                        ${isPositive ? '↑ Positivo' : '↓ Negativo'}
+                    </div>
+                </div>
+
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="text-[10px] text-gray-700 uppercase tracking-wider font-semibold">Entrate</div>
+                            <div class="text-sm font-bold text-gray-900 mt-1" style="color: #0f172a;">€${(data.entrate).toLocaleString('it-IT', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>
+                        </div>
+                        <i class="fa-solid fa-arrow-down-right text-green-600 text-lg"></i>
+                    </div>
+
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="text-[10px] text-gray-700 uppercase tracking-wider font-semibold">Uscite</div>
+                            <div class="text-sm font-bold text-gray-900 mt-1" style="color: #0f172a;">€${(data.uscite).toLocaleString('it-IT', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>
+                        </div>
+                        <i class="fa-solid fa-arrow-up-right text-red-600 text-lg"></i>
+                    </div>
+
+                    <div class="pt-3 border-t border-gray-200">
+                        <div class="text-[10px] text-gray-700 uppercase tracking-wider font-semibold mb-1">Saldo Netto</div>
+                        <div class="text-lg font-bold" style="color: ${isPositive ? '#16a34a' : '#dc2626'};">
+                            €${(data.saldo).toLocaleString('it-IT', {minimumFractionDigits: 2, maximumFractionDigits: 2})}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+
+    container.innerHTML = html;
+    console.log('Monthly checkpoints generated:', months.length, 'months');
+}
+
+function initMonthlyCategoryChart(data) {
+    const ctx = document.getElementById('monthlyCategory');
+    if (!ctx) return;
+
+    const isDark = document.documentElement.classList.contains('dark-mode');
+    const colors = isDark ? 'rgba(71, 85, 105, 0.4)' : 'rgba(0, 0, 0, 0.1)';
+
+    const categoryColors = [
+        '#3b82f6', '#ef4444', '#22c55e', '#f59e0b', '#8b5cf6',
+        '#ec4899', '#06b6d4', '#14b8a6', '#f97316', '#6366f1'
+    ];
+
+    cashFlowCharts.category = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: data.months,
+            datasets: data.data.slice(0, 8).map((catData, idx) => ({
+                label: data.categories[idx],
+                data: catData,
+                backgroundColor: categoryColors[idx % categoryColors.length],
+                borderRadius: 4,
+                maxBarThickness: 60
+            }))
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            animation: animationConfig,
+            indexAxis: 'x',
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top',
+                    labels: {
+                        usePointStyle: true,
+                        padding: 15,
+                        font: { size: 11 }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    stacked: false,
+                    beginAtZero: true,
+                    ticks: {
+                        callback: v => '€' + (v / 1000).toFixed(0) + 'k'
+                    },
+                    grid: { color: colors }
+                },
+                x: {
+                    grid: { color: colors }
+                }
+            }
+        }
+    });
+}
+
+// Initialize cash flow on page load
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        if (document.getElementById('cumulativeCashFlowChart')) {
+            loadCashFlowData();
+        }
+    }, 500);
+});
+
+// Also load when cashflow view is shown
+const originalShowView = window.showView;
+window.showView = function(viewId) {
+    if (typeof originalShowView === 'function') {
+        originalShowView(viewId);
+    }
+    if (viewId === 'cashflow' && document.getElementById('cumulativeCashFlowChart')) {
+        loadCashFlowData();
+    }
+};

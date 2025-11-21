@@ -86,6 +86,10 @@
                         <i class="fa-solid fa-gauge text-[11px] text-current"></i>
                         <span>Dashboard</span>
                     </div>
+                    <div class="nav-item flex items-center gap-2.5 pl-4 py-1.5 cursor-pointer text-[13px] text-gray-600 transition-colors duration-200 hover:text-purple-600" onclick="showView('cashflow'); toggleSidebar()">
+                        <i class="fa-solid fa-coins text-[11px] text-current"></i>
+                        <span>Flusso di Cassa</span>
+                    </div>
                     <div class="nav-item flex items-center gap-2.5 pl-4 py-1.5 cursor-pointer text-[13px] text-gray-600 transition-colors duration-200 hover:text-purple-600" onclick="showView('liquidity'); toggleSidebar()">
                         <i class="fa-solid fa-droplet text-[11px] text-current"></i>
                         <span>Liquidità e Flussi</span>
@@ -397,6 +401,110 @@
                 </div>
 
 
+            </div>
+
+            <!-- View: Cash Flow -->
+            <div id="cashflow" class="view hidden">
+                <div class="mb-6 sm:mb-10">
+                    <h1 class="text-[18px] sm:text-[20px] font-medium text-primary tracking-tight">Flusso di Cassa</h1>
+                    <p class="text-[13px] text-gray-600 mt-2">Andamento progressivo delle entrate e uscite di cassa con checkpoint mensili</p>
+                </div>
+
+                <!-- Cumulative Cash Flow Chart -->
+                <div class="mb-12 sm:mb-20">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider">Andamento Flusso di Cassa Cumulativo 2025</div>
+                        <div class="tooltip-container">
+                            <i class="fa-solid fa-circle-info text-gray-400 text-xs cursor-help"></i>
+                            <div class="tooltip-content">Saldo cumulativo progressivo delle transazioni. Entrate in blu, Uscite in rosso, Saldo netto in verde.</div>
+                        </div>
+                    </div>
+                    <div class="widget-card widget-purple p-6">
+                        <div class="relative h-[350px] sm:h-[420px]">
+                            <canvas id="cumulativeCashFlowChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Monthly Checkpoints -->
+                <div class="mb-12 sm:mb-20">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider">Checkpoint Mensili</div>
+                        <div class="tooltip-container">
+                            <i class="fa-solid fa-circle-info text-gray-400 text-xs cursor-help"></i>
+                            <div class="tooltip-content">Analisi riepilogativa per ogni mese: entrate, uscite, saldo netto e trend.</div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 w-full" id="monthlyCheckpoints">
+                        <!-- Generated dynamically -->
+                    </div>
+                </div>
+
+                <!-- Monthly Categories Analysis -->
+                <div class="mb-12 sm:mb-20">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider">Top Categorie per Mese</div>
+                        <div class="tooltip-container">
+                            <i class="fa-solid fa-circle-info text-gray-400 text-xs cursor-help"></i>
+                            <div class="tooltip-content">Principali voci di entrata e uscita per ogni mese.</div>
+                        </div>
+                    </div>
+                    <div class="widget-card widget-purple p-6">
+                        <div class="relative h-[350px] sm:h-[420px]">
+                            <canvas id="monthlyCategory"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Summary Statistics -->
+                <div class="mb-12 sm:mb-20">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="text-[11px] font-medium text-gray-600 uppercase tracking-wider">Riepilogo Annuale</div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+                        <div class="widget-card widget-purple p-6">
+                            <div class="widget-label mb-2">Totale Entrate</div>
+                            <div class="widget-metric-large text-success">€1.215.460</div>
+                            <div class="text-xs text-gray-500 mt-2">58% del totale movimenti</div>
+                        </div>
+                        <div class="widget-card widget-purple p-6">
+                            <div class="widget-label mb-2">Totale Uscite</div>
+                            <div class="widget-metric-large text-negative">€550.343</div>
+                            <div class="text-xs text-gray-500 mt-2">26% del totale movimenti</div>
+                        </div>
+                        <div class="widget-card widget-purple p-6">
+                            <div class="widget-label mb-2">Saldo Netto</div>
+                            <div class="widget-metric-large text-success">€665.117</div>
+                            <div class="text-xs text-gray-500 mt-2">Positivo su 12 mesi</div>
+                        </div>
+                        <div class="widget-card widget-purple p-6">
+                            <div class="widget-label mb-2">Rapporto Entrate/Uscite</div>
+                            <div class="widget-metric-large text-primary">2.21x</div>
+                            <div class="text-xs text-gray-500 mt-2">Entrate > Uscite</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Insights -->
+                <div class="mb-12 sm:mb-20">
+                    <div class="widget-card p-6">
+                        <div class="ai-insight-box">
+                            <div class="flex items-center gap-2 mb-3 pb-3 border-b border-purple/20">
+                                <span class="badge-ai bg-purple text-white text-[9px] font-bold px-1.5 py-0.5 uppercase tracking-wide">AI Insight</span>
+                                <span class="text-sm font-semibold text-gray-700">Analisi Flusso di Cassa</span>
+                            </div>
+                            <p class="text-sm text-gray-700 mb-3">
+                                <strong>Salute della Tesoreria:</strong> Il flusso di cassa 2025 è fortemente positivo con entrate che superano le uscite di 2.21x. Il picco massimo si registra a fine anno con accumulo progressivo di liquidità.
+                            </p>
+                            <p class="text-sm text-gray-700 mb-3">
+                                <strong>Trend Mensile:</strong> Dicembre registra il massimo storico con maggior concentrazione di incassi. I mesi invernali (gennaio-marzo) mostrano volatilità dovuta a pagamenti IVA e contributi concentrati.
+                            </p>
+                            <p class="text-sm text-gray-700">
+                                <strong>Raccomandazioni:</strong> Mantenere vigilanza sui cicli di pagamento per distribuire le uscite tributarie. Considerare factoring su crediti commerciali per accelerare incassi nei mesi critici.
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div id="liquidity" class="view hidden">
